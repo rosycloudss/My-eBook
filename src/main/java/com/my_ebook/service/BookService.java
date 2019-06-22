@@ -1,7 +1,9 @@
 package com.my_ebook.service;
 
 import com.my_ebook.entity.Book;
+import com.my_ebook.entity.Category;
 import com.my_ebook.service.base.BaseService;
+import com.my_ebook.service.base.PageService;
 import com.my_ebook.vo.Page;
 
 import java.util.List;
@@ -13,17 +15,8 @@ import java.util.List;
  * @Date:2019/6/21 21:10
  * @Version: V1.0
  */
-public interface BookService extends BaseService<Book> {
+public interface BookService extends BaseService<Book>, PageService<Book> {
 
-    int add(Book book);
-
-    /**
-     * 通过图书编号删除图书信息
-     *
-     * @param bookId
-     * @return
-     */
-    int delete(int bookId);
 
     /**
      * 批量删除图书信息
@@ -33,20 +26,6 @@ public interface BookService extends BaseService<Book> {
      */
     int delete(List<Integer> bookIds);
 
-    /**
-     * 修改图书信息
-     *
-     * @param book
-     * @return
-     */
-    int update(Book book);
-
-    /**
-     * 查询图书的数量 如果book为null则查询所有图书的数量
-     * @param book
-     * @return
-     */
-    int count(Book book);
     /**
      * 查询所有图书信息
      *

@@ -18,7 +18,7 @@ import java.util.List;
  * @Version: V1.0
  */
 @Service
-public class BookServiceImpl implements BookService, PageService<Book> {
+public class BookServiceImpl implements BookService {
 
     @Resource
     private BookMapper bookMapper;
@@ -51,6 +51,10 @@ public class BookServiceImpl implements BookService, PageService<Book> {
         page = initPage(null, page);
         page.setPageInfos(bookMapper.selectAll(page));
         return page;
+    }
+
+    public Page<Book> findAll(Book book, Page page) {
+        return findByParameter(book, page);
     }
 
     public Page<Book> findByParameter(Book book, Page<Book> page) {

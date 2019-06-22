@@ -17,10 +17,14 @@ import javax.annotation.Resource;
  * @Version: V1.0
  */
 @Service
-public class CategoryServiceImpl implements CategoryService, PageService<Category> {
+public class CategoryServiceImpl implements CategoryService {
 
     @Resource
     CategoryMapper categoryMapper;
+
+    public int count(Category category) {
+        return 0;
+    }
 
     public int add(Category category) {
         return categoryMapper.insert(category);
@@ -43,6 +47,10 @@ public class CategoryServiceImpl implements CategoryService, PageService<Categor
     }
 
     public Page<Category> findAllParentCategory() {
+        return null;
+    }
+
+    public Page<Category> findAll(Category category, Page page) {
         return null;
     }
 
