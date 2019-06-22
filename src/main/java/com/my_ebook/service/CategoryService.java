@@ -1,9 +1,10 @@
 package com.my_ebook.service;
 
 import com.my_ebook.entity.Category;
+import com.my_ebook.service.base.BaseService;
 import com.my_ebook.vo.Page;
 
-public interface CategoryService {
+public interface CategoryService extends BaseService<Category> {
 
     int add(Category category);
 
@@ -16,6 +17,7 @@ public interface CategoryService {
     Page<Category> findByParentId(int parentId);
 
     Page<Category> findAllParentCategory();
+
 
     Category findById(int categoryId);
 

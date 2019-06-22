@@ -1,8 +1,8 @@
 package com.my_ebook.service;
 
 import com.my_ebook.entity.Book;
+import com.my_ebook.service.base.BaseService;
 import com.my_ebook.vo.Page;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @Date:2019/6/21 21:10
  * @Version: V1.0
  */
-public interface BookService {
+public interface BookService extends BaseService<Book> {
 
     int add(Book book);
 

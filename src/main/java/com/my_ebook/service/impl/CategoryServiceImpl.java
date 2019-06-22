@@ -1,10 +1,9 @@
 package com.my_ebook.service.impl;
 
-import com.my_ebook.entity.Book;
 import com.my_ebook.entity.Category;
 import com.my_ebook.mapper.CategoryMapper;
 import com.my_ebook.service.CategoryService;
-import com.my_ebook.service.PageService;
+import com.my_ebook.service.base.PageService;
 import com.my_ebook.vo.Page;
 import org.springframework.stereotype.Service;
 
