@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my_ebook.mapper.BookMapper">
+    <resultMap id="bookMap" type="Book">
+        <id column="book_id" property="ID"/>
+        <result column="book_name" property="name"/>
+        <result column="book_cover" property="cover"/>
+        <result column="ISBN" property="ISBN"/>
+        <result column="book_page" property="pages"/>
+        <result column="book_desc" property="description"/>
+        <result column="price" property="price"/>
+        <result column="selling_price" property="sellingPrice"/>
+        <result column="discount" property="discount"/>
+        <result column="publisher" property="publisher"/>
+        <result column="publish_date" property="publishDate"/>
+        <result column="edition" property="edition"/>
+        <result column="reserve" property="reserve"/>
+        <result column="author" property="author"/>
+        <association property="category" javaType="Category" column="category_id"
+                     select="com.my_ebook.mapper.CategoryMapper.selectById"/>
+
+    </resultMap>
+
+    <sql id="base_column_list">
+        book_id,category_id,book_name,book_cover,ISBN,book_page,book_desc,price,selling_price,discount,publisher,publish_date,edition,reserve,author
+    </sql>
+
+    <insert id="insert" parameterType="Book" useGeneratedKeys="true" keyProperty="ID">
+        insert into tb_book (category_id,book_name,book_cover,ISBN,book_page,book_desc,price,selling_price,discount,publisher,publish_date,edition,reserve,author)
+        values (#{category.id,javaType=INTEGER},#{name,jdbcType=VARCHAR},#{cover,jdbcType=VARCHAR},#{ISBN,jdbcType=VARCHAR},#{pages,jdbcType=INTEGER},#{description,jdbcType=VARCHAR},
+        #{price,jdbcType=DOUBLE},#{sellingPrice,jdbcType=DOUBLE},#{discount,jdbcType=DOUBLE},#{publisher,jdbcType=VARCHAR},#{publishDate,jdbcType=DATE},
+        #{edition,jdbcType=INTEGER},#{reserve,jdbcType=INTEGER},#{author,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteById" parameterType="integer">
+        delete from tb_book where book_id=#{bookId}
+    </delete>
+
+    <delete id="deleteByIds">
+        delete from tb_book
+        where book_id in
+        <foreach collection="bookIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="update" parameterType="Book">
+        update tb_book
+        <set>
+            <if test="category != null">
+                category_id=#{category.id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                book_name=#{name,jdbcType=VARCHAR},
+            </if>
+            <if test="cover != null">
+                book_cover=#{cover,jdbcType=VARCHAR},
+            </if>
+            <if test="ISBN != null">
+                ISBN=#{ISBN,jdbcType=VARCHAR},
+            </if>
+            <if test="pages != null">
+                book_page=#{pages,jdbcType=INTEGER},
+            </if>
+            <if test="description != null">
+                book_desc=#{description,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price=#{price,jdbcType=DOUBLE},
+            </if>
+            <if test="sellingPrice != null">
+                selling_price=#{sellingPrice,jdbcType=DOUBLE},
+            </if>
+            <if test="discount != null">
+                discount=#{discount,jdbcType=DOUBLE},
+            </if>
+            <if test="publisher != null">
+                publisher=#{publisher,jdbcType=VARCHAR},
+            </if>
+            <if test="publishDate != null">
+                publish_date=#{publishDate,jdbcType=VARCHAR},
+            </if>
+            <if test="edition != null">
+                edition=#{edition,jdbcType=INTEGER},
+            </if>
+            <if test="reserve != null">
+                reserve=#{reserve,jdbcType=INTEGER},
+            </if>
+            <if test="author != null">
+                author=#{author,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where book_id = #{ID,jdbcType=INTEGER}
+    </update>
+
+    <select id="count" resultType="integer" parameterType="Book">
+        select
+        *
+        from tb_book
+        <if test="book != null">
+            <where>
+                <if test="book.ID != null and ID != -">
+                    and book_id = #{book.ID,jdbcType=INTEGER}
+                </if>
+                <if test="book.category != null">
+                    and category_id=#{book.category.id,jdbcType=INTEGER}
+                </if>
+                <if test="name != null">
+                    and book_name=#{book.name,jdbcType=VARCHAR}
+                </if>
+                <if test="cover != null">
+                    and book_cover=#{book.cover,jdbcType=VARCHAR}
+                </if>
+                <if test="ISBN != null">
+                    and ISBN=#{book.ISBN,jdbcType=VARCHAR}
+                </if>
+                <if test="pages != null">
+                    and book_page=#{book.pages,jdbcType=INTEGER}
+                </if>
+                <if test="description != null">
+                    and book_desc=#{book.description,jdbcType=VARCHAR}
+                </if>
+                <if test="price != null">
+                    and price=#{book.price,jdbcType=DOUBLE}
+                </if>
+                <if test="sellingPrice != null">
+                    and selling_price=#{book.sellingPrice,jdbcType=DOUBLE}
+                </if>
+                <if test="discount != null">
+                    and discount=#{book.discount,jdbcType=DOUBLE}
+                </if>
+                <if test="publisher != null">
+                    and publisher=#{book.publisher,jdbcType=VARCHAR}
+                </if>
+                <if test="publishDate != null">
+                    and publish_date=#{book.publishDate,jdbcType=VARCHAR}
+                </if>
+                <if test="edition != null">
+                    and edition=#{book.edition,jdbcType=INTEGER}
+                </if>
+                <if test="reserve != null">
+                    and reserve=#{book.reserve,jdbcType=INTEGER}
+                </if>
+                <if test="author != null">
+                    and author=#{book.author,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </if>
+    </select>
+
+    <select id="selectById" parameterType="integer" resultMap="bookMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_book
+        where book_id=#{bookId}
+    </select>
+
+    <select id="select" resultMap="bookMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_book
+        <where>
+            <if test="book.ID != null and ID != -">
+                and book_id = #{book.ID,jdbcType=INTEGER}
+            </if>
+            <if test="book.category != null">
+                and category_id=#{book.category.id,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                and book_name=#{book.name,jdbcType=VARCHAR}
+            </if>
+            <if test="cover != null">
+                and book_cover=#{book.cover,jdbcType=VARCHAR}
+            </if>
+            <if test="ISBN != null">
+                and ISBN=#{book.ISBN,jdbcType=VARCHAR}
+            </if>
+            <if test="pages != null">
+                and book_page=#{book.pages,jdbcType=INTEGER}
+            </if>
+            <if test="description != null">
+                and book_desc=#{book.description,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null">
+                and price=#{book.price,jdbcType=DOUBLE}
+            </if>
+            <if test="sellingPrice != null">
+                and selling_price=#{book.sellingPrice,jdbcType=DOUBLE}
+            </if>
+            <if test="discount != null">
+                and discount=#{book.discount,jdbcType=DOUBLE}
+            </if>
+            <if test="publisher != null">
+                and publisher=#{book.publisher,jdbcType=VARCHAR}
+            </if>
+            <if test="publishDate != null">
+                and publish_date=#{book.publishDate,jdbcType=VARCHAR}
+            </if>
+            <if test="edition != null">
+                and edition=#{book.edition,jdbcType=INTEGER}
+            </if>
+            <if test="reserve != null">
+                and reserve=#{book.reserve,jdbcType=INTEGER}
+            </if>
+            <if test="author != null">
+                and author=#{book.author,jdbcType=VARCHAR}
+            </if>
+        </where>
+        <if test="page != null">
+            limit #{page.pageStart},#{page.pageSize}
+        </if>
+    </select>
+
+    <select id="selectAll" resultMap="bookMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_book
+        <if test="page != null">
+            limit #{page.pageStart},#{page.pageSize}
+        </if>
+    </select>
+
+    <select id="selectByName" resultMap="bookMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_book
+        where book_name like '${bookName}%'
+        order by book_name
+        limit #{page.pageStart},#{page.pageSize}
+    </select>
+
+    <select id="selectByCategory" resultMap="bookMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_book
+        where category_id = #{categoryId}
+        <if test="page != null">
+            limit #{page.pageStart},#{page.pageSize}
+        </if>
+
+    </select>
+
+
+</mapper>

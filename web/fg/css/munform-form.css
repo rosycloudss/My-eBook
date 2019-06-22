@@ -1,0 +1,511 @@
+/*-------------------------------------
+Template Name: Munfrom - Responsive bootstrap 4 form
+Template URI: https://webtend.net/
+Description: Munfrom - Responsive bootstrap 4 form is a simple and unique style for Iamge hover built with Bootstrap framework. 
+Author: webtend
+Author URI: https://webtend.net/
+Version: 1.0
+------------------------------------
+            CSS index
+
+1.munform-area defult css
+2.login.html css
+3.payment.html css
+4.reset.html css
+5.create.html css
+6.review.html css
+7.contact.html css
+8.newsletter.html css
+9.recover.html css
+10.checkout.html css
+11.search.html css
+12.Responsive.html css
+------------------------------------*/
+
+/*--------------------------------
+    1.Start munform-area defult css
+-----------------------------------*/
+.munform-area .form-title{
+    margin-bottom: 40px;
+}
+.munform-area .form-title h2{
+    font-size: 30px;
+    color: #353940;
+    font-weight: 500;
+}
+.munform-area .form-text span{
+    font-size: 16px;
+    color: #6f7074;
+    text-transform: capitalize;
+}
+.munform-area .form-text span a{
+    color: #3052e1;
+    text-decoration: underline;
+}
+/*------------------------
+    End munform-area default css
+----------------------------*/
+
+
+/*-------------------------
+    2.Start login.html css
+----------------------------*/
+.munform-area .login-area{
+	background: #fff;
+	padding: 30px 30px;
+	-webkit-box-shadow: 0 0 20px #ccc;
+	box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .login-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .login-form .login-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*-------------------------
+    End login.html css
+----------------------------*/
+
+/*---------------------------
+    3.Start payment.html css
+------------------------------*/
+.munform-area .payment-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .payment-card{
+    margin-bottom: 30px;
+}
+.munform-area .payment-card h6{
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #353940;
+}
+.munform-area .payment-card ul li{
+    display: inline-block;
+    margin-left: 25px;
+}
+.munform-area .payment-card ul li a{
+    display: block;
+    font-size: 36px;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    color: #5774EE;
+    text-align: center;
+    background: transparent;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.munform-area .payment-card ul li a:hover{
+    background: #FFF;
+    box-shadow: 0 0 10px #ccc;
+}
+.munform-area .payment-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .payment-form .payment-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*---------------------------
+    End payment.html css
+------------------------------*/
+
+
+/*---------------------------
+    4.Start reset.html css
+------------------------------*/
+.munform-area .reset-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .reset-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .reset-form .reset-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*---------------------------
+    End reset.html css
+------------------------------*/
+
+/*---------------------------
+    5.Start create.html css
+------------------------------*/
+.munform-area .create-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .create-account-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .create-account-form .create-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+
+/*---------------------------
+    End create.html css
+------------------------------*/
+
+
+/*---------------------------
+    6.Start review.html css
+------------------------------*/
+.munform-area .review-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .review-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .review-form .review-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+.munform-area .review-form .rating-area h6{
+    font-size: 16px;
+}
+.munform-area .review-form .rating {
+    position: relative;
+    text-align: center;
+    padding: 15px 0;
+}
+.munform-area .review-form .rating .rating-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.munform-area .review-form .rating .rating-wrapper > input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+}
+.munform-area .review-form .rating .rating-wrapper > label {
+    float: right;
+    padding-right: 2px;
+    padding-left: 2px;
+    color: #3C4857;
+    cursor: pointer;
+}
+.munform-area .review-form .rating .rating-wrapper > label {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.munform-area .review-form .rating.star .rating-wrapper > label {
+    font-size: 32px;
+    padding: 20px 30px;
+    border: 1px solid #d9d9d9;
+    margin-right: 10px;
+}
+.munform-area .review-form .rating.star .rating-wrapper > input:checked ~ label {
+    color: #0069D9;
+}
+.munform-area .review-form .rating.star .rating-wrapper > input:hover ~ label {
+    color: #0069D9;
+}
+.munform-area .review-form .rating .control-label {
+    display: inline-block;
+    vertical-align: middle;
+}
+/*---------------------------
+    End review.html css
+------------------------------*/
+
+
+/*---------------------------
+    7.Start contact.html css
+------------------------------*/
+.munform-area .contact-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .contact-area .contact-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .contact-area .contact-form .contact-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*---------------------------
+    End contact.html css
+------------------------------*/
+
+/*---------------------------
+    8.Start newsletter.html css
+------------------------------*/
+.munform-area .newsletter-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .newsletter-area .newsletter-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .newsletter-area .newsletter-form .newsletter-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*---------------------------
+    End newsletter.html css
+------------------------------*/
+
+/*---------------------------
+    9.Start recover.html css
+------------------------------*/
+.munform-area .recover-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .recover-area .recover-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .recover-area .recover-form .recover-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*---------------------------
+    End recover.html css
+------------------------------*/
+
+/*---------------------------
+    10. start checkout.html css
+------------------------------*/
+.munform-area .checkout-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .checkout-area .checkout-form .form-group i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 16px;
+}
+.munform-area .checkout-area .checkout-form .checkout-btn{
+    background: #5774ee;
+    width: 100%;
+    padding: 20px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*---------------------------
+    End checkout.html css
+------------------------------*/
+
+
+
+/*---------------------------
+    11.Start search.html css
+------------------------------*/
+.munform-area .search-area{
+    background: #fff;
+    padding: 30px 30px;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    box-shadow: 0 0 20px #ccc;
+    border-radius: 5px;
+}
+.munform-area .search-area .search-form .form-group i{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #717479;
+    font-size: 24px;
+}
+.munform-area .search-area .search-form .form-group .form-control{
+    padding-left: 45px;
+}
+.munform-area .search-area .search-form .search-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #5774ee;
+    width: 30%;
+    padding: 12px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    cursor: pointer;
+}
+/*---------------------------
+    Ende search.html css
+------------------------------*/
+
+
+/*---------------------------------------
+    12.Start Responsive css
+---------------------------------------*/
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+}
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+}
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) {
+    .munform-area .form-title h2 {
+        font-size: 26px;
+    }
+    .munform-area .payment-card ul li{
+        margin-left: 0;
+    }
+    .munform-area .payment-card ul li a {
+        width: 60px;
+    }
+    .munform-area .rating.star .rating-wrapper > label {
+        font-size: 24px;
+        padding: 4px 8px;
+        border: 1px solid #d9d9d9;
+        margin-right: 10px;
+    }
+    .munform-area .search-form .form-group .form-control{
+        padding-left: 45px;
+    }
+    .munform-area .search-btn {
+        width: 32%;
+        padding: 12px 0;
+        font-size: 14px;
+    }
+}
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    
+}
+/*---------------------------------------
+    End Responsive css
+---------------------------------------*/

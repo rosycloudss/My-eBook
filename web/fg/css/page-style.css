@@ -1,0 +1,127 @@
+/*-------------------------------------
+Template Name: Munfrom - Responsive bootstrap 4 form
+ 
+Description: Munfrom - Responsive bootstrap 4 form is a simple and unique style for Iamge hover built with Bootstrap framework. 
+Author: webtend
+Author URI: http://www.bootstrapmb.com
+Version: 1.0
+---------------------------------------
+
+/*---------------------------------------
+    Default CSS
+---------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+* {
+    margin:0;
+    padding:0
+}
+.munform-wrapper a {
+    text-decoration:none
+}
+.munform-wrapper a:hover,
+.munform-wrapper a:focus {
+    text-decoration:none
+}
+.munform-wrapper ul{
+    margin-bottom: 0;
+}
+.munform-wrapper li {
+    list-style:none
+}
+.munform-wrapper h1, 
+.munform-wrapper h2, 
+.munform-wrapper h3, .munform-wrapper h4, .munform-wrapper h5, .munform-wrapper h6{
+    margin: 10px 0;
+}
+.munform-wrapper p{
+	margin: 0;
+}
+.munform-wrapper input{
+    height: 50px;
+}
+.munform-wrapper input::placeholder{
+    text-transform: capitalize;
+}
+.munform-wrapper select{
+    border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 5px;
+    background: #fff;
+    padding: 10px;
+    height: 50px;
+}
+.munform-wrapper{
+	font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #353940;
+    background: #ebebeb;
+    overflow-x: hidden;
+}
+.munform-wrapper .form-group{
+    position: relative;
+    margin-bottom: 20px;
+}
+.munform-wrapper .form-check-input {
+    margin-top: -0.7rem;
+}
+.munform-area{
+    overflow: hidden;
+}
+.munform-area{
+	padding: 60px 0;
+}
+/*---------------------------------------
+    Start hoverta-hover-bg section css
+---------------------------------------*/
+.munform-header{
+    background: #5774ee;
+}
+.munform-menu .navbar-brand{
+    display: block;
+    color: #fff;
+    padding: 20px 15px;
+}
+.munform-menu .nav-item .nav-link{
+    display: inline-block;
+    margin-right: 10px;
+}
+.munform-menu .nav-item .nav-link{
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    text-transform: capitalize;
+    padding: 20px 15px;
+}
+/*---------------------------------------
+    End hoverta-hover-bg section css
+---------------------------------------*/
+
+/*---------------------------------------
+    Responsive css
+---------------------------------------*/
+/* Medium Layout: 1280px. */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+}
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .navbar-toggler-icon i{
+        padding-top: 5px;
+        color: #fff;
+    }
+    
+}
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) {
+    .navbar-toggler-icon i{
+        padding-top: 5px;
+        color: #fff;
+    }
+    .munform-menu .navbar-brand{
+        padding: 10px 15px;
+    }
+	.munform-menu .nav-item .nav-link{
+        padding: 10px 20px;
+    }
+}
