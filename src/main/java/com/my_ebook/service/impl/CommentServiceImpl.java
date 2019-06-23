@@ -3,7 +3,9 @@ package com.my_ebook.service.impl;
 import com.my_ebook.entity.Comment;
 import com.my_ebook.service.CommentService;
 import com.my_ebook.vo.Page;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CommentServiceImpl implements CommentService {
     public Page<Comment> findCustomerComments(int customerId, Page page) {
         return null;

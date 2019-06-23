@@ -3,7 +3,9 @@ package com.my_ebook.service.impl;
 import com.my_ebook.entity.Car;
 import com.my_ebook.service.CarService;
 import com.my_ebook.vo.Page;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CarServiceImpl implements CarService {
     public int deleteByCustomerId(int customerId) {
         return 0;

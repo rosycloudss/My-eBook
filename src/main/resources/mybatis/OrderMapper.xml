@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my_ebook.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="Order">
+        <id column="id" property="ID"/>
+        <result column="order_id" property="orderID"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="receiver" property="receiver"/>
+        <result column="receiving_addr" property="recevingAddr"/>
+        <result column="phone" property="phone"/>
+        <result column="delivery" property="delivery"/>
+        <result column="post_status" property="postStatus"/>
+        <result column="pay_status" property="payStatus"/>
+        <result column="order_date" property="orderDate"/>
+        <result column="remark" property="remark"/>
+        <result column="order_mount" property="orderMount"/>
+        <result column="total_price" property="totalPrice"/>
+        <association property="customer" javaType="Customer" column="customer_id"
+                     select=""/>
+        <collection property="orderItemList" ofType="OrderItem" column="id"
+                    select="com.my_ebook.mapper.OrderItemMapper.selectByOrderId"/>
+    </resultMap>
+
+    <sql id="base_column_list">
+        id,customer_id,order_id,order_status,receiver,receiving_addr,phone,delivery,post_status,pay_status,
+        order_date,remark,order_mount,total_price
+    </sql>
+
+    <insert id="insert" parameterType="Order" useGeneratedKeys="true" keyProperty="ID">
+        insert into tb_order(customer_id,order_id,order_status,receiver,receiving_addr,phone,delivery,post_status,pay_status,
+        order_date,remark,order_mount,total_price)
+        value (#{customer.ID,jdbcType=INTEGER},#{orderID,jdbcType=VARCHAR},#{orderStatus,jdbcType=INTEGER},#{receiver,jdbcType=VARCHAR},
+        #{recevingAddr,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{delivery,jdbcType=INTEGER},#{postStatus,jdbcType=INTEGER},
+        #{payStatus,jdbcType=INTEGER},#{orderDate,jdbcType=DATE},#{remark,jdbcType=VARCHAR},#{orderMount,jdbcType=INTEGER},
+        #{totalPrice,jdbcType=DOUBLE});
+    </insert>
+    <update id="update">
+
+
+    </update>
+
+    <delete id="deleteById" parameterType="integer">
+        delete from tb_order where id=#{id,jdbcType=INTEGER};
+    </delete>
+
+    <delete id="deleteByCustomerId">
+        delete  from tb_order where customer_id=#{customerId,jdbcType=INTEGER};
+    </delete>
+    <select id="select" resultMap="orderMap">
+        select
+        <include refid="base_column_list"></include>
+        from tb_order
+        <where>
+            <if test="order != null">
+                <if test="customer.ID != null">
+                    and customer_id=#{customer.ID,jdbcType=INTEGER}
+                </if>
+                <if test="orderID != null">
+                    and order_id=#{orderID,jdbcType=VARCHAR}
+                </if>
+                <if test="orderStatus != null">
+                    and order_status=#{orderStatus,jdbcType=INTEGER}
+                </if>
+                <if test="receiver != null">
+                    and receiver=#{receiver,jdbcType=VARCHAR}
+                </if>
+                <if test="recevingAddr != null">
+                    and receiving_addr=#{recevingAddr,jdbcType=VARCHAR}
+                </if>
+                <if test="phone != null">
+                    and phone=#{phone,jdbcType=VARCHAR}
+                </if>
+                <if test="delivery != null">
+                    and delivery=#{delivery,jdbcType=INTEGER}
+                </if>
+                <if test="postStatus != null">
+                    and post_status=#{postStatus,jdbcType=INTEGER}
+                </if>
+                <if test="payStatus != null">
+                    and pay_status=#{payStatus,jdbcType=INTEGER}
+                </if>
+                <if test="orderDate != null">
+                    and order_Date=#{orderDate,jdbcType=DATE}
+                </if>
+                <!--                <if test="remark != null">-->
+                <!--                    and rem#{remark,jdbcType=VARCHAR}-->
+                <!--                </if>-->
+                <if test="orderMount != null">
+                    and order_mount=#{orderMount,jdbcType=INTEGER}
+                </if>
+                <if test="totalPrice != null">
+                    and total_price=#{totalPrice,jdbcType=DOUBLE}
+                </if>
+            </if>
+        </where>
+        <if test="page != null">
+            limit #{page.pageStart},#{page.pageSize}
+        </if>
+    </select>
+
+
+</mapper>

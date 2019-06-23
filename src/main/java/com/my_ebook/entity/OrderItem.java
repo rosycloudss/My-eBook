@@ -28,7 +28,7 @@ public class OrderItem {
 	/**
 	 * 总价
 	 */
-	private float totalPrice;
+	private Float totalPrice;
 
 	public Book getBook() {
 		return book;

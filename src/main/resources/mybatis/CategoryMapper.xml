@@ -52,7 +52,9 @@
         <include refid="base_column_list"/>
         from tb_book_category
         where parent_category_id=#{parentId,jdbcType=INTEGER}
-        limit #{page.pageStart},#{page.pageSize}
+        <if test="page != null">
+            limit #{page.pageStart},#{page.pageSize}
+        </if>
     </select>
 
     <select id="selectById" resultMap="categoryMap">
