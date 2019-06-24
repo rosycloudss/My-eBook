@@ -31,7 +31,7 @@ public interface BookService extends BaseService<Book>, PageService<Book> {
      *
      * @return
      */
-    Page<Book> findAll(Page<Book>  page);
+    Page<Book> findAll(Page<Book> page);
 
     /**
      * 通过图书属性查询图书信息
@@ -40,7 +40,7 @@ public interface BookService extends BaseService<Book>, PageService<Book> {
      * @param page
      * @return
      */
-    Page<Book> findByParameter(Book book, Page<Book>  page);
+    Page<Book> findByParameter(Book book, Page<Book> page);
 
     /**
      * 通过图书编号查询图书信息
@@ -51,13 +51,21 @@ public interface BookService extends BaseService<Book>, PageService<Book> {
     Book findById(int bookId);
 
     /**
+     * 通过 多个图书ID查询图书信息
+     *
+     * @param bookIds
+     * @return
+     */
+    List<Book> findByIds(List<Integer> bookIds);
+
+    /**
      * 通过图书名称查询图书信息
      *
      * @param bookName
      * @param page
      * @return
      */
-    Page<Book> findByName(String bookName, Page<Book>  page);
+    Page<Book> findByName(String bookName, Page<Book> page);
 
     /**
      * 通过图书分类查询图书信息
@@ -66,5 +74,5 @@ public interface BookService extends BaseService<Book>, PageService<Book> {
      * @param page
      * @return
      */
-    Page<Book> findByCategory(int categoryId, Page<Book>  page);
+    Page<Book> findByCategory(int categoryId, Page<Book> page);
 }

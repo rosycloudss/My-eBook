@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my_ebook.mapper.EmployeeMapper">
+    <resultMap id="employeeMap" type="Employee">
+        <id column="employee_id" property="ID"/>
+        <result column="name" property="name"/>
+        <result column="position" property="position"/>
+        <result column="phone" property="phone"/>
+        <result column="passwd" property="password"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+    <sql id="base_column_list">
+        employee_id,name,position,phone,passwd,create_time
+    </sql>
+    <insert id="insert" parameterType="Employee" useGeneratedKeys="true" keyProperty="ID">
+        insert into tb_employee(name,position,phone,passwd,create_time)
+        value (#{name,jdbcType=VARCHAR},#{position,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{createTime,jdbcType=DATE})
+    </insert>
+
+    <update id="update">
+        UPDATE tb_employee
+        <set>
+            <if test="name != null">
+                name=#{name,jdbcType=VARCHAR},
+            </if>
+            <if test="position != null">
+                position=#{position,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone=#{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password=#{password,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime,jdbcType=DATE},
+            </if>
+        </set>
+        where employee_id=#{ID,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteById">
+        delete from tb_employee where employee_id=#{ID,jdbcType=INTEGER}
+    </delete>
+
+    <select id="selectById" resultMap="employeeMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_employee where employee_id=#{employeeId,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByPhone" resultMap="employeeMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_employee where phone=#{phone,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByParameter" resultMap="employeeMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_employee
+        <where>
+            <if test="employee != null">
+                <if test="employee.name != null">
+                    and name=#{employee.employeename,jdbcType=VARCHAR}
+                </if>
+                <if test="employee.position != null">
+                    and position=#{employee.position,jdbcType=VARCHAR}
+                </if>
+                <if test="employee.phone != null">
+                    and phone=#{employee.phone,jdbcType=VARCHAR}
+                </if>
+                <if test="employee.createTime != null">
+                    and create_time=#{employee.createTime,jdbcType=DATE}
+                </if>
+                <if test="employee.ID != null">
+                    and employee_id=#{employee.ID,jdbcType=INTEGER}
+                </if>
+            </if>
+        </where>
+        <if test="page != null">
+            limit #{page.pageStart},#{page.pageSize}
+        </if>
+
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select * from tb_employee
+        <where>
+            <if test="employee != null">
+                <if test="employee.name != null">
+                    and name=#{employee.employeename,jdbcType=VARCHAR}
+                </if>
+                <if test="employee.position != null">
+                    and position=#{employee.position,jdbcType=VARCHAR}
+                </if>
+                <if test="employee.phone != null">
+                    and phone=#{employee.phone,jdbcType=VARCHAR}
+                </if>
+                <if test="employee.createTime != null">
+                    and create_time=#{employee.createTime,jdbcType=DATE}
+                </if>
+                <if test="employee.ID != null">
+                    and employee_id=#{employee.ID,jdbcType=INTEGER}
+                </if>
+            </if>
+        </where>
+    </select>
+</mapper>

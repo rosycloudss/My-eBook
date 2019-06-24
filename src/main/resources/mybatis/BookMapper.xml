@@ -162,50 +162,52 @@
         <include refid="base_column_list"/>
         from tb_book
         <where>
-            <if test="book.ID != null and ID != -">
-                and book_id = #{book.ID,jdbcType=INTEGER}
-            </if>
-            <if test="book.category != null">
-                and category_id=#{book.category.id,jdbcType=INTEGER}
-            </if>
-            <if test="name != null">
-                and book_name=#{book.name,jdbcType=VARCHAR}
-            </if>
-            <if test="cover != null">
-                and book_cover=#{book.cover,jdbcType=VARCHAR}
-            </if>
-            <if test="ISBN != null">
-                and ISBN=#{book.ISBN,jdbcType=VARCHAR}
-            </if>
-            <if test="pages != null">
-                and book_page=#{book.pages,jdbcType=INTEGER}
-            </if>
-            <if test="description != null">
-                and book_desc=#{book.description,jdbcType=VARCHAR}
-            </if>
-            <if test="price != null">
-                and price=#{book.price,jdbcType=DOUBLE}
-            </if>
-            <if test="sellingPrice != null">
-                and selling_price=#{book.sellingPrice,jdbcType=DOUBLE}
-            </if>
-            <if test="discount != null">
-                and discount=#{book.discount,jdbcType=DOUBLE}
-            </if>
-            <if test="publisher != null">
-                and publisher=#{book.publisher,jdbcType=VARCHAR}
-            </if>
-            <if test="publishDate != null">
-                and publish_date=#{book.publishDate,jdbcType=VARCHAR}
-            </if>
-            <if test="edition != null">
-                and edition=#{book.edition,jdbcType=INTEGER}
-            </if>
-            <if test="reserve != null">
-                and reserve=#{book.reserve,jdbcType=INTEGER}
-            </if>
-            <if test="author != null">
-                and author=#{book.author,jdbcType=VARCHAR}
+            <if test="book != null">
+                <if test="book.ID != null and ID != -">
+                    and book_id = #{book.ID,jdbcType=INTEGER}
+                </if>
+                <if test="book.category != null">
+                    and category_id=#{book.category.id,jdbcType=INTEGER}
+                </if>
+                <if test="name != null">
+                    and book_name=#{book.name,jdbcType=VARCHAR}
+                </if>
+                <if test="cover != null">
+                    and book_cover=#{book.cover,jdbcType=VARCHAR}
+                </if>
+                <if test="ISBN != null">
+                    and ISBN=#{book.ISBN,jdbcType=VARCHAR}
+                </if>
+                <if test="pages != null">
+                    and book_page=#{book.pages,jdbcType=INTEGER}
+                </if>
+                <if test="description != null">
+                    and book_desc=#{book.description,jdbcType=VARCHAR}
+                </if>
+                <if test="price != null">
+                    and price=#{book.price,jdbcType=DOUBLE}
+                </if>
+                <if test="sellingPrice != null">
+                    and selling_price=#{book.sellingPrice,jdbcType=DOUBLE}
+                </if>
+                <if test="discount != null">
+                    and discount=#{book.discount,jdbcType=DOUBLE}
+                </if>
+                <if test="publisher != null">
+                    and publisher=#{book.publisher,jdbcType=VARCHAR}
+                </if>
+                <if test="publishDate != null">
+                    and publish_date=#{book.publishDate,jdbcType=VARCHAR}
+                </if>
+                <if test="edition != null">
+                    and edition=#{book.edition,jdbcType=INTEGER}
+                </if>
+                <if test="reserve != null">
+                    and reserve=#{book.reserve,jdbcType=INTEGER}
+                </if>
+                <if test="author != null">
+                    and author=#{book.author,jdbcType=VARCHAR}
+                </if>
             </if>
         </where>
         <if test="page != null">
@@ -241,6 +243,17 @@
         <if test="page != null">
             limit #{page.pageStart},#{page.pageSize}
         </if>
+
+    </select>
+
+    <select id="selectByIds" resultMap="bookMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_book
+        where book_id in
+        <foreach collection="bookIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
 
     </select>
 

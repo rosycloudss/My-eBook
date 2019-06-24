@@ -3,15 +3,20 @@ package com.my_ebook.service.impl;
 import com.my_ebook.entity.Customer;
 import com.my_ebook.entity.Order;
 import com.my_ebook.entity.OrderItem;
+import com.my_ebook.mapper.OrderMapper;
 import com.my_ebook.service.OrderService;
 import com.my_ebook.vo.Page;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    @Resource
+    private OrderMapper orderMapper;
 
     /**
      * 生成订单编号
@@ -39,13 +44,18 @@ public class OrderServiceImpl implements OrderService {
         customer.setID(customerID);
         order.setCustomer(customer);
 
+        //设订编
+        order.setOrderID(createOrderNo(customerID));
+
         order.setReceiver(receiver);
         order.setRecevingAddr(recevingAddr);
         order.setPhone(phone);
         order.setRemark(remark);
-        
-        order.setOrderItemList(orderItems);
 
+        order.setOrderItemList(orderItems);
+        if(add(order) > 0){
+            return order;
+        }
         return null;
     }
 

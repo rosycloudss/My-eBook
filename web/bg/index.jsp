@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html  class="x-admin-sm">
 <head>
@@ -15,13 +16,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <%--    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />--%>
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="/bg/css/font.css">
+    <link rel="stylesheet" href="/bg/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript"src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-    <script src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/xadmin.js"></script>
-    <script type="text/javascript" src="./js/cookie.js"></script>
+    <script src="/bg/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/bg/js/xadmin.js"></script>
+    <script type="text/javascript" src="/bg/js/cookie.js"></script>
     <script>
         // 是否开启刷新记忆tab功能
         // var is_remember = false;
@@ -36,14 +37,14 @@
     </div>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:;">管理员 李伟</a>
+            <a href="javascript:;">${sessionScope.employee.getPosition() == 1 ? "管理员" : "员工"} ${sessionScope.employee.getName()}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                <dd><a onclick="x_admin_show('个人信息','employee-info.jsp',400,300)">个人信息</a></dd>
-                <dd><a onclick="x_admin_show('个人信息','employee-password.jsp',400,300)">修改密码</a></dd>
+                <dd><a onclick="x_admin_show('个人信息','/bg/employee-info.jsp',400,300)">个人信息</a></dd>
+                <dd><a onclick="x_admin_show('个人信息','/bg/employee-password.jsp',400,300)">修改密码</a></dd>
                 <dd><a href="login.jsp">退出</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
+        <li class="layui-nav-item to-index"><a href="/fg/index.jsp">前台首页</a></li>
     </ul>
 
 </div>
@@ -62,7 +63,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li date-refresh="1">
-                        <a _href="book-list.jsp">
+                        <a _href="/bg/book-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>图书列表</cite>
                         </a>
@@ -87,7 +88,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="order-list.jsp">
+                        <a _href="/bg/order-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>
@@ -207,7 +208,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='./welcome.jsp' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='/bg/welcome.jsp' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
         <div id="tab_show"></div>

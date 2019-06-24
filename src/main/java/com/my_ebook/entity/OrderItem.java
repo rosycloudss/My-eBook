@@ -4,89 +4,104 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderItem {
-	/**
-	 * 订单项中的图书
-	 */
-	private Book book;
+    /**
+     * 订单项中的图书
+     */
+    private Book book;
 
-	/**
-	 * 订单项所属订单
-	 */
-	private Order order;
-	/**
-	 * 订单项ID
-	 */
-	private Integer ID;
-	/**
-	 * 商品数量
-	 */
-	private Integer orderMount;
-	/**
-	 * 发货状态
-	 */
-	private Integer postStatus;
-	/**
-	 * 总价
-	 */
-	private Float totalPrice;
+    /**
+     * 订单项所属订单
+     */
+    private Order order;
+    /**
+     * 订单项ID
+     */
+    private Integer ID;
+    /**
+     * 商品数量
+     */
+    private Integer orderMount;
+    /**
+     * 发货状态
+     */
+    private Integer postStatus;
+    /**
+     * 总价
+     */
+    private Float totalPrice;
 
-	public Book getBook() {
-		return book;
-	}
+    public OrderItem() {
+    }
 
-	public void setBook(Book book) {
-		this.book = book;
-	}
+    public OrderItem(Book book, Order order, Integer ID, Integer orderMount, Integer postStatus) {
+        this.book = book;
+        this.order = order;
+        this.ID = ID;
+        this.orderMount = orderMount;
+        this.postStatus = postStatus;
+        if (book != null && orderMount != null) {
+            this.totalPrice = book.getSellingPrice() * orderMount;
+        }
+    }
 
-	public Order getOrder() {
-		return order;
-	}
+    public Book getBook() {
+        return book;
+    }
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
-	public Integer getID() {
-		return ID;
-	}
+    public Order getOrder() {
+        return order;
+    }
 
-	public void setID(Integer ID) {
-		this.ID = ID;
-	}
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	public Integer getOrderMount() {
-		return orderMount;
-	}
+    public Integer getID() {
+        return ID;
+    }
 
-	public void setOrderMount(Integer orderMount) {
-		this.orderMount = orderMount;
-	}
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
 
-	public Integer getPostStatus() {
-		return postStatus;
-	}
+    public Integer getOrderMount() {
+        return orderMount;
+    }
 
-	public void setPostStatus(Integer postStatus) {
-		this.postStatus = postStatus;
-	}
+    public void setOrderMount(Integer orderMount) {
+        this.orderMount = orderMount;
+    }
 
-	public float getTotalPrice() {
-		return totalPrice;
-	}
+    public Integer getPostStatus() {
+        return postStatus;
+    }
 
-	public void setTotalPrice(float totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+    public void setPostStatus(Integer postStatus) {
+        this.postStatus = postStatus;
+    }
 
-	@Override
-	public String toString() {
-		return "OrderItem{" +
-				"book=" + book +
-				", order=" + order +
-				", ID=" + ID +
-				", orderMount=" + orderMount +
-				", postStatus=" + postStatus +
-				", totalPrice=" + totalPrice +
-				'}';
-	}
+    public float getTotalPrice() {
+
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "book=" + book +
+                ", order=" + order +
+                ", ID=" + ID +
+                ", orderMount=" + orderMount +
+                ", postStatus=" + postStatus +
+                ", totalPrice=" + totalPrice +
+                '}';
+    }
 }

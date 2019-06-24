@@ -7,13 +7,13 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 public interface BookMapper {
 
-    int insert(@Param("book") Book book);
+    int insert( Book book);
 
-    int deleteById(@Param("bookId") int bookId);
+    int deleteById(int bookId);
 
-    int deleteByIds(@Param("bookIds") List<Integer> bookIds);
+    int deleteByIds(List<Integer> bookIds);
 
-    int update(@Param("book") Book book);
+    int update(Book book);
 
     /**
      * 查询图书数量 如果book为null则查询所有图书的数量
@@ -21,7 +21,7 @@ public interface BookMapper {
      * @param book
      * @return
      */
-    int count(@Param("book") Book book);
+    int count(Book book);
 
     Book selectById(@Param("bookId") int bookId);
 
@@ -41,6 +41,13 @@ public interface BookMapper {
      * @return
      */
     List<Book> selectAll(@Param("page") Page page);
+
+    /**
+     * 通过 多个ID查询图书信息
+     * @param bookIds
+     * @return
+     */
+    List<Book> selectByIds(@Param("bookIds") List<Integer> bookIds);
 
     /**
      * 通过图书名称查询图书信息

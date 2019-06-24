@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html class="x-admin-sm">
 <head>
@@ -21,7 +22,7 @@
 <body>
 <div class="x-body">
     <blockquote class="layui-elem-quote">欢迎：
-        <span class="x-red">李伟</span>！当前时间:2018-04-25 20:50:53
+        <span class="x-red">${sessionScope.employee.getName()}</span>！当前时间:2018-04-25 20:50:53
     </blockquote>
     <fieldset class="layui-elem-field">
         <legend>数据统计</legend>

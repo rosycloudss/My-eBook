@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
-        <context:component-scan base-package="com.my_ebook.controller"/>
+        <context:component-scan base-package="com.my_ebook.controller.*"/>
         <mvc:default-servlet-handler/>
 <!--        <mvc:resources mapping="/**" location=""-->
     <!-- annotation-driven 控制器映射器和控制器适配器 ，用来控制@Controller处理http请求的方式-->
@@ -55,7 +55,7 @@
 
     <bean id="internalResourceViewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="WEB-INF/"/>
+        <property name="prefix" value=""/>
         <property name="suffix" value=".jsp"/>
     </bean>
 </beans>

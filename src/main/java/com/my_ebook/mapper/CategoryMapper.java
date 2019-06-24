@@ -7,13 +7,13 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 public interface CategoryMapper {
 
-    int insert(@Param("category") Category category);
+    int insert(Category category);
 
-    int delete(@Param("categoryId") int categoryId);
+    int delete(int categoryId);
 
-    int deleteByParentId(@Param("parentId") int parentId);
+    int deleteByParentId(int parentId);
 
-    int update(@Param("category") Category category);
+    int update(Category category);
 
     List<Category> selectByParentId(@Param("parentId") int parentId);
 

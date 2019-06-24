@@ -28,9 +28,9 @@ public class Order {
      */
     private String orderID;
     /**
-     * 订单状态
+     * 订单状态 初始为未确认
      */
-    private Integer orderStatus;
+    private Integer orderStatus = STATUS.TO_BE_CONFIRMED;
     /**
      * 收货人
      */
@@ -48,13 +48,13 @@ public class Order {
      */
     private Integer delivery;
     /**
-     * 发货状态
+     * 发货状态 初始化为未发货状态
      */
-    private Integer postStatus;
+    private Integer postStatus = STATUS.UNSHIPPED;
     /**
-     * 支付状态
+     * 支付状态 初始为未支付状态
      */
-    private Integer payStatus;
+    private Integer payStatus = STATUS.UNPAID;
     /**
      * 订单生成时间
      */
@@ -70,7 +70,7 @@ public class Order {
     /**
      * 总价
      */
-    private float totalPrice;
+    private Float totalPrice;
     /**
      * 订单中的商品项
      */
@@ -196,37 +196,37 @@ public class Order {
     public void setOrderItemList(List<OrderItem> orderItemList) {
         this.orderItemList = orderItemList;
         if (orderItemList != null) {
-            totalPrice = 0;
+            totalPrice = 0.0f;
             for (OrderItem orderItem : orderItemList) {
                 totalPrice += orderItem.getTotalPrice();
             }
         }
     }
 
-    class STATUS {
+    public class STATUS {
         /*********************************************************
          订单状态
          **********************************************************/
-        public final int TO_BE_CONFIRMED = 1; //待确认
-        public final int CONFIRMED = 2;//已确认
-        public final int RECEIVED = 3;//已收货
-        public final int CANCLED = 4;//已取消
-        public final int COMPLETED = 5;//已完成
-        public final int DELETED = 6;//已作废
+        public static final int TO_BE_CONFIRMED = 1; //待确认
+        public static final int CONFIRMED = 2;//已确认
+        public static final int RECEIVED = 3;//已收货
+        public static final int CANCLED = 4;//已取消
+        public static final int COMPLETED = 5;//已完成
+        public static final int DELETED = 6;//已作废
 
 
         /*********************************************************
          订单发货状态
          **********************************************************/
-        public final int SHIPPED = 1;//已发货
-        public final int UNSHIPPED = 2;//未发货
+        public static final int SHIPPED = 1;//已发货
+        public static final int UNSHIPPED = 2;//未发货
 
         /*********************************************************
          订单支付状态
          **********************************************************/
 
-        public final int PAID = 1;//已支付
-        public final int UNPAID = 2;//未支付
+        public static final int PAID = 1;//已支付
+        public static final int UNPAID = 2;//未支付
 
     }
 }

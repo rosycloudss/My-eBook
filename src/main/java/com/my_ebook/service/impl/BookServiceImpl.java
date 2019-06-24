@@ -8,6 +8,7 @@ import com.my_ebook.vo.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,6 +66,13 @@ public class BookServiceImpl implements BookService {
 
     public Book findById(int bookId) {
         return bookMapper.selectById(bookId);
+    }
+
+    public List<Book> findByIds(List<Integer> bookIds) {
+        if (bookIds != null && !bookIds.isEmpty()) {
+            return bookMapper.selectByIds(bookIds);
+        }
+        return new ArrayList<Book>();
     }
 
     public Page<Book> findByName(String bookName, Page<Book> page) {
