@@ -32,52 +32,52 @@
 <div class="x-body">
     <form class="layui-form">
         <div class="layui-form-item">
-            <label for="L_email" class="layui-form-label">
+            <label for="name" class="layui-form-label">
                 <span class="x-red">*</span>姓名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="" name="email" required="" lay-verify="email"
+                <input type="text" id="name" name="name" required="" lay-verify="name"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_email" class="layui-form-label">
+            <label for="phone" class="layui-form-label">
                 <span class="x-red">*</span>手机号
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_phone" name="email" required="" lay-verify="email"
+                <input type="text" id="phone" name="phone" required="" lay-verify="phone"
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
                 <span class="x-red">*</span>将会成为该员工唯一的登入名
             </div>
         </div>
+<%--        <div class="layui-form-item">--%>
+<%--            <label for="L_email" class="layui-form-label">--%>
+<%--                <span class="x-red">*</span>邮箱--%>
+<%--            </label>--%>
+<%--            <div class="layui-input-inline">--%>
+<%--                <input type="text" id="L_email" name="email" required="" lay-verify="email"--%>
+<%--                       autocomplete="off" class="layui-input">--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="layui-form-item">
-            <label for="L_email" class="layui-form-label">
-                <span class="x-red">*</span>邮箱
-            </label>
-            <div class="layui-input-inline">
-                <input type="text" id="L_email" name="email" required="" lay-verify="email"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label for="" class="layui-form-label">
+            <label for="position" class="layui-form-label">
                 <span class="x-red">*</span>职位
             </label>
             <div class="layui-input-inline">
-                <select id="shipping" name="shipping" class="valid">
-                    <option value="1">管理员</option>
+                <select id="position" name="position" class="valid">
                     <option value="2">普通员工</option>
+                    <option value="1">管理员</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_pass" class="layui-form-label">
-                <span class="x-red">*</span>密码
+            <label for="password" class="layui-form-label">
+                密码
             </label>
             <div class="layui-input-inline">
-                <input type="password" id="L_pass" disabled="disabled" name="pass" required="" lay-verify="pass"
+                <input type="password" id="password" disabled="disabled" name="password" lay-verify="pass"
                        autocomplete="off" class="layui-input" value="123456">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -85,7 +85,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="" class="layui-form-label">
+            <label class="layui-form-label">
             </label>
             <button  class="layui-btn" lay-filter="add" lay-submit="">
                 保存
@@ -100,36 +100,53 @@
             ,layer = layui.layer;
 
         //自定义验证规则
-        form.verify({
-            nikename: function(value){
-                if(value.length < 5){
-                    return '昵称至少得5个字符啊';
-                }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,repass: function(value){
-                if($('#L_pass').val()!=$('#L_repass').val()){
-                    return '两次密码不一致';
-                }
-            }
-        });
+        // form.verify({
+        //     nikename: function(value){
+        //         if(value.length < 5){
+        //             return '昵称至少得5个字符啊';
+        //         }
+        //     }
+        //     ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+        //     ,repass: function(value){
+        //         if($('#L_pass').val()!=$('#L_repass').val()){
+        //             return '两次密码不一致';
+        //         }
+        //     }
+        // });
 
         //监听提交
         form.on('submit(add)', function(data){
             console.log(data);
             //发异步，把数据提交给php
-            layer.alert("增加成功", {icon: 6},function () {
-                //关闭当前frame
-                x_admin_close();
+            $.ajax({
+                type:"POST",
+                contentType: "application/json;charset=UTF-8",
+                url:'/bg/employee/add',
+                dataType:"json",
+                data: JSON.stringify(data.field),
+                success:function(data){
+                    if(data.result == 1){
+                        layer.alert("增加成功", {icon: 6},function () {
+                            //关闭当前frame
+                            x_admin_close();
 
-                // 可以对父窗口进行刷新
-                x_admin_father_reload();
+                            // 可以对父窗口进行刷新
+                            x_admin_father_reload();
+                        });
+                    }else{
+                        layer.alert("增加失败", {icon: 6},function () {
+                        });
+                    }
+                },
+                error:function (data) {
+                    layer.alert("增加失败", {icon: 6},function () {
+                    });
+                }
             });
             return false;
         });
-
-
     });
+
 </script>
 </body>
 

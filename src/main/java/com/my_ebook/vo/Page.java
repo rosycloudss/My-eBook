@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Page<T> {
 
-    private int pageStart = 1;// 当前页起始位置
+    private int pageStart = 0;// 当前页起始位置
 
     private int pageSize = 20;// 每页长度 默认为20
 
@@ -36,7 +36,10 @@ public class Page<T> {
         this.totalRecord = totalRecord;
         this.pageCurrent = pageCurrent;
         this.pageSize = pageSize;
+        totalPage = totalRecord % pageSize == 0 ? (totalRecord / pageSize) : (totalRecord / pageSize + 1);
+        pageStart = (pageCurrent - 1) * pageSize;
     }
+
 
     /**
      * @return the pageStart

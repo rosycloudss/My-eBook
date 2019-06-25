@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface EmployeeService extends BaseService<Employee>, PageService<Employee> {
 
+    int deleteByIds(List<Integer> employeeIds);
 
     /**
      * 修改密码
@@ -26,6 +27,8 @@ public interface EmployeeService extends BaseService<Employee>, PageService<Empl
      * @return
      */
     int forgotPassword(String phone,String password);
+
+    Employee findById(Integer id);
     /**
      * 员工登录
      *

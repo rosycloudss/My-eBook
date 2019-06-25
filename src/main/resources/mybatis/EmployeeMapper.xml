@@ -45,6 +45,14 @@
         delete from tb_employee where employee_id=#{ID,jdbcType=INTEGER}
     </delete>
 
+    <delete id="deleteByIds">
+        delete from tb_employee
+        where employee_id in
+        <foreach collection="employeeIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
     <select id="selectById" resultMap="employeeMap">
         select
         <include refid="base_column_list"/>
@@ -64,7 +72,7 @@
         <where>
             <if test="employee != null">
                 <if test="employee.name != null">
-                    and name=#{employee.employeename,jdbcType=VARCHAR}
+                    and name=#{employee.name,jdbcType=VARCHAR}
                 </if>
                 <if test="employee.position != null">
                     and position=#{employee.position,jdbcType=VARCHAR}
@@ -80,17 +88,17 @@
                 </if>
             </if>
         </where>
+        order by employee_id
         <if test="page != null">
-            limit #{page.pageStart},#{page.pageSize}
+            LIMIT #{page.pageStart,jdbcType=INTEGER} , #{page.pageSize,jdbcType=INTEGER}
         </if>
-
     </select>
     <select id="count" resultType="java.lang.Integer">
-        select * from tb_employee
+        select count(*) from tb_employee
         <where>
             <if test="employee != null">
                 <if test="employee.name != null">
-                    and name=#{employee.employeename,jdbcType=VARCHAR}
+                    and name=#{employee.name,jdbcType=VARCHAR}
                 </if>
                 <if test="employee.position != null">
                     and position=#{employee.position,jdbcType=VARCHAR}

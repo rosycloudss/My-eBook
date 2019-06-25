@@ -9,6 +9,7 @@ import com.my_ebook.vo.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -16,6 +17,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Resource
     private EmployeeMapper employeeMapper;
+
+    public int deleteByIds(List<Integer> employeeIds) {
+        if (employeeIds != null && !employeeIds.isEmpty()) {
+            return employeeMapper.deleteByIds(employeeIds);
+        }
+        return 0;
+    }
 
     /**
      * 返回 1 修改成功
@@ -55,6 +63,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return 0;
     }
 
+    public Employee findById(Integer id) {
+        return employeeMapper.selectById(id);
+    }
+
     /**
      * 登录
      *
@@ -92,6 +104,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public int add(Employee employee) {
         employee.setPassword(MD5Utils.getSaltMD5(employee.getPassword()));
+        employee.setCreateTime(new Date(System.currentTimeMillis()));
         return employeeMapper.insert(employee);
     }
 

@@ -105,7 +105,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="employee-list.jsp">
+                        <a _href="/bg/employee/list?op=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>员工列表</cite>
                         </a>
