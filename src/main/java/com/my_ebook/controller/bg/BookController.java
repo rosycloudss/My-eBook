@@ -105,7 +105,7 @@ public class BookController {
      *
      * @param name
      * @param categoryId
-     * @param pubilsher
+     * @param publisher
      * @param currentPage
      * @param model
      * @param request
@@ -113,20 +113,20 @@ public class BookController {
      * @return
      */
     @RequestMapping(value = "/list")
-    public String bookList(String name, Integer categoryId, String pubilsher, Integer currentPage, Model model, HttpServletRequest request, HttpSession session) {
+    public String bookList(String name, Integer categoryId, String publisher, Integer currentPage, Model model, HttpServletRequest request, HttpSession session) {
         Book book = new Book();
         if (!StringUtil.isEmpty(name)) {
             book.setName(name);
         }
-        if (!StringUtil.isEmpty(pubilsher)) {
-            book.setPublisher(pubilsher);
+        if (!StringUtil.isEmpty(publisher)) {
+            book.setPublisher(publisher);
         }
         if (categoryId != null && categoryId != 0) {
             Category category = new Category();
             category.setId(categoryId);
             book.setCategory(category);
         }
-        System.out.println(name + "===" + categoryId + "===" + pubilsher + "====");
+        System.out.println(name + "===" + categoryId + "===" + publisher + "====");
 
         currentPage = (currentPage == null ? 1 : currentPage);
         Page<Book> page = new Page<Book>(bookService.count(book), currentPage, 20);
@@ -137,7 +137,12 @@ public class BookController {
         if (session.getAttribute("categoryList") == null) {
             //获取图书分类信息
             Page<Category> categoryPage = categoryService.findAllParentCategory();
-            session.setAttribute("categoryList", categoryPage.getPageInfos());
+            List<Category> categoryList = new ArrayList<Category>();
+            for (Category category : categoryPage.getPageInfos()) {
+                categoryList.addAll(category.getSubCategory());
+            }
+
+            session.setAttribute("categoryList", categoryList);
         }
         return "/bg/book-list";
     }

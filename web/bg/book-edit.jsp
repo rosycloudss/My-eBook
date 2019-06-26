@@ -76,7 +76,7 @@
                     <select id="categoryId" name="categoryId" class="valid">
                         <option value="0">图书分类</option>
                         <c:forEach items="${sessionScope.categoryList}" var="category">
-                            <option value="${category.id}" ${book.category.id == category.id?"select":""}>${category.name}</option>
+                            <option value="${category.id}" ${book.category.id == category.id?"selected":""}>${category.name}</option>
                         </c:forEach>
                     </select>
                 </div>

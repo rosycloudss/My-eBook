@@ -8,6 +8,8 @@ import com.my_ebook.vo.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @ClassName:CategoryServiceImpl
@@ -57,7 +59,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     public Category findById(int categoryId) {
-        return null;
+        return categoryMapper.selectById(categoryId);
     }
 
 

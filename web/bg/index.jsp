@@ -69,7 +69,7 @@
                         </a>
                     </li >
                     <li>
-                        <a _href="category-list.jsp">
+                        <a _href="/bg/category/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>分类管理</cite>
 

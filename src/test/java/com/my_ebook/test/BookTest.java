@@ -40,7 +40,7 @@ public class BookTest {
         copy.setReserve(100);
         copy.setAuthor("凯 S.霍斯特曼");
         Category category = new Category();
-        category.setId(2);
+        category.setId(14);
         copy.setCategory(category);
 
     }

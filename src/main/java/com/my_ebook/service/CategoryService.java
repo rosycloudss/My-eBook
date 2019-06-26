@@ -14,11 +14,11 @@ import com.my_ebook.vo.Page;
  */
 public interface CategoryService extends BaseService<Category> , PageService<Category> {
 
-    int deleteByParentId(int parentId);
+        int deleteByParentId(int parentId);
 
-    Page<Category> findByParentId(int parentId);
+        Page<Category> findByParentId(int parentId);
 
-    Page<Category> findAllParentCategory();
+        Page<Category> findAllParentCategory();
 
 
     Category findById(int categoryId);
