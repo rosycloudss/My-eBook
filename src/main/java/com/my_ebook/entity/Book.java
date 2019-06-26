@@ -121,29 +121,29 @@ public class Book {
         this.description = description;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
 
-    public float getSellingPrice() {
+    public Float getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(float sellingPrice) {
+    public void setSellingPrice(Float sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
 
-    public float getDiscount() {
+    public Float getDiscount() {
         return discount;
     }
 
-    public void setDiscount(float discount) {
+    public void setDiscount(Float discount) {
         this.discount = discount;
     }
 

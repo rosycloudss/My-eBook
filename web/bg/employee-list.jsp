@@ -31,8 +31,8 @@
 <body>
 <div class="x-nav">
       <span class="layui-breadcrumb">
-        <a href="">首页</a>
-        <a href="">员工管理</a>
+        <a href="/bg/index.jsp">首页</a>
+        <a href="/bg/book/list?op=1">员工管理</a>
         <a>
           <cite>员工列表</cite></a>
       </span>

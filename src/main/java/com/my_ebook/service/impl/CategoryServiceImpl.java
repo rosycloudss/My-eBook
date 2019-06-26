@@ -43,11 +43,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     public Page<Category> findByParentId(int parentId) {
-        return null;
+        Page<Category> page = new Page<Category>();
+        page.setPageInfos(categoryMapper.selectByParentId(parentId));
+        return page;
     }
 
     public Page<Category> findAllParentCategory() {
-        return null;
+        return findByParentId(0);
     }
 
     public Page<Category> findAll(Category category, Page page) {

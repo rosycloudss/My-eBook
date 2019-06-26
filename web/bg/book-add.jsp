@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html class="x-admin-sm">
 
@@ -15,12 +16,12 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <%--    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />--%>
-    <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/xadmin.css">
+    <link rel="stylesheet" href="/bg/css/font.css">
+    <link rel="stylesheet" href="/bg/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/xadmin.js"></script>
-    <script type="text/javascript" src="./js/cookie.js"></script>
+    <script type="text/javascript" src="/bg/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/bg/js/xadmin.js"></script>
+    <script type="text/javascript" src="/bg/js/cookie.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -38,71 +39,75 @@
         <div class="layui-form-item">
 
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="name" class="layui-form-label">
                     <span class="x-red">*</span>图书名称
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="text" id="name" name="name" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
-            <div class="layui-inline">
-                <label for="username" class="layui-form-label">
-                    <span class="x-red">*</span>图书封面
-                </label>
-                <div class="layui-input-inline">
-                    <input type="file" id="" name="username" required="" lay-verify="required"
-                           autocomplete="off" class="layui-input">
-                </div>
-            </div>
+<%--            <div class="layui-inline">--%>
+<%--                <label for="cover" class="layui-form-label">--%>
+<%--                    <span class="x-red">*</span>图书封面--%>
+<%--                </label>--%>
+<%--                <div class="layui-input-inline">--%>
+<%--                    <input type="file" id="cover" name="coverImg" required="" lay-verify="required"--%>
+<%--                           autocomplete="off" class="layui-input">--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
 
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="categoryId" class="layui-form-label">
                     <span class="x-red">*</span>图书类型
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
-                           autocomplete="off" class="layui-input">
+                    <select id="categoryId" name="categoryId" class="valid">
+                        <option value="0">图书分类</option>
+                        <c:forEach items="${sessionScope.categoryList}" var="category">
+                            <option value="${category.id}">${category.name}</option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="pages" class="layui-form-label">
                     <span class="x-red">*</span>图书页码
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="text" id="pages" name="pages" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="ISBN" class="layui-form-label">
                     <span class="x-red">*</span>图书 ISBN
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="text" id="ISBN" name="ISBN" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="author" class="layui-form-label">
                     <span class="x-red">*</span>作者
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="text" id="author" name="author" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="desc" class="layui-form-label">
+            <label for="description" class="layui-form-label">
                 简介
             </label>
             <div class="layui-input-block">
-                <textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea"></textarea>
+                <textarea placeholder="请输入内容" id="description" name="description" class="layui-textarea"></textarea>
             </div>
 
         </div>
@@ -115,29 +120,29 @@
         </fieldset>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="price" class="layui-form-label">
                     <span class="x-red">*</span>图书定价
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="text" id="price" name="price" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="sellingPrice" class="layui-form-label">
                     <span class="x-red">*</span>实际售价
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="text" id="sellingPrice" name="sellingPrice" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
-                    <span class="x-red">*</span>折扣
+                <label for="discount" class="layui-form-label">
+                    折扣
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="text" id="discount" name="discount" required=""
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -150,29 +155,28 @@
         </fieldset>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label for="phone" class="layui-form-label">
+                <label for="publisher" class="layui-form-label">
                     <span class="x-red">*</span>出版社
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="phone" name="phone" required="" lay-verify="phone"
+                    <input type="text" id="publisher" name="publisher" required="" lay-verify="require"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="publishDate" class="layui-form-label">
                     <span class="x-red">*</span>出版日期
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="username" name="username" required="" lay-verify="required"
-                           autocomplete="off" class="layui-input">
+                    <input class="layui-input"  autocomplete="off" placeholder="出版日期" name="publishDate" id="publishDate">
                 </div>
             </div>
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="edition" class="layui-form-label">
                     <span class="x-red">*</span>版次
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="username" name="username" required="" lay-verify="required"
+                    <input type="number" id="edition" name="edition" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -184,11 +188,11 @@
         </fieldset>
         <div class="layui-form-item">
             <div class="layui-inline">
-                <label for="username" class="layui-form-label">
+                <label for="reserve" class="layui-form-label">
                     <span class="x-red">*</span>库存
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="" name="username" required="" lay-verify="required"
+                    <input type="number" id="reserve" name="reserve" required="" lay-verify="required"
                            autocomplete="off" class="layui-input">
                 </div>
             </div>
@@ -197,44 +201,54 @@
 
         <!--图书库存 end-->
         <div class="layui-form-item">
-            <label for="" class="layui-form-label">
+            <label for="submit" class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="add" lay-submit="">
+            <button id="submit"  class="layui-btn" lay-filter="add" lay-submit="">
                 保存
             </button>
         </div>
     </form>
 </div>
 <script>
-    layui.use(['form','layer'], function(){
+
+    layui.use(['form','layer','laydate'], function(){
         $ = layui.jquery;
         var form = layui.form
-            ,layer = layui.layer;
+            ,layer = layui.layer,
+            laydate = layui.laydate;
 
-        //自定义验证规则
-        form.verify({
-            nikename: function(value){
-                if(value.length < 5){
-                    return '昵称至少得5个字符啊';
-                }
-            }
-            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-            ,repass: function(value){
-                if($('#L_pass').val()!=$('#L_repass').val()){
-                    return '两次密码不一致';
-                }
-            }
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#publishDate' //指定元素
         });
 
         //监听提交
         form.on('submit(add)', function(data){
             console.log(data);
-            //发异步，把数据提交给php
-            layer.alert("增加成功", {icon: 6},function () {
-                // 获得frame索引
-                var index = parent.layer.getFrameIndex(window.name);
-                //关闭当前frame
-                parent.layer.close(index);
+            alert(JSON.stringify(data.field))
+            $.ajax({
+                type:"POST",
+                contentType: "application/json;charset=UTF-8",
+                url:'/bg/book/add',
+                dataType:"json",
+                data: JSON.stringify(data.field),
+                success:function(data){
+                    alert(data.result)
+                    if(data.result == 1){
+                        layer.alert("增加成功", {icon: 6},function () {
+                            //关闭当前frame
+                            x_admin_close();
+
+                            // 可以对父窗口进行刷新
+                            x_admin_father_reload();
+                        });
+                    }else{
+                        layer.msg('保存失败! error' + data, {icon: 2, time: 1000});
+                    }
+                },
+                error:function (data) {
+                    layer.msg('保存失败! error' + data, {icon: 2, time: 1000});
+                }
             });
             return false;
         });

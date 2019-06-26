@@ -14,13 +14,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class) //使用junit4进行测试
-@ContextConfiguration(locations={"classpath:applicationContext.xml"})
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class BookTest {
 
     Book copy;
 
     @Autowired
     BookService bookService;
+
     @Before
     public void init() {
         copy = new Book();
@@ -30,11 +31,11 @@ public class BookTest {
         copy.setISBN("978711547426");
         copy.setPages(711);
         copy.setDescription("java核心技术 卷一");
-        copy.setPrice(119);
-        copy.setSellingPrice(119);
-        copy.setDiscount(0);
+        copy.setPrice((float) 119.0);
+        copy.setSellingPrice((float) 119);
+        copy.setDiscount((float) 0);
         copy.setPublisher("机械工业出版社");
-        copy.setPublishDate(new Date(2017,1,1));
+        copy.setPublishDate(new Date(2017, 1, 1));
         copy.setEdition(1);
         copy.setReserve(100);
         copy.setAuthor("凯 S.霍斯特曼");
@@ -63,21 +64,23 @@ public class BookTest {
         book.setAuthor(copy.getAuthor());
         book.setCategory(copy.getCategory());
         System.out.println(book);
-        System.out.println(bookService.add(book));
+        for(int i = 0;i < 100;i++) {
+            System.out.println(bookService.add(book));
+        }
 
     }
 
     @Test
-    public void findTest(){
+    public void findTest() {
 
         System.out.println(bookService.findAll(null));
-        System.out.println(bookService.findByCategory(2,null));
-        System.out.println(bookService.findByName("java核",null));
+        System.out.println(bookService.findByCategory(2, null));
+        System.out.println(bookService.findByName("java核", null));
         System.out.println(bookService.findById(1));
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         System.out.println(bookService.update(copy));
     }
 }

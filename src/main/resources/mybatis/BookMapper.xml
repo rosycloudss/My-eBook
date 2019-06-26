@@ -101,49 +101,49 @@
         from tb_book
         <if test="book != null">
             <where>
-                <if test="book.ID != null and ID != -">
+                <if test="book.ID != null and book.ID != 0">
                     and book_id = #{book.ID,jdbcType=INTEGER}
                 </if>
                 <if test="book.category != null">
                     and category_id=#{book.category.id,jdbcType=INTEGER}
                 </if>
-                <if test="name != null">
-                    and book_name=#{book.name,jdbcType=VARCHAR}
+                <if test="book.name != null">
+                    and book_name like #{book.name,jdbcType=VARCHAR}"%"
                 </if>
-                <if test="cover != null">
+                <if test="book.cover != null">
                     and book_cover=#{book.cover,jdbcType=VARCHAR}
                 </if>
-                <if test="ISBN != null">
+                <if test="book.ISBN != null">
                     and ISBN=#{book.ISBN,jdbcType=VARCHAR}
                 </if>
-                <if test="pages != null">
+                <if test="book.pages != null">
                     and book_page=#{book.pages,jdbcType=INTEGER}
                 </if>
-                <if test="description != null">
+                <if test="book.description != null">
                     and book_desc=#{book.description,jdbcType=VARCHAR}
                 </if>
-                <if test="price != null">
+                <if test="book.price != null">
                     and price=#{book.price,jdbcType=DOUBLE}
                 </if>
-                <if test="sellingPrice != null">
+                <if test="book.sellingPrice != null">
                     and selling_price=#{book.sellingPrice,jdbcType=DOUBLE}
                 </if>
-                <if test="discount != null">
+                <if test="book.discount != null">
                     and discount=#{book.discount,jdbcType=DOUBLE}
                 </if>
-                <if test="publisher != null">
+                <if test="book.publisher != null">
                     and publisher=#{book.publisher,jdbcType=VARCHAR}
                 </if>
-                <if test="publishDate != null">
+                <if test="book.publishDate != null">
                     and publish_date=#{book.publishDate,jdbcType=VARCHAR}
                 </if>
-                <if test="edition != null">
+                <if test="book.edition != null">
                     and edition=#{book.edition,jdbcType=INTEGER}
                 </if>
-                <if test="reserve != null">
+                <if test="book.reserve != null">
                     and reserve=#{book.reserve,jdbcType=INTEGER}
                 </if>
-                <if test="author != null">
+                <if test="book.author != null">
                     and author=#{book.author,jdbcType=VARCHAR}
                 </if>
             </where>
@@ -163,49 +163,49 @@
         from tb_book
         <where>
             <if test="book != null">
-                <if test="book.ID != null and ID != -">
+                <if test="book.ID != null and book.ID != 0">
                     and book_id = #{book.ID,jdbcType=INTEGER}
                 </if>
                 <if test="book.category != null">
                     and category_id=#{book.category.id,jdbcType=INTEGER}
                 </if>
-                <if test="name != null">
-                    and book_name=#{book.name,jdbcType=VARCHAR}
+                <if test="book.name != null">
+                    and book_name like #{book.name,jdbcType=VARCHAR}"%"
                 </if>
-                <if test="cover != null">
+                <if test="book.cover != null">
                     and book_cover=#{book.cover,jdbcType=VARCHAR}
                 </if>
-                <if test="ISBN != null">
+                <if test="book.ISBN != null">
                     and ISBN=#{book.ISBN,jdbcType=VARCHAR}
                 </if>
-                <if test="pages != null">
+                <if test="book.pages != null">
                     and book_page=#{book.pages,jdbcType=INTEGER}
                 </if>
-                <if test="description != null">
+                <if test="book.description != null">
                     and book_desc=#{book.description,jdbcType=VARCHAR}
                 </if>
-                <if test="price != null">
+                <if test="book.price != null">
                     and price=#{book.price,jdbcType=DOUBLE}
                 </if>
-                <if test="sellingPrice != null">
+                <if test="book.sellingPrice != null">
                     and selling_price=#{book.sellingPrice,jdbcType=DOUBLE}
                 </if>
-                <if test="discount != null">
+                <if test="book.discount != null">
                     and discount=#{book.discount,jdbcType=DOUBLE}
                 </if>
-                <if test="publisher != null">
+                <if test="book.publisher != null">
                     and publisher=#{book.publisher,jdbcType=VARCHAR}
                 </if>
-                <if test="publishDate != null">
+                <if test="book.publishDate != null">
                     and publish_date=#{book.publishDate,jdbcType=VARCHAR}
                 </if>
-                <if test="edition != null">
+                <if test="book.edition != null">
                     and edition=#{book.edition,jdbcType=INTEGER}
                 </if>
-                <if test="reserve != null">
+                <if test="book.reserve != null">
                     and reserve=#{book.reserve,jdbcType=INTEGER}
                 </if>
-                <if test="author != null">
+                <if test="book.author != null">
                     and author=#{book.author,jdbcType=VARCHAR}
                 </if>
             </if>

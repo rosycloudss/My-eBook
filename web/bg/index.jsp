@@ -63,7 +63,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li date-refresh="1">
-                        <a _href="/bg/book-list.jsp">
+                        <a _href="/bg/book/list?op=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>图书列表</cite>
                         </a>
