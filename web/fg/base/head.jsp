@@ -1,3 +1,4 @@
+<%@ page import="com.my_ebook.entity.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
@@ -47,7 +48,7 @@
                         </ul>
                         <div class="tg-userlogin">
                             <figure><a href="/fg/personal.jsp"><img src="/fg/images/users/img-01.jpg" alt="image description"></a></figure>
-                            <span>Hi, 李伟</span>
+                            <span>Hi, <%=((Customer)session.getAttribute("customer")).getName()%></span>
                         </div>
                     </div>
                 </div>
@@ -59,64 +60,27 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <strong class="tg-logo"><a href="index.jsp"><img src="/fg/images/logo.png" alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
-                            <div class="dropdown tg-themedropdown tg-wishlistdropdown">
-                                <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="tg-themebadge">3</span>
-                                    <i class="icon-heart"></i>
-                                    <span>愿望书单</span>
-                                </a>
-                                <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-wishlisst">
-                                    <div class="tg-description"><p>愿望书店为空</p></div>
-                                </div>
-                            </div>
-                            <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div id="car" class="dropdown tg-themedropdown tg-minicartdropdown">
+                                <a href="javascript:void(0);" onclick="display()" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="tg-themebadge">3</span>
                                     <i class="icon-cart"></i>
-                                    <span>￥123.00</span>
+                                    <span ></span>
                                 </a>
+
                                 <!--   购物车列表 开始-->
                                 <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
-                                    <div class="tg-minicartbody">
-                                        <div class="tg-minicarproduct">
-                                            <figure>
-                                                <img src="/fg/images/products/img-01.jpg" alt="image description">
-                                            </figure>
-                                            <div class="tg-minicarproductdata">
-                                                <h5><a href="javascript:void(0);">Our State Fair Is A Great Function</a></h5>
-                                                <h6><a href="javascript:void(0);">￥ 12.15</a></h6>
-                                            </div>
-                                        </div>
-                                        <div class="tg-minicarproduct">
-                                            <figure>
-                                                <img src="/fg/images/products/img-02.jpg" alt="image description">
+                                    <div id="list" class="tg-minicartbody">
 
-                                            </figure>
-                                            <div class="tg-minicarproductdata">
-                                                <h5><a href="javascript:void(0);">Bring Me To Light</a></h5>
-                                                <h6><a href="javascript:void(0);">￥ 12.15</a></h6>
-                                            </div>
-                                        </div>
-                                        <div class="tg-minicarproduct">
-                                            <figure>
-                                                <img src="/fg/images/products/img-03.jpg" alt="image description">
-
-                                            </figure>
-                                            <div class="tg-minicarproductdata">
-                                                <h5><a href="javascript:void(0);">Have Faith In Your Soul</a></h5>
-                                                <h6><a href="javascript:void(0);">￥ 12.15</a></h6>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div class="tg-minicartfoot">
-                                        <a class="tg-btnemptycart" href="javascript:void(0);">
+                                    <div  class="tg-minicartfoot">
+                                        <a class="tg-btnemptycart" href="/fg/car/clear">
                                             <i class="fa fa-trash-o"></i>
-                                            <span>清空购物车</span>
+                                            <span >清空购物车</span>
                                         </a>
-                                        <span class="tg-subtotal">Subtotal: <strong>35.78</strong></span>
+                                        <span class="tg-subtotal">Subtotal: <strong >0.0</strong></span>
                                         <div class="tg-btns">
-                                            <a class="tg-btn tg-active" href="javascript:void(0);">查看购物车</a>
-                                            <a class="tg-btn" href="javascript:void(0);">结账</a>
+                                            <%--<a class="tg-btn tg-active" href="javascript:void(0);">查看购物车</a>--%>
+                                            <a class="tg-btn" href="/fg/car/checkOut?isCar=1">结账</a>
                                         </div>
                                     </div>
                                 </div>
@@ -760,6 +724,65 @@
             </div>
         </div>
     </header>
+
+    <script type="text/javascript">
+        function display() {
+            $.ajax({
+                url: "/fg/car/displayCar",
+                type: "get",
+                dataType: 'JSON',
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var tempDate;
+                    var money;
+                    var carList = data.carList;
+                    for(var i=0; i <carList.length; i++) {
+                        if (carList[i] != null) {
+                            tempDate +=
+                                '<div class="tg-minicarproduct">\n' +
+                                '<figure>\n' +
+                                '<img src="/fg/images/products/img-01.jpg" alt="image description">\n' +
+                                '</figure>\n' +
+                                '<div class="tg-minicarproductdata">\n' +
+                                '<h5><a href="javascript:void(0);">'+carList[i].book.name + '</a></h5>\n' +
+                                '<h6>'+carList[i].book.sellingPrice+ '   ' +
+                                '<button id="sub" onclick="updateCar(' + carList[i].book.ID+',-1)">' +
+                                '<img src="/fg/images/sub.png">' +
+                                '</button>' +
+                                carList[i].orderMount +
+                                '<button id="add" onclick="updateCar(' + carList[i].book.ID+ ',1)">' +
+                                '<img src="/fg/images/add.png">' +
+                                '</button>' +
+                                '</h6>\n' +
+                                '</div>\n' +
+                                '</div>';
+                            money += carList[i].totalPrice;
+                        }
+                    }
+                    $("#list").html(tempDate);
+                    $("#money").text(money);
+                },
+                error: function (data) {
+                    alert("添加失败");
+                }
+            });
+        }
+
+        function updateCar() {
+            $.ajax({
+                url: "/fg/car/updateCar?bookId=" + arguments[0] + "&sign=" + arguments[1],
+                type: "get",
+                dataType: 'JSON',
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    alert("更改成功");
+                },
+                error: function (data) {
+                    alert("更改失败");
+                }
+            })
+        }
+    </script>
     <!--************************************
             Header End
     *************************************-->

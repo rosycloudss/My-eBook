@@ -7,6 +7,7 @@ import com.my_ebook.entity.Book;
 import com.my_ebook.entity.Car;
 import com.my_ebook.entity.Customer;
 import com.my_ebook.service.CarService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
@@ -53,27 +54,28 @@ public class CarController {
      */
     @ResponseBody
     @RequestMapping(value = "/clear", method = RequestMethod.GET)
-    public JSONObject clear(HttpSession session) {
-        JSONObject jsonObject = new JSONObject();
+    public String clear(Model model, HttpSession session) {
+
         Customer customer = (Customer) session.getAttribute("customer");
         if (carService.deleteByCustomerId(customer.getID()) == 1) {
-            jsonObject.put("result", "1");
+            model.addAttribute("msg", "删除成功");
         } else {
-            jsonObject.put("result", "0");
+            model.addAttribute("msg", "删除失败");
         }
-        return jsonObject;
+        return "redirect:/fg/book/bookList";
     }
 
     /**
      * 查看购物车
      */
+    @ResponseBody
     @RequestMapping(value = "/displayCar", method = RequestMethod.GET)
-    public String displayCar(Model model, HttpSession session) {
+    public JSONObject displayCar(HttpSession session) {
+        JSONObject jsonObject = new JSONObject();
         Customer customer = (Customer) session.getAttribute("customer");
         List<Car> carList = carService.findCustomerCars(customer.getID());
-        model.addAttribute("carList", carList);
-        session.setAttribute("", "");
-        return "/fg/head";
+        jsonObject.put("carList", carList);
+        return jsonObject;
     }
 
     /**
@@ -84,6 +86,7 @@ public class CarController {
      * @param model
      * @return
      */
+    @ResponseBody
     @RequestMapping(value = "updateCar", method = RequestMethod.GET)
     public JSONObject updateCar(Integer bookId, Integer sign, HttpSession session, Model model) {
         JSONObject jsonObject = new JSONObject();
@@ -98,4 +101,14 @@ public class CarController {
     }
 
 
+    @RequestMapping(value = "/checkOut", method = RequestMethod.GET)
+    public String checkOut(@RequestParam("isCar")Integer isCar,
+                           @RequestParam(value = "bookId", required = false) Integer bookId) {
+        return "";
+    }
+
+    @RequestMapping()
+    public String createOrder() {
+
+    }
 }
