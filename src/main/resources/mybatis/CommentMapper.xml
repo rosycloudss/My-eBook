@@ -45,6 +45,13 @@
     <delete id="delete">
         delete from tb_book_comment where comment_id=#{commentId,jdbcType=INTEGER}
     </delete>
+    <delete id="deleteByIds">
+         delete from tb_book_comment where
+         comment_id in
+        <foreach collection="commentIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
 
     <select id="select" resultMap="commentMapper">
         select

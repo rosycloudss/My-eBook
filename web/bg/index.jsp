@@ -140,7 +140,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="comment-list.jsp">
+                        <a _href="/bg/comment/list?op=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>评论列表</cite>
                         </a>
