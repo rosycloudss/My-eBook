@@ -59,7 +59,7 @@ Main Start
                                         <%
                                             for (Category category: categoryList) {
                                         %>
-                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category.getId()%>&currentPage=<%=bookPage.getPageCurrent()+1%>"><span><%= category.getName()%></span><em>28245</em></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category.getId()%>&currentPage=0%>"><span><%= category.getName()%></span><em>28245</em></a></li>
                                         <%}%>
                                     </ul>
                                 </div>
@@ -172,13 +172,13 @@ Main Start
                                             </figure>
                                             <div class="tg-postbookcontent">
                                                 <ul class="tg-bookscategories">
-                                                    <li><a href="javascript:void(0);"><%=book.getCategory().getName()%></a></li>
+                                                    <li><a href="${pageContext.request.contextPath}/fg/book/bookDetails?bookId=<%=book.getID()%>"><%=book.getCategory().getName()%></a></li>
                                                 </ul>
                                                 <div class="tg-themetagbox"><span class="tg-themetag">热卖</span></div>
                                                 <div class="tg-booktitle">
-                                                    <h3><a href="bookdetail.jsp"><%=book.getName()%></a></h3>
+                                                    <h3><a href="${pageContext.request.contextPath}/fg/book/bookDetails?bookId=<%=book.getID()%>"><%=book.getName()%></a></h3>
                                                 </div>
-                                                <span class="tg-bookwriter">作者: <a href="javascript:void(0);"><%=book.getAuthor()%></a></span>
+                                                <span class="tg-bookwriter">作者: <a href="${pageContext.request.contextPath}/fg/book/bookDetails?bookId=<%=book.getID()%>;"><%=book.getAuthor()%></a></span>
                                                 <span class="tg-stars"><span></span></span>
                                                 <span class="tg-bookprice">
                                                     <ins><%=book.getSellingPrice()%></ins>

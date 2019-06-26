@@ -68,18 +68,8 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <strong class="tg-logo"><a href="index.jsp"><img src="/fg/images/logo.png" alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
-                            <div class="dropdown tg-themedropdown tg-wishlistdropdown">
-                                <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="tg-themebadge">3</span>
-                                    <i class="icon-heart"></i>
-                                    <span>愿望书单</span>
-                                </a>
-                                <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-wishlisst">
-                                    <div class="tg-description"><p>愿望书店为空</p></div>
-                                </div>
-                            </div>
                             <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a href="" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="tg-themebadge">3</span>
                                     <i class="icon-cart"></i>
                                     <span>￥123.00</span>
@@ -134,12 +124,12 @@
                         </div>
                         <!--搜索框 开始-->
                         <div class="tg-searchbox">
-                            <form class="tg-formtheme tg-formsearch">
+                            <form action="${pageContext.request.contextPath}/fg/book/findBook?currentPage=1" method="post" class="tg-formtheme tg-formsearch">
                                 <fieldset>
-                                    <input type="text" name="search" class="typeahead form-control" placeholder="请输入书名">
+                                    <input type="text" name="bookName" class="typeahead form-control" placeholder="请输入书名">
                                     <button type="submit"><i class="icon-magnifier"></i></button>
                                 </fieldset>
-                                <a href="javascript:void(0);">+ 高级搜索</a>
+                                <%--<a href="javascript:void(0);">+ 高级搜索</a>--%>
                             </form>
                         </div>
                         <!--搜索框 结束-->
@@ -770,6 +760,3 @@
         </div>
     </header>
 </div>
-    <!--************************************
-            Header End
-    *************************************-->
