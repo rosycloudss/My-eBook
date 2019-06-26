@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liwei
-  Date: 2019/6/22
-  Time: 19:58
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.my_ebook.entity.Book" %>
+<%@ page import="com.my_ebook.util.DateUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="base/head.jsp"/>
 <!--************************************
 Inner Banner Start
 *************************************-->
-<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/parallax/bgparallax-07.jpg">
+<div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600" data-parallax="scroll" data-image-src="/fg/images/parallax/bgparallax-07.jpg">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -35,6 +30,7 @@ Main Start
     <!--************************************
             News Grid Start
     *************************************-->
+    <% Book book = (Book) request.getAttribute("book");%>
     <div class="tg-sectionspace tg-haslayout">
         <div class="container">
             <div class="row">
@@ -45,22 +41,17 @@ Main Start
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div class="tg-postbook">
-                                            <figure class="tg-featureimg"><img src="images/books/img-07.jpg" alt="image description"></figure>
+                                            <figure class="tg-featureimg"><img src="/fg/<%=book.getCover()%>" alt="image description"></figure>
                                             <div class="tg-postbookcontent">
 														<span class="tg-bookprice">
-															<ins>$25.18</ins>
+															<ins><%=book.getSellingPrice()%></ins>
                                                             <!--															<del>$27.20</del>-->
 														</span>
                                                 <!--                                                    <span class="tg-bookwriter">You save $4.02</span>-->
                                                 <ul class="tg-delevrystock">
-                                                    <li><i class="icon-store"></i><span>库存: <em>100</em></span></li>
+                                                    <li><i class="icon-store"></i><span>库存: <em><%=book.getReserve()%></em></span></li>
                                                 </ul>
-                                                <div class="tg-quantityholder">
-                                                    <em class="minus">-</em>
-                                                    <input type="text" class="result" value="0" id="quantity1" name="quantity">
-                                                    <em class="plus">+</em>
-                                                </div>
-                                                <a class="tg-btn tg-active tg-btn-lg" href="javascript:void(0);">添加购物车</a>
+                                                <a class="tg-btn tg-active tg-btn-lg" onclick="addCar(<%=book.getID()%>)" href="javascript:void(0);">添加购物车</a>
                                                 <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                     <span>立即购买</span>
                                                 </a>
@@ -70,29 +61,27 @@ Main Start
                                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                         <div class="tg-productcontent">
                                             <ul class="tg-bookscategories">
-                                                <li><a href="javascript:void(0);">艺术与摄影</a></li>
+                                                <li><a href="javascript:void(0);"><%=book.getCategory().getName()%></a></li>
                                             </ul>
                                             <div class="tg-themetagbox"><span class="tg-themetag">热卖</span></div>
                                             <div class="tg-booktitle">
-                                                <h3>Drive Safely, No Bumping</h3>
+                                                <h3><%=book.getName()%></h3>
                                             </div>
-                                            <span class="tg-bookwriter">作者: <a href="javascript:void(0);">李伟</a></span>
+                                            <span class="tg-bookwriter">作者: <a href="javascript:void(0);"><%=book.getAuthor()%></a></span>
                                             <div class="tg-description">
-                                                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore etdoloreat magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisi nisi ut aliquip ex ea commodo consequat aute.</p>
-                                                <p>Arure dolor in reprehenderit in voluptate velit esse cillum dolore fugiat nulla aetur excepteur sint occaecat cupidatat non proident, sunt in culpa quistan officia serunt mollit anim id est laborum sed ut perspiciatis unde omnis iste natus... <a href="javascript:void(0);">More</a></p>
+                                                <p><%=book.getDescription()%></p>
                                             </div>
                                             <div class="tg-sectionhead">
                                                 <h2>图书详情</h2>
                                             </div>
                                             <ul class="tg-productinfo">
                                                 <li><span>格式:</span><span>Hardback</span></li>
-                                                <li><span>页数:</span><span>528 页</span></li>
+                                                <li><span>页数:</span><span><%=book.getPages()%></span></li>
                                                 <li><span>尺寸:</span><span>153 x 234 x 43mm | 758g</span></li>
-                                                <li><span>出版日期:</span><span>2017-7-14</span></li>
-                                                <li><span>出版商:</span><span>清华出版社</span></li>
+                                                <li><span>出版日期:</span><span><%=DateUtil.formatDate(book.getPublishDate())%></span></li>
+                                                <li><span>出版商:</span><span><%=book.getPublisher()%></span></li>
                                                 <li><span>语言:</span><span>English</span></li>
-                                                <li><span>ISBN10:</span><span>1234567890</span></li>
-                                                <li><span>ISBN13:</span><span>1234567890000</span></li>
+                                                <li><span>ISBN:</span><span><%=book.getISBN()%></span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -103,7 +92,7 @@ Main Start
                                             </div>
                                             <div class="tg-authorbox">
                                                 <figure class="tg-authorimg">
-                                                    <img src="images/author/imag-24.jpg" alt="image description">
+                                                    <img src="/fg/images/author/imag-24.jpg" alt="image description">
                                                 </figure>
                                                 <div class="tg-authorinfo">
                                                     <div class="tg-authorhead">
@@ -144,7 +133,7 @@ Main Start
                                             <li>
                                                 <div class="tg-authorbox">
                                                     <figure class="tg-authorimg">
-                                                        <img src="images/author/imag-24.jpg" alt="image description">
+                                                        <img src="/fg/images/author/imag-24.jpg" alt="image description">
                                                     </figure>
                                                     <div class="tg-authorinfo">
                                                         <div class="tg-authorhead">
@@ -165,7 +154,7 @@ Main Start
                                             <li>
                                                 <div class="tg-authorbox">
                                                     <figure class="tg-authorimg">
-                                                        <img src="images/author/imag-24.jpg" alt="image description">
+                                                        <img src="/fg/images/author/imag-24.jpg" alt="image description">
                                                     </figure>
                                                     <div class="tg-authorinfo">
                                                         <div class="tg-authorhead">
@@ -228,8 +217,8 @@ Main Start
                                                     <div class="tg-postbook">
                                                         <figure class="tg-featureimg">
                                                             <div class="tg-bookimg">
-                                                                <div class="tg-frontcover"><img src="images/books/img-01.jpg" alt="image description"></div>
-                                                                <div class="tg-backcover"><img src="images/books/img-01.jpg" alt="image description"></div>
+                                                                <div class="tg-frontcover"><img src="/fg/images/books/img-01.jpg" alt="image description"></div>
+                                                                <div class="tg-backcover"><img src="/fg/images/books/img-01.jpg" alt="image description"></div>
                                                             </div>
                                                             <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                                 <i class="icon-heart"></i>
@@ -262,8 +251,8 @@ Main Start
                                                     <div class="tg-postbook">
                                                         <figure class="tg-featureimg">
                                                             <div class="tg-bookimg">
-                                                                <div class="tg-frontcover"><img src="images/books/img-02.jpg" alt="image description"></div>
-                                                                <div class="tg-backcover"><img src="images/books/img-02.jpg" alt="image description"></div>
+                                                                <div class="tg-frontcover"><img src="/fg/images/books/img-02.jpg" alt="image description"></div>
+                                                                <div class="tg-backcover"><img src="/fg/images/books/img-02.jpg" alt="image description"></div>
                                                             </div>
                                                             <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                                 <i class="icon-heart"></i>
@@ -296,8 +285,8 @@ Main Start
                                                     <div class="tg-postbook">
                                                         <figure class="tg-featureimg">
                                                             <div class="tg-bookimg">
-                                                                <div class="tg-frontcover"><img src="images/books/img-03.jpg" alt="image description"></div>
-                                                                <div class="tg-backcover"><img src="images/books/img-03.jpg" alt="image description"></div>
+                                                                <div class="tg-frontcover"><img src="/fg/images/books/img-03.jpg" alt="image description"></div>
+                                                                <div class="tg-backcover"><img src="/fg/images/books/img-03.jpg" alt="image description"></div>
                                                             </div>
                                                             <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                                 <i class="icon-heart"></i>
@@ -330,8 +319,8 @@ Main Start
                                                     <div class="tg-postbook">
                                                         <figure class="tg-featureimg">
                                                             <div class="tg-bookimg">
-                                                                <div class="tg-frontcover"><img src="images/books/img-04.jpg" alt="image description"></div>
-                                                                <div class="tg-backcover"><img src="images/books/img-04.jpg" alt="image description"></div>
+                                                                <div class="tg-frontcover"><img src="/fg/images/books/img-04.jpg" alt="image description"></div>
+                                                                <div class="tg-backcover"><img src="/fg/images/books/img-04.jpg" alt="image description"></div>
                                                             </div>
                                                             <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                                 <i class="icon-heart"></i>
@@ -364,8 +353,8 @@ Main Start
                                                     <div class="tg-postbook">
                                                         <figure class="tg-featureimg">
                                                             <div class="tg-bookimg">
-                                                                <div class="tg-frontcover"><img src="images/books/img-05.jpg" alt="image description"></div>
-                                                                <div class="tg-backcover"><img src="images/books/img-05.jpg" alt="image description"></div>
+                                                                <div class="tg-frontcover"><img src="/fg/images/books/img-05.jpg" alt="image description"></div>
+                                                                <div class="tg-backcover"><img src="/fg/images/books/img-05.jpg" alt="image description"></div>
                                                             </div>
                                                             <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                                 <i class="icon-heart"></i>
@@ -398,8 +387,8 @@ Main Start
                                                     <div class="tg-postbook">
                                                         <figure class="tg-featureimg">
                                                             <div class="tg-bookimg">
-                                                                <div class="tg-frontcover"><img src="images/books/img-06.jpg" alt="image description"></div>
-                                                                <div class="tg-backcover"><img src="images/books/img-06.jpg" alt="image description"></div>
+                                                                <div class="tg-frontcover"><img src="/fg/images/books/img-06.jpg" alt="image description"></div>
+                                                                <div class="tg-backcover"><img src="/fg/images/books/img-06.jpg" alt="image description"></div>
                                                             </div>
                                                             <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                                 <i class="icon-heart"></i>
@@ -432,8 +421,8 @@ Main Start
                                                     <div class="tg-postbook">
                                                         <figure class="tg-featureimg">
                                                             <div class="tg-bookimg">
-                                                                <div class="tg-frontcover"><img src="images/books/img-03.jpg" alt="image description"></div>
-                                                                <div class="tg-backcover"><img src="images/books/img-03.jpg" alt="image description"></div>
+                                                                <div class="tg-frontcover"><img src="/fg/images/books/img-03.jpg" alt="image description"></div>
+                                                                <div class="tg-backcover"><img src="/fg/images/books/img-03.jpg" alt="image description"></div>
                                                             </div>
                                                             <a class="tg-btnaddtowishlist" href="javascript:void(0);">
                                                                 <i class="icon-heart"></i>
@@ -510,7 +499,7 @@ Main Start
                                     <ul>
                                         <li>
                                             <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img src="images/author/imag-03.jpg" alt="image description"></a></figure>
+                                                <figure><a href="javascript:void(0);"><img src="/fg/images/author/imag-03.jpg" alt="image description"></a></figure>
                                                 <div class="tg-authorcontent">
                                                     <h2><a href="javascript:void(0);">Jude Morphew</a></h2>
                                                     <span>21,658 Published Books</span>
@@ -519,7 +508,7 @@ Main Start
                                         </li>
                                         <li>
                                             <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img src="images/author/imag-04.jpg" alt="image description"></a></figure>
+                                                <figure><a href="javascript:void(0);"><img src="/fg/images/author/imag-04.jpg" alt="image description"></a></figure>
                                                 <div class="tg-authorcontent">
                                                     <h2><a href="javascript:void(0);">Jude Morphew</a></h2>
                                                     <span>21,658 Published Books</span>
@@ -528,7 +517,7 @@ Main Start
                                         </li>
                                         <li>
                                             <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img src="images/author/imag-05.jpg" alt="image description"></a></figure>
+                                                <figure><a href="javascript:void(0);"><img src="/fg/images/author/imag-05.jpg" alt="image description"></a></figure>
                                                 <div class="tg-authorcontent">
                                                     <h2><a href="javascript:void(0);">Jude Morphew</a></h2>
                                                     <span>21,658 Published Books</span>
@@ -537,7 +526,7 @@ Main Start
                                         </li>
                                         <li>
                                             <div class="tg-author">
-                                                <figure><a href="javascript:void(0);"><img src="images/author/imag-06.jpg" alt="image description"></a></figure>
+                                                <figure><a href="javascript:void(0);"><img src="/fg/images/author/imag-06.jpg" alt="image description"></a></figure>
                                                 <div class="tg-authorcontent">
                                                     <h2><a href="javascript:void(0);">Jude Morphew</a></h2>
                                                     <span>21,658 Published Books</span>
@@ -558,7 +547,20 @@ Main Start
             News Grid End
     *************************************-->
 </main>
-<!--************************************
-Main End
-*************************************-->
+<script type="text/javascript">
+    function addCar() {
+        $.ajax({
+            url: "/fg/car/addBook?bookId=" + arguments[0],
+            type: "get",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                alert("添加成功");
+            },
+            error: function (data) {
+                alert("添加失败");
+            }
+        })
+    }
+</script>
 <jsp:include page="base/foot.jsp"/>

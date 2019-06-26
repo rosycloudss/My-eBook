@@ -35,7 +35,7 @@ public class BookController {
      * 获取所有图书
      * @return
      */
-    @RequestMapping(value = "bookList", method = RequestMethod.GET)
+    @RequestMapping(value = "/bookList", method = RequestMethod.GET)
     public String displayBookList(@RequestParam(value = "categoryId", required = false) Integer categoryId,
                                   @RequestParam(value = "currentPage", required = false) Integer currentPage,
                                   HttpSession session, Model model, HttpServletRequest request) {
@@ -75,7 +75,7 @@ public class BookController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "findBook", method = RequestMethod.POST)
+    @RequestMapping(value = "/findBook", method = RequestMethod.POST)
     public String findBook(@RequestParam("bookName") String bookName,@RequestParam("currentPage") Integer currentPage, Model model, HttpServletRequest request) {
         Book book = new Book();
 
@@ -100,7 +100,7 @@ public class BookController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("getCategoryList")
+    @RequestMapping("/getCategoryList")
     public JSONObject findCategoryByParentId(int parentId) {
         JSONObject jsonObject = new JSONObject();
         Page<Category> categoryPage = categoryService.findByParentId(parentId);
@@ -109,4 +109,10 @@ public class BookController {
     }
 
 
+    @RequestMapping(value = "/bookDetails", method = RequestMethod.GET)
+    public String lookBookDetails(Model model, @RequestParam("bookId") int bookId) {
+        Book book = bookService.findById(bookId);
+        model.addAttribute("book", book);
+        return "/fg/bookdetail";
+    }
 }

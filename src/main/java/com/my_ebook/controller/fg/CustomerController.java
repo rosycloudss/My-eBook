@@ -19,7 +19,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(value = "register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(Model model, @RequestParam("name") String name, @RequestParam("nickname") String nickname,
                            @RequestParam("phone") String phone, @RequestParam("password") String password) {
         if (phone !=null && password != null) {
@@ -44,7 +44,7 @@ public class CustomerController {
         return "/fg/register";
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(Model model, HttpSession session, @RequestParam("phone") String phone,
                         @RequestParam("password") String password) {
         Customer customer = customerService.login(phone, password);
@@ -56,7 +56,7 @@ public class CustomerController {
         return "/fg/login";
     }
 
-    @RequestMapping(value = "logout")
+    @RequestMapping(value = "/logout")
     public String logout(HttpSession session, Model model) {
         session.removeAttribute("customer");
         model.addAttribute("msg", "退出登录成功！");

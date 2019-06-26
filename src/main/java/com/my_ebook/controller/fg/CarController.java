@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequestMapping("/fg/car")
 @Controller
@@ -29,7 +30,7 @@ public class CarController {
      * 加入购物车
      */
     @ResponseBody
-    @RequestMapping(value = "addBook", method = RequestMethod.GET)
+    @RequestMapping(value = "/addBook", method = RequestMethod.GET)
     public JSONObject addBook(Model model, @RequestParam("bookId") int bookId, HttpSession session) {
         JSONObject jsonObject = new JSONObject();
         Customer customer = (Customer) session.getAttribute("customer");
@@ -40,12 +41,38 @@ public class CarController {
         book.setID(bookId);
         car.setBook(book);
         if (carService.add(car) == 1) {
-            jsonObject.put("msg", "添加成功");
+            jsonObject.put("result", 1);
         } else {
-            jsonObject.put("msg", "添加成功！");
+            jsonObject.put("result", 0);
         }
         return jsonObject;
     }
 
+    /**
+     * 清空购物车
+     */
+    @ResponseBody
+    @RequestMapping(value = "/clear", method = RequestMethod.GET)
+    public JSONObject clear(HttpSession session) {
+        JSONObject jsonObject = new JSONObject();
+        Customer customer = (Customer) session.getAttribute("customer");
+        if (carService.deleteByCustomerId(customer.getID()) == 1) {
+            jsonObject.put("result", "1");
+        } else {
+            jsonObject.put("result", "0");
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 查看购物车
+     */
+    @RequestMapping(value = "/displayCar", method = RequestMethod.GET)
+    public String displayCar(Model model, HttpSession session) {
+        Customer customer = (Customer) session.getAttribute("customer");
+        List<Car> carList = carService.findCustomerCars(customer.getID());
+        model.addAttribute("carList", carList);
+        return "/fg/head";
+    }
 
 }
