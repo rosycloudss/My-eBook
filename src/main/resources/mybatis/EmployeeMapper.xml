@@ -16,7 +16,7 @@
     </sql>
     <insert id="insert" parameterType="Employee" useGeneratedKeys="true" keyProperty="ID">
         insert into tb_employee(name,position,phone,passwd,create_time)
-        value (#{name,jdbcType=VARCHAR},#{position,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{createTime,jdbcType=DATE})
+        value (#{name,jdbcType=VARCHAR},#{position,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
     </insert>
 
     <update id="update">
@@ -35,7 +35,7 @@
                 password=#{password,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
-                create_time=#{createTime,jdbcType=DATE},
+                create_time=#{createTime,jdbcType=TIMESTAMP},
             </if>
         </set>
         where employee_id=#{ID,jdbcType=INTEGER}
@@ -81,7 +81,7 @@
                     and phone=#{employee.phone,jdbcType=VARCHAR}
                 </if>
                 <if test="employee.createTime != null">
-                    and create_time=#{employee.createTime,jdbcType=DATE}
+                    and create_time=#{employee.createTime,jdbcType=TIMESTAMP}
                 </if>
                 <if test="employee.ID != null">
                     and employee_id=#{employee.ID,jdbcType=INTEGER}
@@ -107,7 +107,7 @@
                     and phone=#{employee.phone,jdbcType=VARCHAR}
                 </if>
                 <if test="employee.createTime != null">
-                    and create_time=#{employee.createTime,jdbcType=DATE}
+                    and create_time=#{employee.createTime,jdbcType=TIMESTAMP}
                 </if>
                 <if test="employee.ID != null">
                     and employee_id=#{employee.ID,jdbcType=INTEGER}

@@ -62,10 +62,7 @@ public class Customer {
 	 * 邮编
 	 */
 	private String zipCode;
-	/**
-	 * 评论内容
-	 */
-	private String content;
+
 
 	public Integer getID() {
 		return ID;
@@ -155,13 +152,6 @@ public class Customer {
 		this.zipCode = zipCode;
 	}
 
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
 
 	@Override
 	public String toString() {
@@ -177,7 +167,6 @@ public class Customer {
 				", lastLoginTime=" + lastLoginTime +
 				", addr='" + addr + '\'' +
 				", zipCode='" + zipCode + '\'' +
-				", content='" + content + '\'' +
 				'}';
 	}
 }

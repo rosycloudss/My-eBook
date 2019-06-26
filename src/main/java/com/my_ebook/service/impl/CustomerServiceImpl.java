@@ -3,6 +3,7 @@ package com.my_ebook.service.impl;
 import com.my_ebook.entity.Customer;
 import com.my_ebook.mapper.CustomerMapper;
 import com.my_ebook.service.CustomerService;
+import com.my_ebook.service.base.PageService;
 import com.my_ebook.util.MD5Utils;
 import com.my_ebook.vo.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,12 +42,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public int count(Customer customer) {
-        return 0;
+        return customerMapper.count(customer);
     }
 
     @Override
     public Page<Customer> findAll(Customer customer, Page page) {
-        return null;
+        page.setPageInfos(customerMapper.select(customer, page));
+        return page;
     }
 
     @Override

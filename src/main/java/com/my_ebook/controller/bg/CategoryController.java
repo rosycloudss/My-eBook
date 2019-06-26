@@ -76,7 +76,9 @@ public class CategoryController {
     }
 
     /**
-     * @param op
+     * 获取一个分类的信息
+     *
+     * @param op         为1 时 跳转到订单添加页面，为其他值时跳转到订单修改页面
      * @param categoryId
      * @param model
      * @return
@@ -102,7 +104,12 @@ public class CategoryController {
         }
     }
 
-
+    /**
+     * 修改订单信息
+     *
+     * @param category
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public JSONObject edit(@RequestBody Category category) {

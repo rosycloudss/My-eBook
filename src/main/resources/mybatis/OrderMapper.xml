@@ -38,7 +38,48 @@
         #{totalPrice,jdbcType=DOUBLE});
     </insert>
     <update id="update">
-
+        update tb_order
+        <set>
+            <if test="order.customer.ID != null">
+                and customer_id=#{order.customer.ID,jdbcType=INTEGER}
+            </if>
+            <if test="order.orderID != null">
+                and order_id=#{order.orderID,jdbcType=VARCHAR}
+            </if>
+            <if test="order.orderStatus != null">
+                and order_status=#{order.orderStatus,jdbcType=INTEGER}
+            </if>
+            <if test="order.receiver != null">
+                and receiver=#{order.receiver,jdbcType=VARCHAR}
+            </if>
+            <if test="order.recevingAddr != null">
+                and receiving_addr=#{order.recevingAddr,jdbcType=VARCHAR}
+            </if>
+            <if test="order.phone != null">
+                and phone like #{order.phone,jdbcType=VARCHAR}"%"
+            </if>
+            <if test="order.delivery != null">
+                and delivery=#{order.delivery,jdbcType=INTEGER}
+            </if>
+            <if test="order.postStatus != null">
+                and post_status=#{order.postStatus,jdbcType=INTEGER}
+            </if>
+            <if test="order.payStatus != null">
+                and pay_status=#{order.payStatus,jdbcType=INTEGER}
+            </if>
+            <if test="order.orderDate != null">
+                and order_Date=#{order.orderDate,jdbcType=DATE}
+            </if>
+            <if test="order.remark != null">
+                and rem#{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="order.orderMount != null">
+                and order_mount=#{order.orderMount,jdbcType=INTEGER}
+            </if>
+            <if test="order.totalPrice != null">
+                and total_price=#{order.totalPrice,jdbcType=DOUBLE}
+            </if>
+        </set>
 
     </update>
 
@@ -55,44 +96,44 @@
         from tb_order
         <where>
             <if test="order != null">
-                <if test="customer.ID != null">
-                    and customer_id=#{customer.ID,jdbcType=INTEGER}
+                <if test="order.customer.ID != null">
+                    and customer_id=#{order.customer.ID,jdbcType=INTEGER}
                 </if>
                 <if test="orderID != null">
-                    and order_id=#{orderID,jdbcType=VARCHAR}
+                    and order_id=#{order.orderID,jdbcType=VARCHAR}
                 </if>
                 <if test="orderStatus != null">
-                    and order_status=#{orderStatus,jdbcType=INTEGER}
+                    and order_status=#{order.orderStatus,jdbcType=INTEGER}
                 </if>
                 <if test="receiver != null">
-                    and receiver=#{receiver,jdbcType=VARCHAR}
+                    and receiver=#{order.receiver,jdbcType=VARCHAR}
                 </if>
                 <if test="recevingAddr != null">
-                    and receiving_addr=#{recevingAddr,jdbcType=VARCHAR}
+                    and receiving_addr=#{order.recevingAddr,jdbcType=VARCHAR}
                 </if>
                 <if test="phone != null">
-                    and phone=#{phone,jdbcType=VARCHAR}
+                    and phone like #{order.phone,jdbcType=VARCHAR}"%"
                 </if>
                 <if test="delivery != null">
-                    and delivery=#{delivery,jdbcType=INTEGER}
+                    and delivery=#{order.delivery,jdbcType=INTEGER}
                 </if>
                 <if test="postStatus != null">
-                    and post_status=#{postStatus,jdbcType=INTEGER}
+                    and post_status=#{order.postStatus,jdbcType=INTEGER}
                 </if>
                 <if test="payStatus != null">
-                    and pay_status=#{payStatus,jdbcType=INTEGER}
+                    and pay_status=#{order.payStatus,jdbcType=INTEGER}
                 </if>
                 <if test="orderDate != null">
-                    and order_Date=#{orderDate,jdbcType=DATE}
+                    and order_Date=#{order.orderDate,jdbcType=DATE}
                 </if>
                 <!--                <if test="remark != null">-->
                 <!--                    and rem#{remark,jdbcType=VARCHAR}-->
                 <!--                </if>-->
                 <if test="orderMount != null">
-                    and order_mount=#{orderMount,jdbcType=INTEGER}
+                    and order_mount=#{order.orderMount,jdbcType=INTEGER}
                 </if>
                 <if test="totalPrice != null">
-                    and total_price=#{totalPrice,jdbcType=DOUBLE}
+                    and total_price=#{order.totalPrice,jdbcType=DOUBLE}
                 </if>
             </if>
         </where>
