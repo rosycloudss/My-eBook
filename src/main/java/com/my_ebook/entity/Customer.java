@@ -83,6 +83,14 @@ public class Customer {
 		this.ID = ID;
 	}
 
+	public String getHead() {
+		return head;
+	}
+
+	public void setHead(String head) {
+		this.head = head;
+	}
+
 	public String getName() {
 		return name;
 	}

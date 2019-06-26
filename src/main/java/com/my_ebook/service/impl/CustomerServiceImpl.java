@@ -40,6 +40,12 @@ public class CustomerServiceImpl implements CustomerService {
         return 0;
     }
 
+
+    @Override
+    public Customer findByPhone(String phone) {
+        return customerMapper.getByPhone(phone);
+    }
+
     @Override
     public int count(Customer customer) {
         return customerMapper.count(customer);
@@ -58,8 +64,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer login(String phone, String password) {
+
         Customer customer = customerMapper.getByPhone(phone);
-        if (MD5Utils.getSaltverifyMD5(password, customer.getPassword())) {
+
+        if (customer!= null && MD5Utils.getSaltverifyMD5(password, customer.getPassword())) {
             return customer;
         }
         return null;

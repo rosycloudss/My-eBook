@@ -13,19 +13,19 @@
     <!-- title of site -->
     <title>注册</title>
     <!-- For favicon png -->
-    <link rel="shortcut icon" type="image/icon" href="./assets/logo/favicon.png"/>
+    <link rel="shortcut icon" type="image/icon" href="/fg/assets/logo/favicon.png"/>
     <!--font-awesome.min.css-->
-    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/fg/assets/css/font-awesome.min.css">
     <!--animate.css-->
-    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="/fg/assets/css/animate.css">
     <!--bootstrap.min.css-->
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fg/assets/css/bootstrap.min.css">
     <!-- bootsnav -->
-    <link rel="stylesheet" href="./assets/css/bootsnav.css">
+    <link rel="stylesheet" href="/fg/assets/css/bootsnav.css">
     <!--style.css-->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/fg/assets/css/style.css">
     <!--responsive.css-->
-    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="/fg/assets/css/responsive.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -47,7 +47,7 @@
                 <div class="signin-form">
                     <div class=" ">
                         <div class=" ">
-                            <form action="fg/customer/register" method="post">
+                            <form action="customer/register" method="post">
                                 <div class="form-group">
                                     <label for="signin_form">姓名</label>
                                     <input type="text" class="form-control" name="name" id="signin_form" placeholder="姓名">
@@ -77,20 +77,20 @@
                             <label for="radio01">
 											<span class="round-boarder">
 												<span class="round-boarder1"></span>
-											</span>remember password
+											</span>记住密码
                             </label>
                         </div><!--/.single-password-circle-->
                         <div class="single-forgot-password-circle text-right">
-                            <a href="login.jsp">Forgot email or password</a>
+                            <a href="login.jsp">忘记账号或密码</a>
                         </div><!--/.single-password-circle-->
                     </div><!--/.password-circle-->
                 </div><!--/.signin-password -->
                 <div class="signin-footer">
-                    <button type="button" class="btn signin_btn signin_btn_two">
+                    <button type="button" onclick="send()" class="btn signin_btn signin_btn_two">
                        注册
                     </button>
                     <p>
-                        already member ?
+                        已经注册 ?
                         <a href="login.jsp">登录</a>
                     </p>
                 </div><!--/.signin-footer -->
@@ -106,19 +106,23 @@
            title="" data-original-title="Back to Top" aria-hidden="true"></i>
     </div><!--/.scroll-Top-->
 </footer><!--/.hm-footer-copyright-->
-<!--footer copyright  end -->
+<script type="text/javascript">
+    function send() {
+        document.getElementsByTagName("form")[0].submit();
+    }
+</script>
 <!-- Include all js compiled plugins (below), or include individual files as needed -->
-<script src="./assets/js/jquery.js"></script>
+<script src="/fg/assets/js/jquery.js"></script>
 <!--modernizr.min.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <!--bootstrap.min.js-->
-<script src="./assets/js/bootstrap.min.js"></script>
+<script src="/fg/assets/js/bootstrap.min.js"></script>
 <!-- bootsnav js -->
-<script src="./assets/js/bootsnav.js"></script>
+<script src="/fg/assets/js/bootsnav.js"></script>
 <!-- jquery.sticky.js -->
-<script src="./assets/js/jquery.sticky.js"></script>
+<script src="/fg/assets/js/jquery.sticky.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <!--Custom JS-->
-<script src="./assets/js/custom.js"></script>
+<script src="/fg/assets/js/custom.js"></script>
 </body>
 </html>
