@@ -9,11 +9,21 @@ import com.my_ebook.vo.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Override
+    public int deleteByIds(List<Integer> commentIds) {
+        if (commentIds != null && !commentIds.isEmpty()) {
+            return commentMapper.deleteByIds(commentIds);
+        }
+        return 0;
+    }
 
     public Page<Comment> findCustomerComments(int customerId, Page page) {
         Comment comment = new Comment();

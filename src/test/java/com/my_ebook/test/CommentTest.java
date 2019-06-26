@@ -55,4 +55,19 @@ public class CommentTest {
         System.out.println(commentService.findAll(comment, null));
 
     }
+
+    @Test
+    public void updateTest() {
+        Comment comment = new Comment();
+        Book book = new Book();
+        book.setID(282);
+        comment.setBook(book);
+        Customer customer = new Customer();
+        customer.setID(4);
+        comment.setCustomer(customer);
+        comment.setContent("超级好看");
+        comment.setCommentDate(new Date(System.currentTimeMillis()));
+        comment.setStatus(1);
+        System.out.println(commentService.update(comment));
+    }
 }
