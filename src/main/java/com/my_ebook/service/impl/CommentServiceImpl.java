@@ -9,6 +9,8 @@ import com.my_ebook.vo.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -33,6 +35,9 @@ public class CommentServiceImpl implements CommentService {
     }
 
     public int add(Comment comment) {
+//        Date date=new Date();
+//        comment.setCommentDate(date);
+//        comment.setStatus(0);
         return commentMapper.insert(comment);
     }
 

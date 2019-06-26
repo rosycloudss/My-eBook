@@ -51,22 +51,16 @@ Main Start
                         <form class="tg-formtheme tg-formcontactus">
                             <fieldset>
                                 <div class="form-group">
-                                    <input type="text" name="first-name" class="form-control" placeholder="姓*">
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="姓名">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="last-name" class="form-control" placeholder="名*">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="邮箱*">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="subject" class="form-control" placeholder="主题 (可选)">
+                                    <input id="email" type="text" name="email" class="form-control" placeholder="邮箱">
                                 </div>
                                 <div class="form-group tg-hastextarea">
-                                    <textarea placeholder="评论"></textarea>
+                                    <textarea id="comment" placeholder="评论"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="tg-btn tg-active">提交</button>
+                                    <button id="btn" type="submit" class="tg-btn tg-active">提交</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -89,8 +83,8 @@ Main Start
                                 <li>
                                     <i class="icon-envelope"></i>
                                     <span>
-                                            <em><a href="mailto:1759840027@qq.com">1759840027@qq.com</a></em>
-                                        </span>
+                                        <em><a href="mailto:1759840027@qq.com">1759840027@qq.com</a></em>
+                                    </span>
                                 </li>
                             </ul>
                             <ul class="tg-socialicons">
@@ -110,6 +104,32 @@ Main Start
             Contact Us End
     *************************************-->
 </main>
+<script>
+    $("#btn").on(click,function () {
+        var bookid=$("#bookid").val();
+        var customerid=$("#customerid").val();
+        var comment=$("#comment").val();
+        $.ajax({
+            url:"/My-eBook//fg/contact/add",
+            type:"post",
+            dataType:'JSON',
+            data:JSON.stringify("book",bookid,"customer",customerid,"content",comment),
+            contentType : "application/json; charset=utf-8",
+            headers : {
+                'sessionId': getCookie("sessionId")
+            },
+            success:function(data) {
+                if(data.result === 1){
+                    alert("添加成功");
+                }else{
+                    alert("添加失败");
+                }
+            },
+            error:function (data) {
+                alert("添加失败");
+            }
+    })
+</script>
 <!--************************************
 Main End
 *************************************-->

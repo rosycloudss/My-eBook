@@ -53,7 +53,4 @@ public class CustomerController {
         model.addAttribute("msg", "退出登录成功！");
         return "fg/login";
     }
-
-
-
 }
