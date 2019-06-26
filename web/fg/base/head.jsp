@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liwei
-  Date: 2019/6/22
-  Time: 19:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->

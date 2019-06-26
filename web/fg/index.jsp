@@ -43,7 +43,7 @@ Main Start
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
                         <aside id="tg-sidebar" class="tg-sidebar">
                             <div class="tg-widget tg-widgetsearch">
-                                <form action="${pageContext.request.contextPath}/fg/book/findBook?currentPage=<%=bookPage.getPageCurrent()+1%>" method="post" class="tg-formtheme tg-formsearch">
+                                <form action="${pageContext.request.contextPath}/fg/book/findBook?currentPage=1" method="post" class="tg-formtheme tg-formsearch">
                                     <div class="form-group">
                                         <button type="submit"><i class="icon-magnifier"></i></button>
                                         <input type="search" name="bookName" class="form-group" placeholder="请输入书名">
@@ -147,7 +147,7 @@ Main Start
 																	<option>16</option>
 																	<option>20</option>
 																</select>
-															</span>
+                                                    </span>
                                                 </div>
                                             </fieldset>
                                         </form>
@@ -181,12 +181,12 @@ Main Start
                                                 <span class="tg-bookwriter">作者: <a href="javascript:void(0);"><%=book.getAuthor()%></a></span>
                                                 <span class="tg-stars"><span></span></span>
                                                 <span class="tg-bookprice">
-                                                    <ins><%=book.getPrice()%></ins>
-                                                    <del><%=book.getSellingPrice()%></del>
+                                                    <ins><%=book.getSellingPrice()%></ins>
+                                                    <del><%=book.getPrice()%></del>
                                                 </span>
                                                 <a class="tg-btn tg-btnstyletwo" href="javascript:void(0);">
                                                     <i class="fa fa-shopping-basket"></i>
-                                                    <a href=/fg/car/addBook/<%=book.getID()%>><em>加入购物车</em></a>
+                                                    <em onclick="addCar(<%=book.getID()%>)">加入购物车</em>
                                                 </a>
                                             </div>
                                         </div>
@@ -199,11 +199,13 @@ Main Start
                                             int strategy = (int) request.getAttribute("strategy");
                                             if (strategy == 0) {
                                         %>
-                                        <li><a href="">&laquo;上一页</a></li>
-                                        <li><a href="">下一页&raquo;</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList/?currentPage=<%=bookPage.getPageCurrent()-1%>&categoryId=<%=session.getAttribute("categoryId")%>">&laquo;上一页</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList/?currentPage=<%=bookPage.getPageCurrent()+1%>&categoryId=<%=session.getAttribute("categoryId")%>">下一页&raquo;</a></li>
                                         <%
                                             }else {
                                         %>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/findBook/?currentPage=<%=bookPage.getPageCurrent()-1%>&bookName=<%=session.getAttribute("bookName")%>">&laquo;上一页</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/findBook/?currentPage=<%=bookPage.getPageCurrent()+1%>&bookName<%=session.getAttribute("bookName")%>">下一页&raquo;</a></li>
                                         <%
                                             }
                                         %>
@@ -216,10 +218,23 @@ Main Start
             </div>
         </div>
     </div>
-    <!--************************************
-            News Grid End
-    *************************************-->
 </main>
+<script type="text/javascript">
+    function addCar() {
+        $.ajax({
+            url: "/fg/car/addBook?bookId=" + arguments[0],
+            type: "get",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                alert("添加成功");
+            },
+            error: function (data) {
+                alert("添加失败");
+            }
+        })
+    }
+</script>
 <!--************************************
 Main End
 *************************************-->

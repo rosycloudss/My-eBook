@@ -31,7 +31,7 @@
             <if test="book != null">
                 book_id = #{book.ID},
             </if>
-            <if test="order_num != 0">
+            <if test="orderMount != 0">
                 order_num = #{orderMount,jdbcType=INTEGER}
             </if>
         </set>

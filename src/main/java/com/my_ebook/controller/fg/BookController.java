@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,15 +36,17 @@ public class BookController {
      * @return
      */
     @RequestMapping(value = "bookList", method = RequestMethod.GET)
-    public String displayBookList(Integer categoryId, Integer currentPage,
+    public String displayBookList(@RequestParam(value = "categoryId", required = false) Integer categoryId,
+                                  @RequestParam(value = "currentPage", required = false) Integer currentPage,
                                   HttpSession session, Model model, HttpServletRequest request) {
         Book book = new Book();
         if (categoryId != null && categoryId != 0) {
             Category category = new Category();
             category.setId(categoryId);
             book.setCategory(category);
+        } else {
+            categoryId = 0;
         }
-
         currentPage = (currentPage == null ? 1 : currentPage);
         Page<Book> page = new Page<Book>(bookService.count(book), currentPage, 12);
         page.setPath(WebUtil.getPath(request));
@@ -60,7 +63,7 @@ public class BookController {
             session.setAttribute("categoryList", categoryList);
         }
         model.addAttribute("strategy", 0);
-        session.setAttribute("categoryId",book.getCategory().getId() );
+        session.setAttribute("categoryId", categoryId);
         return "/fg/index";
     }
 
@@ -73,7 +76,7 @@ public class BookController {
      * @return
      */
     @RequestMapping(value = "findBook", method = RequestMethod.POST)
-    public String findBook(String bookName, Integer currentPage, Model model, HttpServletRequest request) {
+    public String findBook(@RequestParam("bookName") String bookName,@RequestParam("currentPage") Integer currentPage, Model model, HttpServletRequest request) {
         Book book = new Book();
 
         if (!StringUtil.isEmpty(bookName)) {

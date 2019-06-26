@@ -25,7 +25,6 @@ public class Customer {
 	 */
 	private String name;
 
-
 	/**
 	 * 用户头像
 	 */

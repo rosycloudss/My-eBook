@@ -28,8 +28,10 @@ public class CarController {
     /**
      * 加入购物车
      */
+    @ResponseBody
     @RequestMapping(value = "addBook", method = RequestMethod.GET)
-    public Model addBook(Model model, int bookId, HttpSession session) {
+    public JSONObject addBook(Model model, @RequestParam("bookId") int bookId, HttpSession session) {
+        JSONObject jsonObject = new JSONObject();
         Customer customer = (Customer) session.getAttribute("customer");
         Car car = new Car();
         car.setCustomer(customer);
@@ -37,9 +39,12 @@ public class CarController {
         Book book = new Book();
         book.setID(bookId);
         car.setBook(book);
-        carService.add(car);
-        model.addAttribute("msg", "添加成功！");
-        return model;
+        if (carService.add(car) == 1) {
+            jsonObject.put("msg", "添加成功");
+        } else {
+            jsonObject.put("msg", "添加成功！");
+        }
+        return jsonObject;
     }
 
 
