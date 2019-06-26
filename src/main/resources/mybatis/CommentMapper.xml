@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my_ebook.mapper.CommentMapper">
+    <resultMap id="commentMapper" type="Comment">
+        <id column="comment_id" property="ID"/>
+        <result column="comment_date" property="commentDate"/>
+        <result column="content" property="content"/>
+        <result column="status" property="status"/>
+        <association property="book" javaType="Book" column="book_id"
+                     select="com.my_ebook.mapper.BookMapper.selectById"></association>
+        <association property="customer" javaType="Customer" column="customer_id"
+                     select="com.my_ebook.mapper.CustomerMapper.getById"></association>
+    </resultMap>
+    <sql id="base_column_list">
+        comment_id,comment_date,content,book_id,customer_id,status
+    </sql>
+
+    <insert id="insert" keyProperty="ID" useGeneratedKeys="true">
+        insert into tb_book_comment(comment_date,content,book_id,customer_id,status)
+        value (#{commentDate,jdbcType=TIMESTAMP},#{content,jdbcType=VARCHAR},
+        #{book.ID,jdbcType=INTEGER},#{customer.ID,jdbcType=INTEGER},#{status,jdbcType=INTEGER})
+    </insert>
+
+    <update id="update">
+        update tb_book_comment
+        <set>
+            <if test="book != null">
+                book_id=#{book.ID,jdbcType=INTEGER},
+            </if>
+            <if test="customer != null">
+                customer_id=#{customer.ID,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                content=#{content,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status=#{status,jdbcType=INTEGER},
+            </if>
+        </set>
+
+    </update>
+
+    <delete id="delete">
+        delete from tb_book_comment where comment_id=#{commentId,jdbcType=INTEGER}
+    </delete>
+
+    <select id="select" resultMap="commentMapper">
+        select
+        <include refid="base_column_list"/>
+        from tb_book_comment
+        <if test="comment != null">
+            <where>
+                <if test="comment.book != null">
+                    and book_id=#{comment.book.ID,jdbcType=INTEGER}
+                </if>
+                <if test="comment.customer != null">
+                    and customer_id=#{comment.customer.ID,jdbcType=INTEGER}
+                </if>
+                <if test="comment.content != null">
+                    and content=#{comment.content,jdbcType=VARCHAR}
+                </if>
+                <if test="comment.status != null">
+                    and status=#{comment.status,jdbcType=INTEGER}
+                </if>
+                <if test="comment.commentDate != null">
+                    and comment_date=#{comment.commentDate,jdbcType=TIMESTAMP}
+                </if>
+                <if test="comment.content != null">
+                    and content=#{comment.content,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </if>
+        order by comment_date desc
+        <if test="page != null">
+            LIMIT #{page.pageStart,jdbcType=INTEGER} , #{page.pageSize,jdbcType=INTEGER}
+        </if>
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select
+        count(*)
+        from tb_book_comment
+        <if test="comment != null">
+            <where>
+                <if test="comment.book != null">
+                    and book_id=#{comment.book.ID,jdbcType=INTEGER}
+                </if>
+                <if test="comment.customer != null">
+                    and customer_id=#{comment.customer.ID,jdbcType=INTEGER}
+                </if>
+                <if test="comment.content != null">
+                    and content=#{comment.content,jdbcType=VARCHAR}
+                </if>
+                <if test="comment.status != null">
+                    and status=#{comment.status,jdbcType=INTEGER}
+                </if>
+                <if test="comment.commentDate != null">
+                    and comment_date=#{comment.commentDate,jdbcType=TIMESTAMP}
+                </if>
+                <if test="comment.content != null">
+                    and content=#{comment.content,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </if>
+    </select>
+
+</mapper>

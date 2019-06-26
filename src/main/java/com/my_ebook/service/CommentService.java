@@ -15,4 +15,12 @@ public interface CommentService extends BaseService<Comment>, PageService<Commen
      * @return
      */
     Page<Comment> findCustomerComments(int customerId, Page page);
+
+    /**
+     * 查询图书的评论
+     * @param bookId
+     * @param page
+     * @return
+     */
+    Page<Comment> findBookComments(int bookId, Page page);
 }

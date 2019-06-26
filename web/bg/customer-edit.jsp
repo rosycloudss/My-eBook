@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="" class="layui-form-label">
+            <label  class="layui-form-label">
                 注册时间
             </label>
             <div class="layui-input-inline">
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="" class="layui-form-label">
+            <label class="layui-form-label">
                 最近登陆时间
             </label>
             <div class="layui-input-inline">
