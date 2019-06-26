@@ -16,10 +16,6 @@ Inner Banner Start
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-innerbannercontent">
                     <h1>联系我们</h1>
-                    <ol class="tg-breadcrumb">
-                        <li><a href="javascript:void(0);">主页</a></li>
-                        <li class="tg-active">联系我们</li>
-                    </ol>
                 </div>
             </div>
         </div>

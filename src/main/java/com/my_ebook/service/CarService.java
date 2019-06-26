@@ -31,4 +31,5 @@ public interface CarService extends BaseService<Car>, PageService<Car> {
      */
     List<Car> findCustomerCars(int customerId);
 
+    int updateCar(int customerId, int bookId, int sing);
 }

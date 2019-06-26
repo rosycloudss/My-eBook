@@ -81,6 +81,7 @@ public class CustomerController {
         jsonObject.put("result", result);
         return jsonObject;
     }
+
     @ResponseBody
     @RequestMapping(value="/findCustomerById",method = RequestMethod.GET)
     public JSONObject findCustomerById(HttpSession session){

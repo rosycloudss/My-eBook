@@ -30,6 +30,20 @@ public class CarServiceImpl implements CarService {
         return carMapper.selectByCustomer(customerId);
     }
 
+    @Override
+    public int updateCar(int customerId, int bookId, int sign) {
+        Car car = carMapper.selectByCustomerAndBook(customerId, bookId);
+        if (car != null) {
+            if (car.getOrderMount() == 1 && sign == -1) {
+                carMapper.deleteById(car.getID());
+            } else {
+                car.setOrderMount(car.getOrderMount() + sign);
+            }
+            return carMapper.update(car);
+        }
+        return 0;
+    }
+
 
     @Override
     public int add(Car car) {
@@ -51,7 +65,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public int update(Car car) {
-        return 0;
+        return carMapper.update(car);
     }
 
     @Override

@@ -35,6 +35,7 @@
           <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
           <element id="library" level="project" name="Spring MVC-4.3.18.RELEASE" />
           <element id="library" level="application" name="Spring Web Services-2.0.2" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
         </element>
       </element>
     </root>

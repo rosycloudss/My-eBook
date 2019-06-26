@@ -1,13 +1,10 @@
-<%@ page import="org.apache.ibatis.annotations.Param" %>
 <%@ page import="com.my_ebook.entity.Book" %>
 <%@ page import="com.my_ebook.vo.Page" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.my_ebook.entity.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="base/head.jsp"/>
-<!--************************************
-Inner Banner Start
-*************************************-->
+
 <div class="tg-innerbanner tg-haslayout tg-parallax tg-bginnerbanner" data-z-index="-100" data-appear-top-offset="600"
      data-parallax="scroll" data-image-src="/fg/images/parallax/bgparallax-07.jpg">
     <div class="container">

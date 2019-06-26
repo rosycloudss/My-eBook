@@ -1,14 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liwei
-  Date: 2019/6/22
-  Time: 19:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!--************************************
-Footer Start
-*************************************-->
+
 <footer id="tg-footer" class="tg-footer tg-haslayout">
     <div class="tg-footerarea">
         <div class="container">

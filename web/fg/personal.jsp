@@ -16,10 +16,6 @@ Inner Banner Start
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="tg-innerbannercontent">
                     <h1>个人中心</h1>
-                    <ol class="tg-breadcrumb">
-                        <li><a href="javascript:void(0);">主页</a></li>
-                        <li class="tg-active">个人中心</li>
-                    </ol>
                 </div>
             </div>
         </div>
@@ -81,24 +77,24 @@ Main Start
                 var customer=data.customer;
                 $("#table").html(" <thread>" +
                     "<tr>" +
-                    "<th>姓名</th>" +
-                    "<th>昵称</th>" +
-                    "<th>电话号码</th>" +
-                    "<th>邮箱</th>" +
-                    "<th>地址</th>" +
-                    "<th>邮编</th>" +
-                    "<th>上次登录时间</th>" +
+                        "<th>姓名</th>" +
+                        "<th>昵称</th>" +
+                        "<th>电话号码</th>" +
+                        "<th>邮箱</th>" +
+                        "<th>地址</th>" +
+                        "<th>邮编</th>" +
+                        "<th>上次登录时间</th>" +
                     "</tr>" +
                     "</thread>" +
                     "<tbody id=\"tbody\">" +
-                    "<td>"+customer.name+"</td>"+
-                    "<td>"+customer.nickname+"</td>"+
-                    "<td>"+customer.phone+"</td>"+
-                    "<td>"+customer.password+"</td>"+
-                    "<td>"+customer.email+"</td>"+
-                    "<td>"+customer.addr+"</td>"+
-                    "<td>"+customer.zipCode+"</td>"+
-                    "<td>"+customer.lastLoginTime+"</td>"+
+                        "<td>"+customer.name+"</td>"+
+                        "<td>"+customer.nickname+"</td>"+
+                        "<td>"+customer.phone+"</td>"+
+                        "<td>"+customer.password+"</td>"+
+                        "<td>"+customer.email+"</td>"+
+                        "<td>"+customer.addr+"</td>"+
+                        "<td>"+customer.zipCode+"</td>"+
+                        "<td>"+customer.lastLoginTime+"</td>"+
                     "</tbody>");
             },
             error: function (data){
@@ -112,16 +108,52 @@ Main Start
             "<tr>" +
             "<th>订单编号</th>" +
             "<th>收货人姓名</th>" +
-            "<th>名称</th>" +
-            "<th>数量</th>" +
-            "<th>总价</th>" +
+            // "<th>名称</th>" +
+            // "<th>数量</th>" +
+            // "<th>总价</th>" +
             "<th>发货状态</th>" +
             "<th>电话号码</th>" +
+            "<th>下单时间</th>" +
             "<th>收货地址</th>" +
+            "<th>详情</th>" +
             "</tr>" +
             "</thread>" +
             "<tbody id=\"tbody\">" +
             "</tbody>");
+        $.ajax({
+            url: "/My-eBook/fg/customer/getPersonalOrder",
+            type: "get",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                'sessionId': getCookie("sessionId")
+            },
+            success: function (data) {
+                var orderList = data.orderList;
+                if(orderList != null){
+                    var tabledata;
+                    for(var i=0;i<orderList.length;i++){
+                        tabledata+="<tr>"+
+                            "<td>"+orderList[i].orderID +"</td>"+
+                            "<td>"+orderList[i].receiver +"</td>"+
+                            "<td>"+orderList[i].postStatus +"</td>"+
+                            "<td>"+orderList[i].phone +"</td>"+
+                            "<td>"+orderList[i].orderDate +"</td>"+
+                            "<td>"+orderList[i].recevingAddr +"</td>"+
+                            "<td>"+
+                            '<a title="订单详情"  href="javascript:;"  onclick="x_admin_show( \'订单详情\',\'orderdetail.jsp? Data=' + orderList[i].orderID+ '\',600,400)">' +
+                            "<i class=\"layui-icon\">&#xe642;</i>" +
+                            "</a>" +
+                            "</td>"+
+                            "</tr>";
+                    }
+                    $("#tbody").html(tabledata);
+                }
+            },
+            error:function (data) {
+                alert("error");
+            }
+        });
     }
 </script>
 <!--************************************

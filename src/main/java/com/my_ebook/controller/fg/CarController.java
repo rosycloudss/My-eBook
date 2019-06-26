@@ -72,7 +72,30 @@ public class CarController {
         Customer customer = (Customer) session.getAttribute("customer");
         List<Car> carList = carService.findCustomerCars(customer.getID());
         model.addAttribute("carList", carList);
+        session.setAttribute("", "");
         return "/fg/head";
     }
+
+    /**
+     * 更新购物车中书籍数量
+     * @param bookId
+     * @param sign
+     * @param session
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "updateCar", method = RequestMethod.GET)
+    public JSONObject updateCar(Integer bookId, Integer sign, HttpSession session, Model model) {
+        JSONObject jsonObject = new JSONObject();
+        if(bookId == null || sign == null) {
+            jsonObject.put("result", 0);
+        } else {
+            Customer customer = (Customer) session.getAttribute("customer");
+            carService.updateCar(customer.getID(), bookId, sign);
+            jsonObject.put("result", 1);
+        }
+        return jsonObject;
+    }
+
 
 }

@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
-<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>			<html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->	<html class="no-js" lang="zxx"> <!--<![endif]-->
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,12 +22,6 @@
 </head>
 <body>
 
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<!--************************************
-        Wrapper Start
-*************************************-->
 <div id="tg-wrapper" class="tg-wrapper tg-haslayout">
     <!--************************************
             Header Start
@@ -55,7 +46,7 @@
                             </li>
                         </ul>
                         <div class="tg-userlogin">
-                            <figure><a href="personal.jsp"><img src="/fg/images/users/img-01.jpg" alt="image description"></a></figure>
+                            <figure><a href="/fg/personal.jsp"><img src="/fg/images/users/img-01.jpg" alt="image description"></a></figure>
                             <span>Hi, 李伟</span>
                         </div>
                     </div>
@@ -68,8 +59,18 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <strong class="tg-logo"><a href="index.jsp"><img src="/fg/images/logo.png" alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
+                            <div class="dropdown tg-themedropdown tg-wishlistdropdown">
+                                <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="tg-themebadge">3</span>
+                                    <i class="icon-heart"></i>
+                                    <span>愿望书单</span>
+                                </a>
+                                <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-wishlisst">
+                                    <div class="tg-description"><p>愿望书店为空</p></div>
+                                </div>
+                            </div>
                             <div class="dropdown tg-themedropdown tg-minicartdropdown">
-                                <a href="" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a href="javascript:void(0);" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="tg-themebadge">3</span>
                                     <i class="icon-cart"></i>
                                     <span>￥123.00</span>
@@ -124,7 +125,7 @@
                         </div>
                         <!--搜索框 开始-->
                         <div class="tg-searchbox">
-                            <form action="${pageContext.request.contextPath}/fg/book/findBook?currentPage=1" method="post" class="tg-formtheme tg-formsearch">
+                            <form  action="${pageContext.request.contextPath}/fg/book/findBook?currentPage=1" method="post" class="tg-formtheme tg-formsearch">
                                 <fieldset>
                                     <input type="text" name="bookName" class="typeahead form-control" placeholder="请输入书名">
                                     <button type="submit"><i class="icon-magnifier"></i></button>
@@ -745,11 +746,11 @@
                                         </div>
                                     </li>
                                     <!--所有分类  结束-->
-                                    <li><a href="personal.jsp">个人中心</a></li>
-                                    <li><a href="contactus.jsp">联系我们</a></li>
-                                    <li><a href="aboutus.jsp">关于我们</a></li>
-                                    <li><a href="modifypwd.jsp">修改密码</a></li>
-                                    <li><a href="logout.jsp">退出登录</a></li>
+                                    <li><a href="/fg/personal.jsp">个人中心</a></li>
+                                    <li><a href="/fg/contactus.jsp">联系我们</a></li>
+                                    <li><a href="/fg/aboutus.jsp">关于我们</a></li>
+                                    <li><a href="/fg/modifypwd.jsp">修改密码</a></li>
+                                    <li><a href="/fg/logout.jsp">退出登录</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -759,4 +760,6 @@
             </div>
         </div>
     </header>
-</div>
+    <!--************************************
+            Header End
+    *************************************-->
