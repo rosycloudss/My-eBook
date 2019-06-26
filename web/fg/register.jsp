@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liwei
-  Date: 2019/6/22
-  Time: 19:59
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -50,28 +43,28 @@
     <div class="container">
         <div class="sign-content popup-in-content">
             <div class="popup-in-txt">
-                <h2>sign up</h2>
+                <h2>注册</h2>
                 <div class="signin-form">
                     <div class=" ">
                         <div class=" ">
-                            <form action="signin.html">
+                            <form action="fg/customer/register" method="post">
                                 <div class="form-group">
-                                    <label for="signin_form">first name</label>
-                                    <input type="text" class="form-control" id="signin_form" placeholder="First name">
+                                    <label for="signin_form">姓名</label>
+                                    <input type="text" class="form-control" name="name" id="signin_form" placeholder="姓名">
                                 </div><!--/.form-group -->
                                 <div class="form-group">
-                                    <label for="signin_form">last name</label>
-                                    <input type="text" class="form-control" id="signin_form" placeholder="Last name">
+                                    <label for="signin_form">昵称</label>
+                                    <input type="text" class="form-control" name="nickname" id="signin_form" placeholder="昵称">
                                 </div><!--/.form-group -->
                                 <div class="form-group">
-                                    <label for="signin_form">email</label>
-                                    <input type="email" class="form-control" id="signin_form"
-                                           placeholder="Enter your email adress">
+                                    <label for="signin_form">电话号码</label>
+                                    <input type="tel" class="form-control" name="phone" id="signin_form"
+                                           placeholder="输入你的电话号码">
                                 </div><!--/.form-group -->
                                 <div class="form-group">
-                                    <label for="signin_form">password</label>
-                                    <input type="password" class="form-control" id="signin_form"
-                                           placeholder="Enter your password">
+                                    <label for="signin_form">密码</label>
+                                    <input type="password" class="form-control" name="password" id="signin_form"
+                                           placeholder="输入你的密码">
                                 </div><!--/.form-group -->
                             </form><!--/form -->
                         </div><!--/.col -->
@@ -88,17 +81,17 @@
                             </label>
                         </div><!--/.single-password-circle-->
                         <div class="single-forgot-password-circle text-right">
-                            <a href="login.html">Forgot email or password</a>
+                            <a href="login.jsp">Forgot email or password</a>
                         </div><!--/.single-password-circle-->
                     </div><!--/.password-circle-->
                 </div><!--/.signin-password -->
                 <div class="signin-footer">
                     <button type="button" class="btn signin_btn signin_btn_two">
-                        sign up
+                       注册
                     </button>
                     <p>
                         already member ?
-                        <a href="login.html">Sign In</a>
+                        <a href="login.jsp">登录</a>
                     </p>
                 </div><!--/.signin-footer -->
             </div><!-- .popup-in-txt -->

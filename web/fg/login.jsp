@@ -53,14 +53,14 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="signin-form">
-                            <form action="signin.html">
+                            <form action="fg/customer/login" method="post">
                                 <div class="form-group">
                                     <label for="signin_form_email">电话号码</label>
-                                    <input type="email" class="form-control" id="signin_form_email" placeholder="电话号码">
+                                    <input type="tel" class="form-control" id="signin_form_email" name="phone" placeholder="电话号码">
                                 </div><!--/.form-group -->
                                 <div class="form-group">
                                     <label for="signin_form_password">密码</label>
-                                    <input type="password" class="form-control" id="signin_form_password"
+                                    <input type="password" class="form-control" id="signin_form_password" name="password"
                                            placeholder="请输入密码">
                                 </div><!--/.form-group -->
                             </form><!--/form -->
@@ -95,7 +95,7 @@
                             </button>
                             <p>
                                 没有账号 ?
-                                <a href="register.html">注册</a>
+                                <a href="register.jsp">注册</a>
                             </p>
                         </div><!--/.signin-footer -->
                     </div><!--/.col -->
