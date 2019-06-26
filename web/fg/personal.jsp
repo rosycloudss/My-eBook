@@ -69,19 +69,43 @@ Main Start
 </main>
 <script>
     function showPerson() {
-        $("#table").html(" <thread>" +
-            "<tr>" +
-            "<th>姓名</th>" +
-            "<th>昵称</th>" +
-            "<th>电话号码</th>" +
-            "<th>邮箱</th>" +
-            "<th>地址</th>" +
-            "<th>邮编</th>" +
-            "<th>上次登录时间</th>" +
-            "</tr>" +
-            "</thread>" +
-            "<tbody id=\"tbody\">" +
-            "</tbody>");
+        $.ajax({
+            url: "/My-eBook/fg/customer/findCustomerById",
+            type: "get",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                'sessionId': getCookie("sessionId")
+            },
+            success: function (data) {
+                var customer=data.customer;
+                $("#table").html(" <thread>" +
+                    "<tr>" +
+                    "<th>姓名</th>" +
+                    "<th>昵称</th>" +
+                    "<th>电话号码</th>" +
+                    "<th>邮箱</th>" +
+                    "<th>地址</th>" +
+                    "<th>邮编</th>" +
+                    "<th>上次登录时间</th>" +
+                    "</tr>" +
+                    "</thread>" +
+                    "<tbody id=\"tbody\">" +
+                    "<td>"+customer.name+"</td>"+
+                    "<td>"+customer.nickname+"</td>"+
+                    "<td>"+customer.phone+"</td>"+
+                    "<td>"+customer.password+"</td>"+
+                    "<td>"+customer.email+"</td>"+
+                    "<td>"+customer.addr+"</td>"+
+                    "<td>"+customer.zipCode+"</td>"+
+                    "<td>"+customer.lastLoginTime+"</td>"+
+                    "</tbody>");
+            },
+            error: function (data){
+                alert("error");
+            }
+        });
+
     }
     function showOrder() {
         $("#table").html(" <thread>" +

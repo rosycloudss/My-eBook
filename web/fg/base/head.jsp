@@ -765,7 +765,8 @@
                                     <li><a href="personal.jsp">个人中心</a></li>
                                     <li><a href="contactus.jsp">联系我们</a></li>
                                     <li><a href="aboutus.jsp">关于我们</a></li>
-
+                                    <li><a href="modifypwd.jsp">修改密码</a></li>
+                                    <li><a href="logout.jsp">退出登录</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -775,6 +776,7 @@
             </div>
         </div>
     </header>
+</div>
     <!--************************************
             Header End
     *************************************-->

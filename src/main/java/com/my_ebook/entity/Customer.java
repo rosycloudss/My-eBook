@@ -25,13 +25,6 @@ public class Customer {
 	 */
 	private String name;
 
-	public String getHead() {
-		return head;
-	}
-
-	public void setHead(String head) {
-		this.head = head;
-	}
 
 	/**
 	 * 用户头像
