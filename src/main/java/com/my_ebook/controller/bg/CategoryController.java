@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
-@Controller
+@Controller("bgCategoryController")
 @RequestMapping("/bg/category")
 public class CategoryController {
 

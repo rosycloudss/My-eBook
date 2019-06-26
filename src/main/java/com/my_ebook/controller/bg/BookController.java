@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@Controller("bgBookController")
 @RequestMapping("/bg/book")
 public class BookController {
 

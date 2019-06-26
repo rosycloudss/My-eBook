@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+@Controller("bgEmployeeController")
 @RequestMapping("/bg/employee")
 public class EmployeeController {
 
