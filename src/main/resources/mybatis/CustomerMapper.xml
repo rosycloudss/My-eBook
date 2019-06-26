@@ -11,7 +11,7 @@
         <result property="nickname" column="nickname"/>
         <result property="gender" column="gender"/>
         <result property="phone" column="phone"/>
-        <result property="password" column="password"/>
+        <result property="password" column="passwd"/>
         <result property="email" column="email"/>
         <result property="createTime" column="create_time"/>
         <result property="lastLoginTime" column="last_login_time"/>
