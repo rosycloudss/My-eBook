@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
@@ -40,13 +41,13 @@
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
 <div class="x-body">
-    <div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-            <input type="text" name="username" placeholder="请输入商品ID" autocomplete="off" class="layui-input">
-            <input type="text" name="username" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
-            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
-    </div>
+<%--    <div class="layui-row">--%>
+<%--        <form class="layui-form layui-col-md12 x-so">--%>
+<%--            <input type="text" name="username" placeholder="请输入商品ID" autocomplete="off" class="layui-input">--%>
+<%--            <input type="text" name="username" placeholder="请输入商品名称" autocomplete="off" class="layui-input">--%>
+<%--            <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>--%>
+<%--        </form>--%>
+<%--    </div>--%>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
         <span class="x-right" style="line-height:40px">共有数据：${commentPage.totalRecord} 条</span>
@@ -77,7 +78,7 @@
                 <td>${comment.book.name}</td>
                 <td>${comment.customer.name}</td>
                 <td>${comment.content}</td>
-                <td>${comment.commentDate}</td>
+                <td><fmt:formatDate value="${comment.commentDate}" type="both"></fmt:formatDate></td>
                 <td class="td-manage">
                     <a title="删除" onclick="comment_del(this,${comment.ID})" href="javascript:;">
                         <i class="layui-icon">&#xe640;</i>

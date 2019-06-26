@@ -180,7 +180,7 @@
                         </a>
                     </li>
                     <li>
-                        <a _href="message-list.jsp">
+                        <a _href="/bg/reply/list?op=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>留言管理</cite>
                         </a>

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
@@ -83,7 +84,7 @@
                 <td>${employee.getName()}</td>
                     <%--                <td>${employee.}</td>--%>
                 <td>${employee.getPhone()}</td>
-                <td>${employee.getCreateTime()}</td>
+                <td><fmt:formatDate value="${employee.createTime}" type="both"></fmt:formatDate></td>
                 <td>${employee.getPosition() == 1 ? "管理员" : "普通员工"}</td>
                 <td class="td-manage">
                     <a title="编辑"

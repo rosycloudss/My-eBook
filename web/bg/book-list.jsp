@@ -162,7 +162,6 @@
     function delAll(argument) {
 
         var data = tableCheck.getData();
-        alert('{"bookIds":"' + data + '"}')
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
                 type: "POST",

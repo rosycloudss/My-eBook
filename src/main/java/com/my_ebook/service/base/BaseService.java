@@ -14,4 +14,5 @@ public interface BaseService<T> {
 
     Page<T> findAll(T t,Page page);
 
+
 }

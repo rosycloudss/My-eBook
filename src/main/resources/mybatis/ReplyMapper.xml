@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my_ebook.mapper.ReplyMapper">
+    <resultMap id="replyMap" type="Reply">
+        <id column="reply_id" property="ID"/>
+        <result column="c_name" property="cName"/>
+        <result column="email" property="email"/>
+        <result column="content" property="content"/>
+        <result column="reply_date" property="replyDate"/>
+        <result column="ip" property="ip"/>
+    </resultMap>
+
+    <sql id="base_column_list">
+        reply_id,c_name,email,content,reply_date,ip
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="ID">
+        insert into tb_replay(c_name,email,content,reply_date,ip)
+        value(#{cName,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{replyDate,jdbcType=TIMESTAMP},#{ip,jdbcType=VARCHAR})
+    </insert>
+    <update id="update" parameterType="Reply">
+        update tb_replay
+        <set>
+            <if test="cName!=null">
+                c_name=#{cName,jdbcType=VARCHAR},
+            </if>
+            <if test="email!=null">
+                email=#{email,jdbcType=VARCHAR},
+            </if>
+            <if test="content!=null">
+                content=#{content,jdbcType=VARCHAR},
+            </if>
+            <if test="replyDate!=null">
+                reply_date=#{replyDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where reply_id=#{ID,jdbcType=INTEGER}
+    </update>
+    <delete id="delete">
+        delete from tb_replay
+        where reply_id=#{ID,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByIds">
+        delete from tb_replay where
+        reply_id in
+        <foreach collection="replyIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="select" resultMap="replyMap">
+        select
+        <include refid="base_column_list"/>
+        from tb_replay
+        <if test="reply != null">
+            <where>
+                <if test="reply.ID!=null">
+                    and reply_id=#{reply.ID,jdbcType=INTEGER}
+                </if>
+                <if test="reply.cName!=null">
+                    and c_name like #{reply.cName,jdbcType=VARCHAR}"%"
+                </if>
+                <if test="reply.email!=null">
+                    and email like #{reply.email,jdbcType=VARCHAR}"%"
+                </if>
+                <if test="reply.content!=null">
+                    and content like #{reply.content,jdbcType=VARCHAR}"%"
+                </if>
+                <!--                <if test="reply.replyDate!=null">-->
+                <!--                    and reply_date=#{reply.replyDate,jdbcType=TIMESTAMP}-->
+                <!--                </if>-->
+            </where>
+        </if>
+        <if test="page != null">
+            LIMIT #{page.pageStart,jdbcType=INTEGER} , #{page.pageSize,jdbcType=INTEGER}
+        </if>
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select
+        count(*)
+        from tb_replay
+        <if test="reply != null">
+            <where>
+                <if test="reply.ID !=null">
+                    and reply_id=#{reply.ID,jdbcType=Integer}
+                </if>
+                <if test="reply.cName!=null">
+                    and c_name like #{reply.cName,jdbcType=VARCHAR}"%"
+                </if>
+                <if test="reply.email!=null">
+                    and email like #{reply.email,jdbcType=VARCHAR}"%"
+                </if>
+                <if test="reply.content!=null">
+                    and content like #{reply.content,jdbcType=VARCHAR}"%"
+                </if>
+                <!--                <if test="reply.replyDate!=null">-->
+                <!--                    and reply_date=#{reply.replyDate,jdbcType=TIMESTAMP}-->
+                <!--                </if>-->
+            </where>
+        </if>
+    </select>
+
+</mapper>

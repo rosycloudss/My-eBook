@@ -11,7 +11,7 @@ public interface BookMapper {
 
     int deleteById(int bookId);
 
-    int deleteByIds(List<Integer> bookIds);
+    int deleteByIds(@Param("bookIds") List<Integer> bookIds);
 
     int update(Book book);
 

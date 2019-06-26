@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
@@ -77,8 +78,8 @@
                 <td>${customer.gender}</td>
                 <td>${customer.phone}</td>
                 <td>${customer.email}</td>
-                <td>${customer.createTime}</td>
-                <td>${customer.lastLoginTime}</td>
+                <td><fmt:formatDate value="${customer.createTime}" type="both"></fmt:formatDate></td>
+                <td><fmt:formatDate value="${customer.lastLoginTime}" type="both"></fmt:formatDate></td>
                 <td class="td-manage">
                     <a title="编辑" onclick="x_admin_show('编辑顾客','/bg/customer/getOne?customerId=${customer.ID}',800,500)"
                        href="javascript:;">
