@@ -15,9 +15,9 @@ public interface CategoryMapper {
 
     int update(Category category);
 
-    List<Category> selectByParentId(int parentId);
+    List<Category> selectByParentId(@Param("parentId") int parentId);
 
-    List<Category> selectByParentIdLimit(@Param("parentId") int parentId,@Param("page") Page page);
+    List<Category> selectByParentIdLimit(@Param("parentId") int parentId, @Param("page") Page page);
 
     Category selectById(@Param("categoryId") int categoryId);
 }

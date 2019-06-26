@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my_ebook.mapper.CustomerMapper">
+
+    <resultMap id="customerMap" type="Customer">
+        <id property="ID" column="customer_id"/>
+        <result property="head" column="head"/>
+        <result property="name" column="customer_name" />
+        <result property="nickname" column="nickname" />
+        <result property="gender" column="gender" />
+        <result property="phone" column="phone" />
+        <result property="password" column="password" />
+        <result property="email" column="email" />
+        <result property="createTime" column="create_time" />
+        <result property="lastLoginTime" column="last_login_time"/>
+        <result property="addr" column="addr" />
+        <result property="zipCode" column="zip_code" />
+    </resultMap>
+
+    <sql id="base_customer_list" >
+        customer_id, head, customer_name, nickname,
+       gender, phone, passwd, email, create_time,
+       last_login_time, addr, zip_code
+    </sql>
+
+    <select id="getByPhone" parameterType="string" resultMap="customerMap">
+        select <include refid="base_customer_list" />
+        from tb_customer where phone = #{phone,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getById" parameterType="int" resultMap="customerMap">
+        select <include refid="base_customer_list" />
+        from tb_customer where customer_id = #{customerId,jdbcType=INTEGER}
+    </select>
+
+    <update id="update" parameterType="Customer">
+        update tb_customer
+        <set>
+            <if test="head != null and head != ''">
+                head = #{head},
+            </if>
+            <if test="name != null and name != ''">
+                customer_name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null and gender != ''">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastLoginTime">
+                last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="addr != null and addr != ''">
+                addr = #{addr,jdbcType=VARCHAR},
+            </if>
+            <if test="zipCode != null and zipCode != ''">
+                zip_code = #{zipCode,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where customer_id = #{ID,jdbcType=INTEGER} ;
+    </update>
+
+    <update id="updatePassword">
+        update tb_customer
+        <set>
+            <if test="password != null and password != ''">
+                passwd = #{password,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where customer_id = #{customerId,jdbcType=INTEGER}
+    </update>
+
+    <insert id="insert" parameterType="Customer">
+        <selectKey resultType="int" keyProperty="ID" keyColumn="customer_id" order="AFTER">
+            select LAST_INSERT_ID() as value
+        </selectKey>
+        insert tb_customer (customer_id, head, customer_name,
+                            nickname, gender, phone, passwd,
+                            email, create_time, last_login_time,
+                            addr, zip_code)
+              values (#{ID,jdbcType=INTEGER} , #{head,jdbcType=VARCHAR} , #{name,jdbcType=VARCHAR},
+                      #{nickname,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+                      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR} , #{createTime,jdbcType=TIMESTAMP},
+                      #{lastLoginTime,jdbcType=TIMESTAMP}, #{addr,jdbcType=VARCHAR} , #{zipCode,jdbcType=VARCHAR}  )
+    </insert>
+</mapper>

@@ -7,11 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 public interface BookMapper {
 
-    int insert( Book book);
+    int insert(Book book);
 
     int deleteById(int bookId);
 
-    int deleteByIds(@Param("bookIds") List<Integer> bookIds);
+    int deleteByIds(List<Integer> bookIds);
 
     int update(Book book);
 
@@ -21,8 +21,7 @@ public interface BookMapper {
      * @param book
      * @return
      */
-    int count(@Param("book") Book book);
-
+    int count(Book book);
 
     Book selectById(@Param("bookId") int bookId);
 
