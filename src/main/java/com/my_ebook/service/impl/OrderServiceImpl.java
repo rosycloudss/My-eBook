@@ -6,6 +6,7 @@ import com.my_ebook.entity.OrderItem;
 import com.my_ebook.mapper.OrderMapper;
 import com.my_ebook.service.OrderService;
 import com.my_ebook.vo.Page;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,6 +21,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 生成订单编号
+     *
      * @param customerID
      * @return
      */
@@ -30,6 +32,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 创建订单
+     *
      * @param customerID   客户编号
      * @param receiver     收货人
      * @param recevingAddr 收货地址
@@ -53,7 +56,7 @@ public class OrderServiceImpl implements OrderService {
         order.setRemark(remark);
 
         order.setOrderItemList(orderItems);
-        if(add(order) > 0){
+        if (add(order) > 0) {
             return order;
         }
         return null;
@@ -84,6 +87,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, Date startDate, Date endDate, Page page) {
+        Order order = new Order();
+
         return null;
     }
 
@@ -96,26 +101,31 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public int add(Order order) {
-        return 0;
+        return orderMapper.insert(order);
     }
 
     public int delete(int id) {
-        return 0;
+        return orderMapper.deleteById(id);
     }
 
     public int update(Order order) {
-        return 0;
+        return orderMapper.update(order);
     }
 
     public int count(Order order) {
-        return 0;
+        return orderMapper.count(order);
     }
 
     public Page<Order> findAll(Order order, Page page) {
-        return null;
+        page = initPage(order, page);
+        page.setPageInfos(orderMapper.select(order, page));
+        return page;
     }
 
     public Page<Order> initPage(Order order, Page<Order> page) {
-        return null;
+        if (page == null) {
+            page = new Page<Order>(count(order), 1, 20);
+        }
+        return page;
     }
 }

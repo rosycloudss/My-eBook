@@ -40,7 +40,7 @@
     <update id="update">
         update tb_order
         <set>
-            <if test="order.customer.ID != null">
+            <if test="order.customer != null and order.customer.ID != nulll">
                 and customer_id=#{order.customer.ID,jdbcType=INTEGER}
             </if>
             <if test="order.orderID != null">
@@ -94,9 +94,9 @@
         select
         <include refid="base_column_list"></include>
         from tb_order
-        <where>
-            <if test="order != null">
-                <if test="order.customer.ID != null">
+        <if test="order != null">
+            <where>
+                <if test="order.customer != null and order.customer.ID != null">
                     and customer_id=#{order.customer.ID,jdbcType=INTEGER}
                 </if>
                 <if test="orderID != null">
@@ -135,10 +135,58 @@
                 <if test="totalPrice != null">
                     and total_price=#{order.totalPrice,jdbcType=DOUBLE}
                 </if>
-            </if>
-        </where>
+            </where>
+        </if>
         <if test="page != null">
             limit #{page.pageStart},#{page.pageSize}
+        </if>
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select
+        count(*)
+        from tb_order
+        <if test="order != null">
+            <where>
+                <if test="order.customer != null and order.customer.ID != null">
+                    and customer_id=#{order.customer.ID,jdbcType=INTEGER}
+                </if>
+                <if test="orderID != null">
+                    and order_id=#{order.orderID,jdbcType=VARCHAR}
+                </if>
+                <if test="orderStatus != null">
+                    and order_status=#{order.orderStatus,jdbcType=INTEGER}
+                </if>
+                <if test="receiver != null">
+                    and receiver=#{order.receiver,jdbcType=VARCHAR}
+                </if>
+                <if test="recevingAddr != null">
+                    and receiving_addr=#{order.recevingAddr,jdbcType=VARCHAR}
+                </if>
+                <if test="phone != null">
+                    and phone like #{order.phone,jdbcType=VARCHAR}"%"
+                </if>
+                <if test="delivery != null">
+                    and delivery=#{order.delivery,jdbcType=INTEGER}
+                </if>
+                <if test="postStatus != null">
+                    and post_status=#{order.postStatus,jdbcType=INTEGER}
+                </if>
+                <if test="payStatus != null">
+                    and pay_status=#{order.payStatus,jdbcType=INTEGER}
+                </if>
+                <if test="orderDate != null">
+                    and order_Date=#{order.orderDate,jdbcType=TIMESTAMP}
+                </if>
+                <!--                <if test="remark != null">-->
+                <!--                    and rem#{remark,jdbcType=VARCHAR}-->
+                <!--                </if>-->
+                <if test="orderMount != null">
+                    and order_mount=#{order.orderMount,jdbcType=INTEGER}
+                </if>
+                <if test="totalPrice != null">
+                    and total_price=#{order.totalPrice,jdbcType=DOUBLE}
+                </if>
+            </where>
         </if>
     </select>
 

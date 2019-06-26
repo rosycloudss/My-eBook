@@ -30,7 +30,7 @@ public class Order {
     /**
      * 订单状态 初始为未确认
      */
-    private Integer orderStatus = STATUS.TO_BE_CONFIRMED;
+    private Integer orderStatus;
     /**
      * 收货人
      */
