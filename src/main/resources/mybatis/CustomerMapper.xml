@@ -24,6 +24,9 @@
        gender, phone, passwd, email, create_time,
        last_login_time, addr, zip_code
     </sql>
+    <delete id="delete">
+        delete from tb_customer where customer_id=#{customerId,jdbcType=INTEGER}
+    </delete>
 
     <select id="getByPhone" parameterType="string" resultMap="customerMap">
         select
@@ -57,12 +60,12 @@
                 <if test="customer.email != null and customer.email != ''">
                     and email = #{customer.email,jdbcType=VARCHAR}
                 </if>
-<!--                <if test="customer.createTime != null">-->
-<!--                    and create_time = #{customer.createTime,jdbcType=TIMESTAMP}-->
-<!--                </if>-->
-<!--                <if test="customer.lastLoginTime">-->
-<!--                    and last_login_time = #{customer.lastLoginTime,jdbcType=TIMESTAMP}-->
-<!--                </if>-->
+                <!--                <if test="customer.createTime != null">-->
+                <!--                    and create_time = #{customer.createTime,jdbcType=TIMESTAMP}-->
+                <!--                </if>-->
+                <!--                <if test="customer.lastLoginTime">-->
+                <!--                    and last_login_time = #{customer.lastLoginTime,jdbcType=TIMESTAMP}-->
+                <!--                </if>-->
                 <if test="customer.addr != null and customer.addr != ''">
                     and addr = #{customer.addr,jdbcType=VARCHAR}
                 </if>
@@ -95,12 +98,12 @@
                 <if test="customer.email != null and customer.email != ''">
                     and email = #{customer.email,jdbcType=VARCHAR}
                 </if>
-<!--                <if test="customer.createTime != null">-->
-<!--                    and create_time = #{customer.createTime,jdbcType=TIMESTAMP}-->
-<!--                </if>-->
-<!--                <if test="customer.lastLoginTime">-->
-<!--                    and last_login_time = #{customer.lastLoginTime,jdbcType=TIMESTAMP}-->
-<!--                </if>-->
+                <!--                <if test="customer.createTime != null">-->
+                <!--                    and create_time = #{customer.createTime,jdbcType=TIMESTAMP}-->
+                <!--                </if>-->
+                <!--                <if test="customer.lastLoginTime">-->
+                <!--                    and last_login_time = #{customer.lastLoginTime,jdbcType=TIMESTAMP}-->
+                <!--                </if>-->
                 <if test="customer.addr != null and customer.addr != ''">
                     and addr = #{customer.addr,jdbcType=VARCHAR}
                 </if>
@@ -158,15 +161,12 @@
         where customer_id = #{customerId,jdbcType=INTEGER}
     </update>
 
-    <insert id="insert" parameterType="Customer">
-        <selectKey resultType="int" keyProperty="ID" keyColumn="customer_id" order="AFTER">
-            select LAST_INSERT_ID() as value
-        </selectKey>
-        insert tb_customer (customer_id, head, customer_name,
+    <insert id="insert" parameterType="Customer" useGeneratedKeys="true" keyProperty="ID">
+        insert into  tb_customer ( head, customer_name,
         nickname, gender, phone, passwd,
         email, create_time, last_login_time,
         addr, zip_code)
-        values (#{ID,jdbcType=INTEGER} , #{head,jdbcType=VARCHAR} , #{name,jdbcType=VARCHAR},
+        values (#{head,jdbcType=VARCHAR} , #{name,jdbcType=VARCHAR},
         #{nickname,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
         #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR} , #{createTime,jdbcType=TIMESTAMP},
         #{lastLoginTime,jdbcType=TIMESTAMP}, #{addr,jdbcType=VARCHAR} , #{zipCode,jdbcType=VARCHAR} )

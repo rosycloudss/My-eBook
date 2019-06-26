@@ -24,6 +24,8 @@ public interface CustomerMapper {
 
     /*************************李伟**************************************/
 
+    int delete(int customerId);
+
     List<Customer> select(@Param("customer") Customer customer, @Param("page") Page page);
 
     int count(@Param("customer") Customer customer);

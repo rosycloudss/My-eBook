@@ -32,7 +32,9 @@ public class CustomerTest {
         customer.setLastLoginTime(null);
         customer.setAddr("郑州大学");
         customer.setZipCode("123456");
-        System.out.println(customerService.add(customer));
+        for(int i = 0;i<100;i++) {
+            System.out.println(customerService.add(customer));
+        }
     }
 
     @Test
@@ -50,7 +52,8 @@ public class CustomerTest {
         customer.setAddr("郑州大学");
         customer.setZipCode("123456");
 
-        Page<Customer> page = new Page<Customer>(customerService.count(customer),1,20);
-        System.out.println(customerService.findAll(customer,page));;
+        Customer customer1 = new Customer();
+        Page<Customer> page = new Page<Customer>(customerService.count(customer1),1,20);
+        System.out.println(customerService.findAll(customer1,page));;
     }
 }

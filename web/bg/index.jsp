@@ -6,20 +6,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
-<html  class="x-admin-sm">
+<html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
     <title>My-eBook 后台管理系统</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<%--    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />--%>
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <%--    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />--%>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="/bg/css/font.css">
     <link rel="stylesheet" href="/bg/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript"src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
     <script src="/bg/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/bg/js/xadmin.js"></script>
     <script type="text/javascript" src="/bg/js/cookie.js"></script>
@@ -67,14 +67,14 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>图书列表</cite>
                         </a>
-                    </li >
+                    </li>
                     <li>
                         <a _href="/bg/category/list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>分类管理</cite>
 
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
             <!--图书管理 end -->
@@ -92,7 +92,7 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
             <!--订单管理 end -->
@@ -109,7 +109,7 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>员工列表</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
             <!--员工管理 end-->
@@ -123,11 +123,11 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="customer-list.jsp">
+                        <a _href="/bg/customer/list?op=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>顾客列表</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
             <!--顾客管理 end-->
@@ -144,7 +144,7 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>评论列表</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
             <!--评论管理 end -->
@@ -161,7 +161,7 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>销量统计</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
             <!--销量管理 end-->
@@ -178,13 +178,13 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>网站信息</cite>
                         </a>
-                    </li >
+                    </li>
                     <li>
                         <a _href="message-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>留言管理</cite>
                         </a>
-                    </li >
+                    </li>
                 </ul>
             </li>
             <!--网站管理 end-->

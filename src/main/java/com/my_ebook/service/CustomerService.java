@@ -9,4 +9,9 @@ public interface CustomerService extends BaseService<Customer>, PageService<Cust
     public Customer login(String phone, String password);
 
     public int updatePassword(int id, String oldPassword, String newPassword);
+
+    /*********************************李伟************************************/
+
+    public Customer findById(Integer customerId);
+    /*********************************李伟************************************/
 }

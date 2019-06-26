@@ -1,5 +1,7 @@
 package com.my_ebook.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -120,6 +122,8 @@ public class Customer {
 		this.email = email;
 	}
 
+	@DateTimeFormat(pattern="yyyy-MM-ddHH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-ddHH:mm:ss")
 	public Date getCreateTime() {
 		return createTime;
 	}
@@ -128,6 +132,8 @@ public class Customer {
 		this.createTime = createTime;
 	}
 
+	@DateTimeFormat(pattern="yyyy-MM-ddHH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-ddHH:mm:ss")
 	public Date getLastLoginTime() {
 		return lastLoginTime;
 	}

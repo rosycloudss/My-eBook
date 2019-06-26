@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public int delete(int id) {
-        return 0;
+        return customerMapper.delete(id);
     }
 
     @Override
@@ -65,4 +65,8 @@ public class CustomerServiceImpl implements CustomerService {
         return null;
     }
 
+    @Override
+    public Customer findById(Integer customerId) {
+        return customerMapper.getById(customerId);
+    }
 }

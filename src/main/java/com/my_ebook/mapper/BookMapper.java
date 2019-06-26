@@ -21,7 +21,7 @@ public interface BookMapper {
      * @param book
      * @return
      */
-    int count(Book book);
+    int count(@Param("book") Book book);
 
     Book selectById(@Param("bookId") int bookId);
 
