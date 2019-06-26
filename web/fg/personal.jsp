@@ -47,17 +47,17 @@ Main Start
                                 </div>
                                 <div class="tg-widgetcontent">
                                     <ul>
-                                        <li><a href="javascript:void(0);"><span>个人信息</span></a></li>
-                                        <li><a href="javascript:void(0);"><span>我的订单</span></a></li>
+                                        <li><a href="javascript:void(0);" onclick="showPerson()"><span>个人信息</span></a></li>
+                                        <li><a href="javascript:void(0);" onclick="showOrder()"><span>我的订单</span></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </aside>
                     </div>
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
-                        <div id="tg-content" class="tg-content">
-                            <div>个人中心或订单列表</div>
-                        </div>
+                        <table class="table" id="table">
+
+                        </table>
                     </div>
                 </div>
             </div>
@@ -67,6 +67,63 @@ Main Start
             Contact Us End
     *************************************-->
 </main>
+<script>
+    function showPerson() {
+        $.ajax({
+            url: "/My-eBook/fg/customer/findCustomerById",
+            type: "get",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            headers: {
+                'sessionId': getCookie("sessionId")
+            },
+            success: function (data) {
+                var customer=data.customer;
+                $("#table").html(" <thread>" +
+                    "<tr>" +
+                    "<th>姓名</th>" +
+                    "<th>昵称</th>" +
+                    "<th>电话号码</th>" +
+                    "<th>邮箱</th>" +
+                    "<th>地址</th>" +
+                    "<th>邮编</th>" +
+                    "<th>上次登录时间</th>" +
+                    "</tr>" +
+                    "</thread>" +
+                    "<tbody id=\"tbody\">" +
+                    "<td>"+customer.name+"</td>"+
+                    "<td>"+customer.nickname+"</td>"+
+                    "<td>"+customer.phone+"</td>"+
+                    "<td>"+customer.password+"</td>"+
+                    "<td>"+customer.email+"</td>"+
+                    "<td>"+customer.addr+"</td>"+
+                    "<td>"+customer.zipCode+"</td>"+
+                    "<td>"+customer.lastLoginTime+"</td>"+
+                    "</tbody>");
+            },
+            error: function (data){
+                alert("error");
+            }
+        });
+
+    }
+    function showOrder() {
+        $("#table").html(" <thread>" +
+            "<tr>" +
+            "<th>订单编号</th>" +
+            "<th>收货人姓名</th>" +
+            "<th>名称</th>" +
+            "<th>数量</th>" +
+            "<th>总价</th>" +
+            "<th>发货状态</th>" +
+            "<th>电话号码</th>" +
+            "<th>收货地址</th>" +
+            "</tr>" +
+            "</thread>" +
+            "<tbody id=\"tbody\">" +
+            "</tbody>");
+    }
+</script>
 <!--************************************
 Main End
 *************************************-->

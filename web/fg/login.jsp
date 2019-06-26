@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liwei
-  Date: 2019/6/22
-  Time: 19:59
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
+<html>
 <head>
     <!-- meta data -->
     <meta charset="utf-8">
@@ -19,19 +13,19 @@
     <!-- title of site -->
     <title>登录</title>
     <!-- For favicon png -->
-    <link rel="shortcut icon" type="image/icon" href="./assets/logo/favicon.png"/>
+    <link rel="shortcut icon" type="image/icon" href="/fg/assets/logo/favicon.png"/>
     <!--font-awesome.min.css-->
-    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/fg/assets/css/font-awesome.min.css">
     <!--animate.css-->
-    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="/fg/assets/css/animate.css">
     <!--bootstrap.min.css-->
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fg/assets/css/bootstrap.min.css">
     <!-- bootsnav -->
-    <link rel="stylesheet" href="./assets/css/bootsnav.css">
+    <link rel="stylesheet" href="/fg/assets/css/bootsnav.css">
     <!--style.css-->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/fg/assets/css/style.css">
     <!--responsive.css-->
-    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="/fg/assets/css/responsive.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,7 +47,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="signin-form">
-                            <form action="fg/customer/login" method="post">
+                            <form action="customer/login" method="post">
                                 <div class="form-group">
                                     <label for="signin_form_email">电话号码</label>
                                     <input type="tel" class="form-control" id="signin_form_email" name="phone" placeholder="电话号码">
@@ -89,7 +83,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="signin-footer">
-                            <button type="button" class="btn signin_btn signin_btn_two" data-toggle="modal"
+                            <button type="button" onclick="send()" class="btn signin_btn signin_btn_two" data-toggle="modal"
                                     data-target=".signin_modal">
                                 登录
                             </button>
@@ -105,19 +99,23 @@
     </div><!--/.container -->
 </section><!--/.signin -->
 <!-- signin end -->
-
+<script type="text/javascript">
+    function send() {
+        document.getElementsByTagName("form")[0].submit();
+    }
+</script>
 <!-- Include all js compiled plugins (below), or include individual files as needed -->
-<script src="./assets/js/jquery.js"></script>
+<script src="/fg/assets/js/jquery.js"></script>
 <!--modernizr.min.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <!--bootstrap.min.js-->
-<script src="./assets/js/bootstrap.min.js"></script>
+<script src="/fg/assets/js/bootstrap.min.js"></script>
 <!-- bootsnav js -->
-<script src="./assets/js/bootsnav.js"></script>
+<script src="/fg/assets/js/bootsnav.js"></script>
 <!-- jquery.sticky.js -->
-<script src="./assets/js/jquery.sticky.js"></script>
+<script src="/fg/assets/js/jquery.sticky.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <!--Custom JS-->
-<script src="./assets/js/custom.js"></script>
+<script src="/fg/assets/js/custom.js"></script>
 </body>
 </html>

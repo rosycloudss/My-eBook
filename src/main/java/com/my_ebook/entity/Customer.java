@@ -24,6 +24,7 @@ public class Customer {
 	 * 顾客姓名
 	 */
 	private String name;
+
 	/**
 	 * 用户头像
 	 */
@@ -72,6 +73,14 @@ public class Customer {
 
 	public void setID(Integer ID) {
 		this.ID = ID;
+	}
+
+	public String getHead() {
+		return head;
+	}
+
+	public void setHead(String head) {
+		this.head = head;
 	}
 
 	public String getName() {

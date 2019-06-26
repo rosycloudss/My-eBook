@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: liwei
-  Date: 2019/6/22
-  Time: 19:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -18,17 +11,17 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/transitions.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/color.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <link rel="stylesheet" href="/fg/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fg/css/normalize.css">
+    <link rel="stylesheet" href="/fg/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/fg/css/icomoon.css">
+    <link rel="stylesheet" href="/fg/css/jquery-ui.css">
+    <link rel="stylesheet" href="/fg/css/owl.carousel.css">
+    <link rel="stylesheet" href="/fg/css/transitions.css">
+    <link rel="stylesheet" href="/fg/css/main.css">
+    <link rel="stylesheet" href="/fg/css/color.css">
+    <link rel="stylesheet" href="/fg/css/responsive.css">
+    <script src="/fg/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
 
@@ -62,7 +55,7 @@
                             </li>
                         </ul>
                         <div class="tg-userlogin">
-                            <figure><a href="personal.jsp"><img src="images/users/img-01.jpg" alt="image description"></a></figure>
+                            <figure><a href="personal.jsp"><img src="/fg/images/users/img-01.jpg" alt="image description"></a></figure>
                             <span>Hi, 李伟</span>
                         </div>
                     </div>
@@ -73,7 +66,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <strong class="tg-logo"><a href="index.jsp"><img src="images/logo.png" alt="company name here"></a></strong>
+                        <strong class="tg-logo"><a href="index.jsp"><img src="/fg/images/logo.png" alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
                             <div class="dropdown tg-themedropdown tg-wishlistdropdown">
                                 <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,7 +89,7 @@
                                     <div class="tg-minicartbody">
                                         <div class="tg-minicarproduct">
                                             <figure>
-                                                <img src="images/products/img-01.jpg" alt="image description">
+                                                <img src="/fg/images/products/img-01.jpg" alt="image description">
                                             </figure>
                                             <div class="tg-minicarproductdata">
                                                 <h5><a href="javascript:void(0);">Our State Fair Is A Great Function</a></h5>
@@ -105,7 +98,7 @@
                                         </div>
                                         <div class="tg-minicarproduct">
                                             <figure>
-                                                <img src="images/products/img-02.jpg" alt="image description">
+                                                <img src="/fg/images/products/img-02.jpg" alt="image description">
 
                                             </figure>
                                             <div class="tg-minicarproductdata">
@@ -115,7 +108,7 @@
                                         </div>
                                         <div class="tg-minicarproduct">
                                             <figure>
-                                                <img src="images/products/img-03.jpg" alt="image description">
+                                                <img src="/fg/images/products/img-03.jpg" alt="image description">
 
                                             </figure>
                                             <div class="tg-minicarproductdata">
@@ -252,7 +245,7 @@
                                                     </ul>
                                                     <!--                                                    <ul>-->
                                                     <!--                                                        <li>-->
-                                                    <!--                                                            <figure><img src="images/img-01.png" alt="image description"></figure>-->
+                                                    <!--                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>-->
                                                     <!--                                                            <div class="tg-textbox">-->
                                                     <!--                                                                <h3>More Than<span>12,0657,53</span>Books Collection</h3>-->
                                                     <!--                                                                <div class="tg-description">-->
@@ -307,7 +300,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -362,7 +355,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -417,7 +410,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -472,7 +465,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -527,7 +520,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -582,7 +575,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -637,7 +630,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -692,7 +685,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -747,7 +740,7 @@
                                                     </ul>
                                                     <ul>
                                                         <li>
-                                                            <figure><img src="images/img-01.png" alt="image description"></figure>
+                                                            <figure><img src="/fg/images/img-01.png" alt="image description"></figure>
                                                             <div class="tg-textbox">
                                                                 <h3>More Than<span>12,0657,53</span>Books Collection</h3>
                                                                 <div class="tg-description">
@@ -765,7 +758,8 @@
                                     <li><a href="personal.jsp">个人中心</a></li>
                                     <li><a href="contactus.jsp">联系我们</a></li>
                                     <li><a href="aboutus.jsp">关于我们</a></li>
-
+                                    <li><a href="modifypwd.jsp">修改密码</a></li>
+                                    <li><a href="logout.jsp">退出登录</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -775,6 +769,7 @@
             </div>
         </div>
     </header>
+</div>
     <!--************************************
             Header End
     *************************************-->
