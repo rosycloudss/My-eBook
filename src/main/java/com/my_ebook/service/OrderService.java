@@ -76,16 +76,19 @@ public interface OrderService extends BaseService<Order>, PageService<Order> {
     /**
      * 查询顾客订单信息
      *
-     * @param customerId  顾客ID
+     * @param customerId  订单Id
      * @param orderNo     订单编号
-     * @param orderStatus 订单装填
-     * @param delivery    订单派送状态
-     * @param postStatus  订单发货状态
-     * @param payStatus   订单支付状态
+     * @param orderStatus 订单状态
+     * @param delivery    订单派送方式
+     * @param postStatus  发货状态
+     * @param payStatus   支付状态
+     * @param startDate   订单开始时间
+     * @param endDate     订单创建结束时间
+     * @param currentPage 当前页面
      * @param page
      * @return
      */
-    Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, Date startDate, Date endDate, Page page);
+    Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, Date startDate, Date endDate,Integer currentPage, Page page);
 
     /**
      * 通过订单编号查找订单信息

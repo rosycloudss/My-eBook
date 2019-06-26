@@ -31,7 +31,7 @@
 <body>
 <!-- 顶部开始 -->
 <div class="container">
-    <div class="logo"><a href="./index.html">My-eBook 后台管理系统</a></div>
+    <div class="logo"><a href="./index.html">${website.name} 后台管理系统</a></div>
     <div class="left_open">
         <i title="展开左侧栏" class="iconfont">&#xe699;</i>
     </div>
@@ -208,7 +208,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='/bg/welcome.jsp' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='/bg/welcome' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
         <div id="tab_show"></div>

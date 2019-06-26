@@ -23,7 +23,7 @@ public class CommentTest {
     public void addTest() {
         Comment comment = new Comment();
         Book book = new Book();
-        book.setID(282);
+        book.setID(286);
         comment.setBook(book);
         Customer customer = new Customer();
         customer.setID(4);
@@ -31,7 +31,7 @@ public class CommentTest {
         comment.setContent("超级好看");
         comment.setCommentDate(new Date(System.currentTimeMillis()));
         comment.setStatus(1);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             System.out.println(commentService.add(comment));
         }
     }

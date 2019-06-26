@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html class="x-admin-sm">
 <head>
@@ -14,15 +14,15 @@
     <title>欢迎页面-X-admin2.1</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<%--    <meta name="viewport"--%>
-<%--          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>--%>
-    <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/xadmin.css">
+    <%--    <meta name="viewport"--%>
+    <%--          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>--%>
+    <link rel="stylesheet" href="/bg/css/font.css">
+    <link rel="stylesheet" href="/bg/css/xadmin.css">
 </head>
 <body>
 <div class="x-body">
     <blockquote class="layui-elem-quote">欢迎：
-        <span class="x-red">${sessionScope.employee.getName()}</span>！当前时间:2018-04-25 20:50:53
+        <span class="x-red">${sessionScope.employee.getName()}</span>
     </blockquote>
     <fieldset class="layui-elem-field">
         <legend>数据统计</legend>
@@ -38,28 +38,28 @@
                                         <a href="javascript:;" class="x-admin-backlog-body">
                                             <h3>图书数量</h3>
                                             <p>
-                                                <cite>66</cite></p>
+                                                <cite>${bookCount}</cite></p>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
                                         <a href="javascript:;" class="x-admin-backlog-body">
                                             <h3>顾客数量</h3>
                                             <p>
-                                                <cite>12</cite></p>
+                                                <cite>${customerCount}</cite></p>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
                                         <a href="javascript:;" class="x-admin-backlog-body">
                                             <h3>评论数量</h3>
                                             <p>
-                                                <cite>99</cite></p>
+                                                <cite>${commentCount}</cite></p>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
                                         <a href="javascript:;" class="x-admin-backlog-body">
                                             <h3>留言数量</h3>
                                             <p>
-                                                <cite>67</cite></p>
+                                                <cite>${replyCount}</cite></p>
                                         </a>
                                     </li>
                                 </ul>
@@ -77,7 +77,7 @@
                 <tbody>
                 <tr>
                     <th>网站名称</th>
-                    <td>My-eBook</td>
+                    <td>${website.name}</td>
                 </tr>
                 <!--                <tr>-->
                 <!--                    <th>服务器地址</th>-->
@@ -85,7 +85,7 @@
                 <!--                </tr>-->
                 <tr>
                     <th>浏览次数</th>
-                    <td>1000</td>
+                    <td>${website.count}</td>
                 </tr>
                 </tbody>
             </table>
