@@ -50,11 +50,11 @@ public class Order {
     /**
      * 发货状态 初始化为未发货状态
      */
-    private Integer postStatus = STATUS.UNSHIPPED;
+    private Integer postStatus;
     /**
      * 支付状态 初始为未支付状态
      */
-    private Integer payStatus = STATUS.UNPAID;
+    private Integer payStatus;
     /**
      * 订单生成时间
      */

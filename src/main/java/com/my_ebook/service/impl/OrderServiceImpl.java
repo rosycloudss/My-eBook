@@ -86,10 +86,25 @@ public class OrderServiceImpl implements OrderService {
         return null;
     }
 
-    public Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, Date startDate, Date endDate, Page page) {
+    public Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery,
+                                  Integer postStatus, Integer payStatus, Date startDate, Date endDate, Integer currentPage, Page page) {
         Order order = new Order();
+        if (customerId != null) {
+            Customer customer = new Customer();
+            customer.setID(customerId);
+            order.setCustomer(customer);
+        }
+        order.setOrderID(orderNo);
+        order.setOrderStatus(orderStatus);
+        order.setDelivery(delivery);
+        order.setPostStatus(postStatus);
+        order.setPayStatus(payStatus);
+        if (page == null) {
+            page = new Page(orderMapper.countIntStartAndEnd(order, startDate, endDate), currentPage, 20);
+        }
 
-        return null;
+        page.setPageInfos(orderMapper.selectInStartAndEnd(order, startDate, endDate, page));
+        return page;
     }
 
     public Page<Order> findByOrderNo(String orderNo, Page page) {
