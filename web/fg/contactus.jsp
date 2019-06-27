@@ -41,9 +41,6 @@ Main Start
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <div id="tg-locationmap" class="tg-locationmap tg-map"></div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <form class="tg-formtheme tg-formcontactus">
                             <fieldset>
                                 <div class="form-group">
@@ -53,10 +50,10 @@ Main Start
                                     <input id="email" type="text" name="email" class="form-control" placeholder="邮箱">
                                 </div>
                                 <div class="form-group tg-hastextarea">
-                                    <textarea id="comment" placeholder="评论"></textarea>
+                                    <textarea id="comment" type="text" name="comment"  placeholder="评论"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button id="btn" type="submit" class="tg-btn tg-active">提交</button>
+                                    <a href="javascript:;" onclick="submit()" class="tg-btn tg-active">提交</a>
                                 </div>
                             </fieldset>
                         </form>
@@ -99,33 +96,32 @@ Main Start
     <!--************************************
             Contact Us End
     *************************************-->
-</main>
-<script>
-    $("#btn").on(click,function () {
-        var bookid=$("#bookid").val();
-        var customerid=$("#customerid").val();
-        var comment=$("#comment").val();
-        $.ajax({
-            url:"/My-eBook//fg/contact/add",
-            type:"post",
-            dataType:'JSON',
-            data:JSON.stringify("book",bookid,"customer",customerid,"content",comment),
-            contentType : "application/json; charset=utf-8",
-            headers : {
-                'sessionId': getCookie("sessionId")
-            },
-            success:function(data) {
-                if(data.result === 1){
-                    alert("添加成功");
-                }else{
-                    alert("添加失败");
+    <script>
+        function submit() {
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var comment = $("#comment").val();
+            $.ajax({
+                url: "http://localhost:8080/fg/contact/addReply",
+                type: "post",
+                dataType: 'JSON',
+                data: JSON.stringify({"cName":name, "email":email, "content":comment}),
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.result === 1) {
+                        alert("提交成功");
+                    } else {
+                        alert("提交失败");
+                    }
+                },
+                error: function (data) {
+                    alert("error");
                 }
-            },
-            error:function (data) {
-                alert("添加失败");
-            }
-    })
-</script>
+            });
+        }
+    </script>
+</main>
+
 <!--************************************
 Main End
 *************************************-->

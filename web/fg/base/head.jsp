@@ -714,7 +714,7 @@
                                     <li><a href="/fg/contactus.jsp">联系我们</a></li>
                                     <li><a href="/fg/aboutus.jsp">关于我们</a></li>
                                     <li><a href="/fg/modifypwd.jsp">修改密码</a></li>
-                                    <li><a href="/fg/logout.jsp">退出登录</a></li>
+                                    <li><a href="javascript:;" onclick="logOut()">退出登录</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -726,6 +726,21 @@
     </header>
 
     <script type="text/javascript">
+        function logOut() {
+            $.ajax({
+                 url:"http://localhost:8080/fg/customer/logout",
+                 type:"get",
+                 contentType: "application/json; charset=utf-8",
+                 success:function (data) {
+                     if(data.result === 1){
+                         window.location.href="/fg/login.jsp"
+                     }
+                 },
+                error:function () {
+                     alert("error");
+                }
+            });
+        }
         function display() {
             $.ajax({
                 url: "/fg/car/displayCar",
