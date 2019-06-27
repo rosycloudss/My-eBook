@@ -143,4 +143,11 @@ public class OrderServiceImpl implements OrderService {
         }
         return page;
     }
+    @Override
+    public List<Order> selectBycustomerid(Integer customerId){
+        return orderMapper.selectBycustomerid(customerId);
+    }
 }
+
+
+

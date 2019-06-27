@@ -1,5 +1,6 @@
 package com.my_ebook.service;
 
+import com.my_ebook.entity.Customer;
 import com.my_ebook.entity.Order;
 import com.my_ebook.entity.OrderItem;
 import com.my_ebook.service.base.BaseService;
@@ -108,5 +109,5 @@ public interface OrderService extends BaseService<Order>, PageService<Order> {
      */
     Page<Order> findCustomerOrders(Integer customerId, Page page);
 
-
+    List<Order> selectBycustomerid(Integer customerId);
 }

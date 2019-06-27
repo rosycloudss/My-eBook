@@ -89,6 +89,13 @@
     <delete id="deleteByCustomerId">
         delete  from tb_order where customer_id=#{customerId,jdbcType=INTEGER};
     </delete>
+
+    <select id="selectBycustomerid" resultMap="orderMap">
+        select
+            <include refid="base_column_list"></include>
+        from tb_order
+        where customer_id=#{customerId,jdbcType=INTEGER};
+    </select>
     <select id="select" resultMap="orderMap">
         select
         <include refid="base_column_list"></include>

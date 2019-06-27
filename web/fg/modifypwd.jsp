@@ -28,7 +28,7 @@
                                     <input style="width: 250px" id="renewpwd" type="password" name="renewpwd" class="form-control" placeholder="确认密码">
                                 </div>
                                 <div class="form-group">
-                                    <button id="btn" type="submit" class="tg-btn tg-active">确认修改</button>
+                                    <button id="btn" onclick="modify()" type="button" class="tg-btn tg-active">确认修改</button>
                                 </div>
                         </form>
                     </div>
@@ -39,19 +39,20 @@
 
 </main>
 <script>
-    $("#btn").on(click,function () {
+    function modify() {
         var oldpwd = $("#oldpwd").val();
         var newpwd = $("#newpwd").val();
         var renewpwd = $("#renewpwd").val();
+        if(oldpwd==="" || newpwd==="" || renewpwd===""){
+            alert("所输项目不可为空");
+            return false;
+        }
         if (newpwd === renewpwd) {
             $.ajax({
-                url: "/My-eBook/fg/customer/changePassword/oldpwd/newpwd",
+                url: "http://localhost:8080/fg/customer/changePassword/oldpwd/newpwd",
                 type: "get",
                 dataType: 'JSON',
                 contentType: "application/json; charset=utf-8",
-                headers: {
-                    'sessionId': getCookie("sessionId")
-                },
                 success: function (data) {
                     if(data.result === 1){
                         alert("修改成功");
@@ -66,6 +67,6 @@
         }else{
             alert("新密码与旧密码不一致，请重新输入");
         }
-    });
+    }
 </script>
 <jsp:include page="base/foot.jsp"/>

@@ -66,13 +66,10 @@ Main Start
 <script>
     function showPerson() {
         $.ajax({
-            url: "/My-eBook/fg/customer/findCustomerById",
+            url: "http://localhost:8080/fg/customer/findCustomerById",
             type: "get",
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
-            headers: {
-                'sessionId': getCookie("sessionId")
-            },
             success: function (data) {
                 var customer=data.customer;
                 $("#table").html(" <thread>" +
@@ -90,7 +87,6 @@ Main Start
                         "<td>"+customer.name+"</td>"+
                         "<td>"+customer.nickname+"</td>"+
                         "<td>"+customer.phone+"</td>"+
-                        "<td>"+customer.password+"</td>"+
                         "<td>"+customer.email+"</td>"+
                         "<td>"+customer.addr+"</td>"+
                         "<td>"+customer.zipCode+"</td>"+
@@ -121,13 +117,10 @@ Main Start
             "<tbody id=\"tbody\">" +
             "</tbody>");
         $.ajax({
-            url: "/My-eBook/fg/customer/getPersonalOrder",
+            url: "http://localhost:8080/fg/customer/getPersonalOrder",
             type: "get",
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
-            headers: {
-                'sessionId': getCookie("sessionId")
-            },
             success: function (data) {
                 var orderList = data.orderList;
                 if(orderList != null){
