@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.my_ebook.entity.Employee;
 import com.my_ebook.service.EmployeeService;
+import com.my_ebook.util.MD5Utils;
+import com.my_ebook.util.StringUtil;
 import com.my_ebook.util.WebUtil;
 import com.my_ebook.vo.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,5 +153,29 @@ public class EmployeeController {
         return jsonObject;
     }
 
-//    public
+    /**
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/changePassword")
+    public JSONObject changePassword(@RequestBody Map<String, String> map) {
+//        Integer employeeId,String newpass,String repass
+        JSONObject jsonObject = new JSONObject();
+        int result = 0;
+
+        String employeeIdStr = map.get("employeeId");
+        System.out.println(employeeIdStr);
+        if (employeeIdStr != null && StringUtil.isNumber(employeeIdStr)) {
+            Employee employee = employeeService.findById(Integer.parseInt(employeeIdStr));
+            System.out.println(employee);
+            String password = map.get("newpass");
+            employee.setPassword(MD5Utils.getSaltMD5(password));
+            if (employeeService.update(employee) > 0) {
+                result = 1;
+            }
+        }
+        jsonObject.put("result", result);
+        return jsonObject;
+    }
 }

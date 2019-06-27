@@ -251,6 +251,7 @@
 
             </if>
         </where>
+        order by order_date desc
         <if test="page != null">
             limit #{page.pageStart},#{page.pageSize}
         </if>

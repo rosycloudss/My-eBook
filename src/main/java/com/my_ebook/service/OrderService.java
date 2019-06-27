@@ -117,4 +117,13 @@ public interface OrderService extends BaseService<Order>, PageService<Order> {
     Page<Order> findCustomerOrders(Integer customerId, Page page);
 
     List<Order> selectBycustomerid(Integer customerId);
+
+    /**
+     * 查询时间段内的订单信息
+     *
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    List<Order> selectByDate(String startDate, String endDate);
 }

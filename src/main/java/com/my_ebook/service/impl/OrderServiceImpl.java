@@ -96,7 +96,7 @@ public class OrderServiceImpl implements OrderService {
     public Order findByOrderId(Integer orderId) {
         Order order = new Order();
         order.setID(orderId);
-        List<Order> orders = orderMapper.selectInStartAndEnd(order,null,null,null);
+        List<Order> orders = orderMapper.selectInStartAndEnd(order, null, null, null);
         if (orders != null && !orders.isEmpty()) {
             return orders.get(0);
         }
@@ -160,9 +160,15 @@ public class OrderServiceImpl implements OrderService {
         }
         return page;
     }
+
     @Override
-    public List<Order> selectBycustomerid(Integer customerId){
+    public List<Order> selectBycustomerid(Integer customerId) {
         return orderMapper.selectBycustomerid(customerId);
+    }
+
+    @Override
+    public List<Order> selectByDate(String startDate, String endDate) {
+        return orderMapper.selectInStartAndEnd(null, startDate, endDate, null);
     }
 }
 
