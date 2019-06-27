@@ -49,6 +49,15 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <mvc:interceptors>
+
+        <!-- 后台拦截器 -->
+        <mvc:interceptor>
+            <mvc:mapping path="/bg/*"/>
+            <mvc:exclude-mapping path="/bg/employee/login"/><!-- 不需要拦截的 -->
+            <bean class="com.my_ebook.intercpter.EmployLoginIntercpter"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="maxUploadSize" value="5242880"/>
