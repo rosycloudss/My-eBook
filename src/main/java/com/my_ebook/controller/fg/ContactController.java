@@ -19,6 +19,7 @@ public class ContactController {
     public ContactController(CommentService bookCommentService){
         this.bookCommentService = bookCommentService;
     }
+
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST )
     public JSONObject add(@RequestBody Comment comment) {
@@ -31,4 +32,6 @@ public class ContactController {
         jsonObject.put("result", result);
         return jsonObject;
     }
+
+
 }

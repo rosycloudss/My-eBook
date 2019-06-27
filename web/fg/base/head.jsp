@@ -64,7 +64,7 @@
                         <div class="tg-wishlistandcart">
                             <div id="car" class="dropdown tg-themedropdown tg-minicartdropdown">
                                 <a href="javascript:void(0);" onclick="display()" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="tg-themebadge">3</span>
+                                    <span id="itemCount" class="tg-themebadge">0</span>
                                     <i class="icon-cart"></i>
                                     <span ></span>
                                 </a>
@@ -78,7 +78,7 @@
                                             <i class="fa fa-trash-o"></i>
                                             <span >清空购物车</span>
                                         </a>
-                                        <span class="tg-subtotal">商品金额: <strong >0.0</strong></span>
+                                        <span class="tg-subtotal" id="totalMoney">商品金额: 0.0</span>
                                         <div class="tg-btns">
                                             <%--<a class="tg-btn tg-active" href="javascript:void(0);">查看购物车</a>--%>
                                             <a class="tg-btn" href="/fg/car/checkOut?isCar=1">结账</a>
@@ -95,7 +95,6 @@
                                     <input type="text" name="bookName" class="typeahead form-control" placeholder="请输入书名">
                                     <button type="submit"><i class="icon-magnifier"></i></button>
                                 </fieldset>
-                                <%--<a href="javascript:void(0);">+ 高级搜索</a>--%>
                             </form>
                         </div>
                         <!--搜索框 结束-->
@@ -735,7 +734,8 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     var tempDate = '';
-                    var money;
+                    var money = 0.0;
+                    var itemCount = 0;
                     var carList = data.carList;
                     for(var i=0; i <carList.length; i++) {
                         if (carList[i] !== undefined) {
@@ -758,10 +758,15 @@
                                 '</div>\n' +
                                 '</div>';
                             console.log(carList[i]);
+                            itemCount++;
                             money += carList[i].totalPrice;
                         }
                     }
                     $("#list").html(tempDate);
+                    if (money !== undefined && money !== '') {
+                        $("#totalMoney").text("商品金额：" + money);
+                    }
+                    $("#itemCount").text(itemCount);
                 },
                 error: function (data) {
                     alert("添加失败");

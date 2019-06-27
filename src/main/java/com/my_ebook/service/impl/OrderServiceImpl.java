@@ -5,6 +5,7 @@ import com.my_ebook.entity.Order;
 import com.my_ebook.entity.OrderItem;
 import com.my_ebook.mapper.OrderMapper;
 import com.my_ebook.service.OrderService;
+import com.my_ebook.util.DateUtil;
 import com.my_ebook.vo.Page;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.stereotype.Service;
@@ -60,7 +61,10 @@ public class OrderServiceImpl implements OrderService {
 
         //设订编
         order.setOrderID(createOrderNo(customerID));
-
+        order.setPostStatus(Order.STATUS.UNSHIPPED);
+        order.setPayStatus(Order.STATUS.UNPAID);
+        order.setOrderStatus(Order.STATUS.TO_BE_CONFIRMED);
+        order.setOrderDate(DateUtil.getCurrentDate());
         order.setReceiver(receiver);
         order.setRecevingAddr(recevingAddr);
         order.setPhone(phone);
