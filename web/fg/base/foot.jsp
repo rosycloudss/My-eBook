@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <footer id="tg-footer" class="tg-footer tg-haslayout">
-    <div class="tg-footerarea">
+    <%--<div class="tg-footerarea">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
     <div class="tg-footerbar">
         <a id="tg-btnbacktotop" class="tg-btnbacktotop" href="javascript:void(0);"><i class="icon-chevron-up"></i></a>
         <div class="container">

@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/fg/contact")
 @Controller
 public class ContactController {
+    private final CommentService bookCommentService;
+
     @Autowired
-    private CommentService bookCommentService;
     public ContactController(CommentService bookCommentService){
-        this.bookCommentService=bookCommentService;
+        this.bookCommentService = bookCommentService;
     }
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST )

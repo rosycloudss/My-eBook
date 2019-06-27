@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="signin-form">
-                            <form action="customer/login" method="post">
+                            <form action="/fg/customer/login" method="post">
                                 <div class="form-group">
                                     <label for="signin_form_email">电话号码</label>
                                     <input type="tel" class="form-control" id="signin_form_email" name="phone" placeholder="电话号码">
@@ -89,7 +89,7 @@
                             </button>
                             <p>
                                 没有账号 ?
-                                <a href="register.jsp">注册</a>
+                                <a href="/fg/register.jsp">注册</a>
                             </p>
                         </div><!--/.signin-footer -->
                     </div><!--/.col -->
