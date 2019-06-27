@@ -199,6 +199,7 @@ public class Order {
             totalPrice = 0.0f;
             for (OrderItem orderItem : orderItemList) {
                 totalPrice += orderItem.getTotalPrice();
+                orderMount += orderItem.getOrderMount();
             }
         }
     }

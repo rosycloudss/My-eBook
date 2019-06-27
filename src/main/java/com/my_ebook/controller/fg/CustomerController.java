@@ -38,7 +38,6 @@ public class CustomerController {
         if (phone !=null && password != null) {
             if (customerService.findByPhone(phone) != null) {
                 model.addAttribute("msg", "该号码已经被注册！");
-                System.out.println("注册过");
                 return "/fg/register";
             }
             Customer customer = new Customer();
@@ -68,12 +67,13 @@ public class CustomerController {
         model.addAttribute("msg", "账号或密码错误！");
         return "/fg/login";
     }
-
-    @RequestMapping(value = "logout")
-    public String logout(HttpSession session, Model model) {
+    @ResponseBody
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public JSONObject logout(HttpSession session) {
+        JSONObject jsonObject=new JSONObject();
         session.removeAttribute("customer");
-        model.addAttribute("msg", "退出登录成功！");
-        return "/fg/login";
+        jsonObject.put("result", 1);
+        return jsonObject;
     }
 
     /**
@@ -120,6 +120,7 @@ public class CustomerController {
     @ResponseBody
     @RequestMapping(value = "/getOrderDetail/{orderId}",method = RequestMethod.GET)
     public JSONObject getOrderDetail(@PathVariable String orderId){
+        System.out.println(orderId);
         JSONObject jsonObject=new JSONObject();
         List<OrderItem> orderItemList = orderItemService.findOrderItems(orderId);
         List<Orderdetail> orderdetails=new ArrayList<Orderdetail>();
@@ -128,12 +129,15 @@ public class CustomerController {
             OrderItem orderItem = orderItemList.get(j);
             int bookId = orderItem.getBook().getID();
             Book book = bookService.findById(bookId);
+
             orderdetail.setSinglePrice(book.getPrice());
             orderdetail.setBookname(book.getName());
             orderdetail.setMount(orderItem.getOrderMount());
             orderdetail.setTotalPrice(orderItem.getTotalPrice());
+
             orderdetails.add(orderdetail);
         }
+        System.out.println(orderdetails);
         jsonObject.put("orderdetails",orderdetails);
         return jsonObject;
     }
@@ -149,10 +153,10 @@ public class CustomerController {
         jsonObject.put("result",result);
         return jsonObject;
     }
+
     @ResponseBody
     @RequestMapping(value = "/delOrder/{orderId}",method = RequestMethod.GET)
     public JSONObject delOrder(@PathVariable String orderId){
-        System.out.println(orderId);
         JSONObject jsonObject=new JSONObject();
         int result=0;
         result=orderService.deleteByorderId(orderId);

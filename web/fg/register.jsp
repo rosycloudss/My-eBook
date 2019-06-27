@@ -34,11 +34,16 @@
     <![endif]-->
 </head>
 <body>
-<!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-    your browser</a> to improve your experience and security.</p>
-<![endif]-->
-<!-- signin end -->
+
+<%
+    String msg= request.getParameter("msg");
+    if (msg !=null) {
+%>
+    <script type="text/javascript">
+        alert('<%=msg%>');
+    </script>
+<%}%>
+
 <section class="signin signup popup-in pop-up">
     <div class="container">
         <div class="sign-content popup-in-content">
@@ -47,7 +52,7 @@
                 <div class="signin-form">
                     <div class=" ">
                         <div class=" ">
-                            <form action="customer/register" method="post">
+                            <form action="/fg/customer/register" method="post">
                                 <div class="form-group">
                                     <label for="signin_form">姓名</label>
                                     <input type="text" class="form-control" name="name" id="signin_form" placeholder="姓名">

@@ -27,7 +27,6 @@ Main Start
     <%
         Page<Book> bookPage  = (Page<Book>) request.getAttribute("books");
         List<Book> books = bookPage.getPageInfos();
-
         List<Category> categoryList = (List<Category>) session.getAttribute("categoryList");
     %>
     <div class="tg-sectionspace tg-haslayout">
@@ -53,7 +52,7 @@ Main Start
                                         <%
                                             for (Category category: categoryList) {
                                         %>
-                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category.getId()%>&currentPage=0"><span><%= category.getName()%></span></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category.getId()%>&currentPage=1"><span><%= category.getName()%></span></a></li>
                                         <%}%>
                                     </ul>
                                 </div>

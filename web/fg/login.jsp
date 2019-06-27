@@ -33,6 +33,14 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<%
+    String msg= request.getParameter("msg");
+    if (msg !=null) {
+%>
+    <script type="text/javascript">
+        alert('<%=msg%>');
+    </script>
+<%}%>
 <body>
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade

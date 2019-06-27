@@ -158,9 +158,9 @@ public class CarController {
         List<OrderItem> orderItems = new ArrayList<OrderItem>();
         for(String carId : carlist) {
             OrderItem orderItem = new OrderItem();
-            System.out.println(Integer.valueOf(carId));
+
             Car car = carService.findByCarId(Integer.valueOf(carId));
-            System.out.println(car.getBook());
+
             orderItem.setBook(car.getBook());
             orderItem.setTotalPrice(car.getTotalPrice());
             orderItem.setOrderMount(car.getOrderMount());
