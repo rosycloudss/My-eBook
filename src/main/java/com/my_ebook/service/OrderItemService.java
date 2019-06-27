@@ -48,6 +48,6 @@ public interface OrderItemService extends BaseService<OrderItem> {
      * @param orderId 订单ID
      * @return
      */
-    List<OrderItem> findOrderItems(Integer orderId);
+    List<OrderItem> findOrderItems(String orderId);
 
 }

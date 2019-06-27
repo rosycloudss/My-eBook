@@ -146,8 +146,16 @@ public class OrderServiceImpl implements OrderService {
         return page;
     }
     @Override
-    public List<Order> selectBycustomerid(Integer customerId){
-        return orderMapper.selectBycustomerid(customerId);
+    public List<Order> selectBycustomerid(int customerId){
+
+        List<Order> orders = orderMapper.selectBycustomerid(customerId);
+
+        return orders;
+    }
+
+    @Override
+    public int deleteByorderId(String id){
+        return orderMapper.deleteByorderId(id);
     }
 }
 

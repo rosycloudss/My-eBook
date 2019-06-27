@@ -109,5 +109,7 @@ public interface OrderService extends BaseService<Order>, PageService<Order> {
      */
     Page<Order> findCustomerOrders(Integer customerId, Page page);
 
-    List<Order> selectBycustomerid(Integer customerId);
+    List<Order> selectBycustomerid(int customerId);
+
+    int deleteByorderId(String id);
 }

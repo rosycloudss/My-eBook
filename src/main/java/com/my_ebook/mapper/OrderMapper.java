@@ -13,6 +13,8 @@ public interface OrderMapper {
 
     int deleteById(int id);
 
+    int deleteByorderId(String id);
+
     int deleteByCustomerId(int customerId);
 
     int count(@Param("order") Order order);

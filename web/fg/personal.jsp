@@ -50,10 +50,8 @@ Main Start
                             </div>
                         </aside>
                     </div>
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
-                        <table class="table" id="table">
+                    <div id="information" class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
 
-                        </table>
                     </div>
                 </div>
             </div>
@@ -65,6 +63,54 @@ Main Start
 </main>
 <script>
     function showPerson() {
+        $("#information").html("<form class=\"layui-form\">" +
+            "                        <div class=\"form-group\">" +
+            "                            <label for=\"name\" style=\"float:left\">" +
+            "                                姓名<span class=\"x-red\">*</span>" +
+            "                            </label>" +
+            "                            <div class=\"layui-input-inline\">" +
+            "                                <input type=\"text\" id=\"name\" name=\"name\" required=\"\" lay-verify=\"name\"" +
+            "                                       autocomplete=\"off\" class=\"layui-input\">" +
+            "                            </div>" +
+            "                        </div>" +
+            "                        <div class=\"form-group\">" +
+            "                            <label for=\"nickname\" style=\"float:left\">" +
+            "                                昵称<span class=\"x-red\">*</span>" +
+            "                            </label>" +
+            "                            <div class=\"layui-input-inline\">" +
+            "                                <input type=\"text\" id=\"nickname\" name=\"nickname\" required=\"\" lay-verify=\"nickname\"" +
+            "                                       autocomplete=\"off\" class=\"layui-input\">" +
+            "                            </div>" +
+            "                        </div>" +
+            "                        <div class=\"form-group\">" +
+            "                            <label for=\"phone\" style=\"float:left\">" +
+            "                                电话<span class=\"x-red\">*</span>" +
+            "                            </label>" +
+            "                            <div class=\"layui-input-inline\">" +
+            "                                <input type=\"text\" id=\"phone\" name=\"phone\" required=\"\" lay-verify=\"phone\"" +
+            "                                       autocomplete=\"off\" class=\"layui-input\">" +
+            "                            </div>" +
+            "                        </div>" +
+            "                        <div class=\"form-group\">" +
+            "                            <label for=\"email\" style=\"float:left\">" +
+            "                                邮箱<span class=\"x-red\">*</span>" +
+            "                            </label>" +
+            "                            <div class=\"layui-input-inline\">" +
+            "                                <input type=\"text\" id=\"email\" name=\"email\" required=\"\" lay-verify=\"email\"" +
+            "                                       autocomplete=\"off\" class=\"layui-input\">" +
+            "                            </div>" +
+            "                        </div>" +
+            "                        <div class=\"form-group\">" +
+            "                            <label for=\"addr\"style=\"float:left\">" +
+            "                                地址<span class=\"x-red\">*</span>" +
+            "                            </label>" +
+            "                            <div class=\"layui-input-inline\">" +
+            "                                <input type=\"text\" id=\"addr\" name=\"addr\" required=\"\" lay-verify=\"addr\"" +
+            "                                       autocomplete=\"off\" class=\"layui-input\">" +
+            "                            </div>" +
+            "                        </div>" +
+            "                        <button style=\"height: 30px;width: 100px;background-color: #0C0C0C;color: white\" type=\"button\" onclick=\"modify()\">确认修改</button>" +
+            "                        </form>");
         $.ajax({
             url: "http://localhost:8080/fg/customer/findCustomerById",
             type: "get",
@@ -72,26 +118,11 @@ Main Start
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 var customer=data.customer;
-                $("#table").html(" <thread>" +
-                    "<tr>" +
-                        "<th>姓名</th>" +
-                        "<th>昵称</th>" +
-                        "<th>电话号码</th>" +
-                        "<th>邮箱</th>" +
-                        "<th>地址</th>" +
-                        "<th>邮编</th>" +
-                        "<th>上次登录时间</th>" +
-                    "</tr>" +
-                    "</thread>" +
-                    "<tbody id=\"tbody\">" +
-                        "<td>"+customer.name+"</td>"+
-                        "<td>"+customer.nickname+"</td>"+
-                        "<td>"+customer.phone+"</td>"+
-                        "<td>"+customer.email+"</td>"+
-                        "<td>"+customer.addr+"</td>"+
-                        "<td>"+customer.zipCode+"</td>"+
-                        "<td>"+customer.lastLoginTime+"</td>"+
-                    "</tbody>");
+                document.getElementById("name").value=customer.name;
+                document.getElementById("nickname").value=customer.nickname;
+                document.getElementById("phone").value=customer.phone;
+                document.getElementById("email").value=customer.email;
+                document.getElementById("addr").value=customer.addr;
             },
             error: function (data){
                 alert("error");
@@ -99,8 +130,67 @@ Main Start
         });
 
     }
+    function modify() {
+        var name=$("#name").val();
+        var nickname=$("#nickname").val();
+        var phone=$("#phone").val();
+        var email=$("#email").val();
+        var addr=$("#addr").val();
+        $.ajax({
+           url:"http://localhost:8080/fg/customer/update" ,
+            type: "post",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            data:JSON.stringify({"name":name,"nickname":nickname,"phone":phone,"email":email,"addr":addr}),
+            success:function (data) {
+                if(data.result === 1){
+                    alert("修改成功");
+                }else{
+                    alert("修改失败");
+                }
+            },
+            error:function () {
+                alert("error");
+            }
+        });
+    }
+    function poststatus(status){
+        if(status === 2){
+            return "未发货";
+        }else if(status === 1){
+            return "已发货";
+        }
+    }
+    function paystatus(status){
+        if(status === 2){
+            return "未支付";
+        }else if(status === 1){
+            return "已支付";
+        }
+    }
+    function del(orderId) {
+
+        $.ajax({
+            url: "http://localhost:8080/fg/customer/delOrder/"+orderId,
+            type: "get",
+            dataType: 'JSON',
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if(data.result === 1){
+                    alert("删除成功");
+                    location.reload();
+                }else{
+                    alert("删除失败");
+                }
+            },
+            error:function () {
+                alert("error");
+            }
+        });
+    }
     function showOrder() {
-        $("#table").html(" <thread>" +
+        $("#information").html(" <thread>" +
+            "<table class=\"table\" id=\"table\">" +
             "<tr>" +
             "<th>订单编号</th>" +
             "<th>收货人姓名</th>" +
@@ -108,14 +198,17 @@ Main Start
             // "<th>数量</th>" +
             // "<th>总价</th>" +
             "<th>发货状态</th>" +
+            "<th>支付状态</th>" +
             "<th>电话号码</th>" +
             "<th>下单时间</th>" +
             "<th>收货地址</th>" +
             "<th>详情</th>" +
+            "<th>删除</th>" +
             "</tr>" +
             "</thread>" +
             "<tbody id=\"tbody\">" +
-            "</tbody>");
+            "</tbody>"+
+            "</table>");
         $.ajax({
             url: "http://localhost:8080/fg/customer/getPersonalOrder",
             type: "get",
@@ -129,12 +222,18 @@ Main Start
                         tabledata+="<tr>"+
                             "<td>"+orderList[i].orderID +"</td>"+
                             "<td>"+orderList[i].receiver +"</td>"+
-                            "<td>"+orderList[i].postStatus +"</td>"+
+                            "<td>"+poststatus(orderList[i].postStatus) +"</td>"+
+                            "<td>"+paystatus(orderList[i].payStatus) +"</td>"+
                             "<td>"+orderList[i].phone +"</td>"+
                             "<td>"+orderList[i].orderDate +"</td>"+
                             "<td>"+orderList[i].recevingAddr +"</td>"+
                             "<td>"+
-                            '<a title="订单详情"  href="javascript:;"  onclick="x_admin_show( \'订单详情\',\'orderdetail.jsp? Data=' + orderList[i].orderID+ '\',600,400)">' +
+                            '<a title="订单详情"  href="javascript:;"  onclick="window.open( \'orderdetail.jsp? Data=' + orderList[i].orderID+ '\',\'订单详情\',\'width=400,height=400,top=150,left=450\')">' +
+                            "<i class=\"layui-icon\">&#xe642;</i>" +
+                            "</a>" +
+                            "</td>"+
+                            "<td>"+
+                            '<a href="javascript:;"  onclick="del('+orderList[i].orderID+')"> '+
                             "<i class=\"layui-icon\">&#xe642;</i>" +
                             "</a>" +
                             "</td>"+
