@@ -88,7 +88,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="/bg/order-list.jsp">
+                        <a _href="/bg/order/list?op=1">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite>
                         </a>

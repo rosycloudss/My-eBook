@@ -172,7 +172,7 @@
                 success: function (data) {
                     if (data.result > 0) {
                         layer.msg('已删除!', {icon: 1, time: 1000},function () {
-                            $(".layui-form-checked").not('.header').parents('tr').remove();
+                            location.replace(location.href);
                         });
                     } else {
                         layer.msg('删除失败!' + data.result, {icon: 2, time: 1000});

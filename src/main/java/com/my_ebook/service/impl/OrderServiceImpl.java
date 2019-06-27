@@ -19,6 +19,17 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderMapper orderMapper;
 
+    @Override
+    public int delete(List<Integer> orderIds) {
+        int result = 0;
+        if (orderIds != null && !orderIds.isEmpty()) {
+            for (Integer orderId : orderIds) {
+                result += delete(orderId);
+            }
+        }
+        return result;
+    }
+
     /**
      * 生成订单编号
      *
@@ -83,6 +94,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Order findByOrderId(Integer orderId) {
+        Order order = new Order();
+        order.setID(orderId);
+        List<Order> orders = orderMapper.selectInStartAndEnd(order,null,null,null);
+        if (orders != null && !orders.isEmpty()) {
+            return orders.get(0);
+        }
         return null;
     }
 

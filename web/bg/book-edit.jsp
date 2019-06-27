@@ -238,7 +238,6 @@
         //监听提交
         form.on('submit(save)', function(data){
             console.log(data);
-            alert(JSON.stringify(data.field))
             $.ajax({
                 type:"POST",
                 contentType: "application/json;charset=UTF-8",
@@ -246,7 +245,6 @@
                 dataType:"json",
                 data: JSON.stringify(data.field),
                 success:function(data){
-                    alert(data.result)
                     if(data.result == 1){
                         layer.alert("保存成功", {icon: 6},function () {
                             //关闭当前frame

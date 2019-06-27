@@ -1,6 +1,5 @@
 package com.my_ebook.controller.bg;
 
-import com.alibaba.fastjson.JSONObject;
 import com.my_ebook.entity.Website;
 import com.my_ebook.service.WebsiteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 
-//@Controller("bgWebsiteController")
+@Controller("bgWebsiteController")
 @RequestMapping("/bg/website")
 public class WebsiteController {
 
@@ -26,7 +24,6 @@ public class WebsiteController {
     public String getWebSite(Model model) {
         Website website = websiteService.find();
         model.addAttribute("website", website);
-
         servletContext.setAttribute("website", website);
         return "/bg/website-info";
     }

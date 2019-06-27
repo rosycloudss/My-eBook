@@ -11,6 +11,13 @@ import java.util.List;
 
 public interface OrderService extends BaseService<Order>, PageService<Order> {
 
+    /**
+     * 批量删除订单信息
+     *
+     * @param orderIds
+     * @return
+     */
+    int delete(List<Integer> orderIds);
 
     /**
      * 创建订单 并返回创建的订单
@@ -88,7 +95,7 @@ public interface OrderService extends BaseService<Order>, PageService<Order> {
      * @param page
      * @return
      */
-    Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, String startDate, String endDate,Integer currentPage, Page page);
+    Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, String startDate, String endDate, Integer currentPage, Page page);
 
     /**
      * 通过订单编号查找订单信息

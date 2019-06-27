@@ -40,43 +40,43 @@
         update tb_order
         <set>
             <if test="order.customer != null and order.customer.ID != nulll">
-                and customer_id=#{order.customer.ID,jdbcType=INTEGER}
+                customer_id=#{order.customer.ID,jdbcType=INTEGER},
             </if>
             <if test="order.orderID != null">
-                and order_id=#{order.orderID,jdbcType=VARCHAR}
+                order_id=#{order.orderID,jdbcType=VARCHAR},
             </if>
             <if test="order.orderStatus != null">
-                and order_status=#{order.orderStatus,jdbcType=INTEGER}
+                order_status=#{order.orderStatus,jdbcType=INTEGER},
             </if>
             <if test="order.receiver != null">
-                and receiver=#{order.receiver,jdbcType=VARCHAR}
+                receiver=#{order.receiver,jdbcType=VARCHAR},
             </if>
             <if test="order.recevingAddr != null">
-                and receiving_addr=#{order.recevingAddr,jdbcType=VARCHAR}
+                receiving_addr=#{order.recevingAddr,jdbcType=VARCHAR},
             </if>
             <if test="order.phone != null">
-                and phone like #{order.phone,jdbcType=VARCHAR}"%"
+                phone=#{order.phone,jdbcType=VARCHAR},
             </if>
             <if test="order.delivery != null">
-                and delivery=#{order.delivery,jdbcType=INTEGER}
+                delivery=#{order.delivery,jdbcType=INTEGER},
             </if>
             <if test="order.postStatus != null">
-                and post_status=#{order.postStatus,jdbcType=INTEGER}
+                post_status=#{order.postStatus,jdbcType=INTEGER},
             </if>
             <if test="order.payStatus != null">
-                and pay_status=#{order.payStatus,jdbcType=INTEGER}
+                pay_status=#{order.payStatus,jdbcType=INTEGER},
             </if>
             <if test="order.orderDate != null">
-                and order_Date=#{order.orderDate,jdbcType=TIMESTAMP}
+                order_Date=#{order.orderDate,jdbcType=TIMESTAMP},
             </if>
             <if test="order.remark != null">
-                and rem#{remark,jdbcType=VARCHAR}
+                remark=#{order.remark,jdbcType=VARCHAR},
             </if>
             <if test="order.orderMount != null">
-                and order_mount=#{order.orderMount,jdbcType=INTEGER}
+                order_mount=#{order.orderMount,jdbcType=INTEGER},
             </if>
             <if test="order.totalPrice != null">
-                and total_price=#{order.totalPrice,jdbcType=DOUBLE}
+                total_price=#{order.totalPrice,jdbcType=DOUBLE},
             </if>
         </set>
 
@@ -235,9 +235,13 @@
                     and total_price=#{order.totalPrice,jdbcType=DOUBLE}
                 </if>
             </if>
-            <if test="start != null and end != null">
+            <if test="start != null">
                 <![CDATA[ and order_Date >= str_to_date(#{start},'%Y-%m-%d %r')]]>
+            </if>
+
+            <if test="end != null">
                 <![CDATA[ and order_Date <= str_to_date(#{end},'%Y-%m-%d %r')]]>
+
             </if>
         </where>
         <if test="page != null">
@@ -290,9 +294,13 @@
                     and total_price=#{order.totalPrice,jdbcType=DOUBLE}
                 </if>
             </if>
-            <if test="start != null and end != null">
+            <if test="start != null">
                 <![CDATA[ and order_Date >= str_to_date(#{start},'%Y-%m-%d %r')]]>
+            </if>
+
+            <if test="end != null">
                 <![CDATA[ and order_Date <= str_to_date(#{end},'%Y-%m-%d %r')]]>
+
             </if>
         </where>
     </select>
