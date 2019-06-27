@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/fg/book")
 @Controller
@@ -131,7 +132,7 @@ public class BookController {
         page.setTotalRecord(commentService.count(comment));
         page.setPageCurrent(1);
         Page<Comment> comments = commentService.findBookComments(bookId, page);
-        model.addAttribute("comment", comment);
+        model.addAttribute("comments", comment);
 
         Page<Book> pageBook = new Page<Book>();
         page.setPageSize(4);
@@ -141,16 +142,21 @@ public class BookController {
         return "/fg/bookdetail";
     }
 
+    /**
+     * 添加图书评论
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/addComment", method = RequestMethod.POST)
-    public JSONObject addComment(@RequestBody String comment, @RequestBody Integer bookId, HttpSession session) {
+    public JSONObject addComment(@RequestBody Map map, HttpSession session) {
         JSONObject jsonObject = new JSONObject();
         Comment bookComment = new Comment();
-        bookComment.setContent(comment);
+        bookComment.setContent((String) map.get("comment"));
         Customer customer = (Customer) session.getAttribute("customer");
         bookComment.setCustomer(customer);
         Book book = new Book();
-        book.setID(bookId);
+        book.setID((Integer) map.get("bookId"));
         bookComment.setBook(book);
         if (commentService.add(bookComment)!=0) {
             jsonObject.put("result", 1);

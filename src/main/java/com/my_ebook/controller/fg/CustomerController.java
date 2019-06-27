@@ -38,7 +38,6 @@ public class CustomerController {
         if (phone !=null && password != null) {
             if (customerService.findByPhone(phone) != null) {
                 model.addAttribute("msg", "该号码已经被注册！");
-                System.out.println("注册过");
                 return "/fg/register";
             }
             Customer customer = new Customer();
@@ -154,10 +153,10 @@ public class CustomerController {
         jsonObject.put("result",result);
         return jsonObject;
     }
+
     @ResponseBody
     @RequestMapping(value = "/delOrder/{orderId}",method = RequestMethod.GET)
     public JSONObject delOrder(@PathVariable String orderId){
-        System.out.println(orderId);
         JSONObject jsonObject=new JSONObject();
         int result=0;
         result=orderService.deleteByorderId(orderId);
