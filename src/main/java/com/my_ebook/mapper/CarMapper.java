@@ -15,7 +15,7 @@ public interface CarMapper {
 
     int update(Car car);
 
-//    Car selectById(int carId);
+    Car selectById(int carId);
 
     List<Car> selectByCustomer(int customerId);
 

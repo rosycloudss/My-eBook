@@ -3,12 +3,14 @@ package com.my_ebook.controller.fg;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
-import com.my_ebook.entity.Book;
-import com.my_ebook.entity.Car;
-import com.my_ebook.entity.Customer;
+import com.my_ebook.entity.*;
 import com.my_ebook.service.BookService;
 import com.my_ebook.service.CarService;
+import com.my_ebook.service.OrderService;
+import com.mysql.cj.Session;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import javafx.beans.property.IntegerProperty;
+import jdk.nashorn.internal.scripts.JS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/fg/car")
 @Controller
@@ -28,6 +31,9 @@ public class CarController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private OrderService orderService;
     /**
      * 加入购物车
      */
@@ -87,7 +93,7 @@ public class CarController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "updateCar", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateCar", method = RequestMethod.POST)
     public JSONObject updateCar(Integer bookId, Integer sign, HttpSession session, Model model) {
         JSONObject jsonObject = new JSONObject();
         if(bookId == null || sign == null) {
@@ -132,10 +138,33 @@ public class CarController {
      * 生成订单
      * @return
      */
-    @ResponseBody()
-    @RequestMapping()
-    public String createOrder() {
+    @ResponseBody
+    @RequestMapping(value = "/createOrder", method = RequestMethod.GET)
+    public JSONObject createOrder(Map map, HttpSession session) {
+        JSONObject jsonObject = new JSONObject();
+        String name = (String) map.get("name");
+        String phone = (String) map.get("phone");
+        String address = (String) map.get("address");
+        List<Integer> carIdList = (List<Integer>) map.get("carId");
+        Customer customer = (Customer) session.getAttribute("customer");
+        List<OrderItem> orderItems = new ArrayList<OrderItem>();
+        for(Integer carId : carIdList) {
+            OrderItem orderItem = new OrderItem();
+            Car car = carService.findByCarId(carId);
+            orderItem.setBook(car.getBook());
+            orderItem.setTotalPrice(car.getTotalPrice());
+            orderItem.setOrderMount(car.getOrderMount());
+            orderItems.add(orderItem);
+            carService.deleteByCarId(carId);
+        }
+        Order order =orderService.createOrder(customer.getID(), name, address, phone, "", orderItems );
+        if(order != null) {
+            jsonObject.put("order", order);
+            jsonObject.put("result", 1);
 
-        return "redirect:/fg/book/bookList";
+        } else {
+            jsonObject.put("result", 0);
+        }
+        return jsonObject;
     }
 }

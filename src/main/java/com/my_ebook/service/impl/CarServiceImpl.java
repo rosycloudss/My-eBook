@@ -44,6 +44,10 @@ public class CarServiceImpl implements CarService {
         return 0;
     }
 
+    @Override
+    public Car findByCarId(int carId) {
+        return carMapper.selectById(carId);
+    }
 
     @Override
     public int add(Car car) {

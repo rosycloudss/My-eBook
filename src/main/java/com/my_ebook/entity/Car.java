@@ -62,7 +62,7 @@ public class Car {
 		this.orderMount = orderMount;
 	}
 
-	public double getTotalPrice(){
+	public float getTotalPrice(){
 		return book.getPrice() * orderMount;
 	}
 
