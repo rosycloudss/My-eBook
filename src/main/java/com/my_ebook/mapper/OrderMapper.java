@@ -25,4 +25,10 @@ public interface OrderMapper {
 
     List<Order> selectInStartAndEnd(@Param("order") Order order, @Param("start") String start, @Param("end") String end, @Param("page") Page page);
 
+    List<Order> selectBycustomerid(int customerId);
 }
+
+
+
+
+

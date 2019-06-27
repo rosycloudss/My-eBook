@@ -6,18 +6,17 @@ import com.google.gson.JsonObject;
 import com.my_ebook.entity.Book;
 import com.my_ebook.entity.Car;
 import com.my_ebook.entity.Customer;
+import com.my_ebook.service.BookService;
 import com.my_ebook.service.CarService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/fg/car")
@@ -27,6 +26,8 @@ public class CarController {
     @Autowired
     private CarService carService;
 
+    @Autowired
+    private BookService bookService;
     /**
      * 加入购物车
      */
@@ -52,7 +53,6 @@ public class CarController {
     /**
      * 清空购物车
      */
-    @ResponseBody
     @RequestMapping(value = "/clear", method = RequestMethod.GET)
     public String clear(Model model, HttpSession session) {
 
@@ -100,15 +100,42 @@ public class CarController {
         return jsonObject;
     }
 
-
+    /**
+     * 结算
+     * @param isCar
+     * @param bookId
+     * @param session
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/checkOut", method = RequestMethod.GET)
     public String checkOut(@RequestParam("isCar")Integer isCar,
-                           @RequestParam(value = "bookId", required = false) Integer bookId) {
-        return "";
+                           @RequestParam(value = "bookId", required = false) Integer bookId,
+                           HttpSession session, Model model) {
+        Customer customer = (Customer) session.getAttribute("customer");
+        List<Car> carList = new ArrayList<Car>();
+        if (isCar == 1) {
+            carList = carService.findCustomerCars(customer.getID());
+        } else {
+            Car car = new Car();
+            car.setCustomer(customer);
+            car.setOrderMount(1);
+            Book book = bookService.findById(bookId);
+            car.setBook(book);
+            carList.add(car);
+        }
+        model.addAttribute("carList", carList);
+        return "/fg/generateOrder";
     }
 
-//    @RequestMapping()
-//    public String createOrder() {
-//
-//    }
+    /**
+     * 生成订单
+     * @return
+     */
+    @ResponseBody()
+    @RequestMapping()
+    public String createOrder() {
+
+        return "redirect:/fg/book/bookList";
+    }
 }

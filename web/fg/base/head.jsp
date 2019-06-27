@@ -8,6 +8,7 @@
     <title>My-eBook</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="/fg/css/bootstrap.min.css">
     <link rel="stylesheet" href="/fg/css/normalize.css">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="/fg/css/color.css">
     <link rel="stylesheet" href="/fg/css/responsive.css">
     <script src="/fg/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
 </head>
 <body>
 
@@ -58,7 +60,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <strong class="tg-logo"><a href="index.jsp"><img src="/fg/images/logo.png" alt="company name here"></a></strong>
+                        <strong class="tg-logo"><a href="/fg/book/bookList"><img src="/fg/images/logo.png" alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
                             <div id="car" class="dropdown tg-themedropdown tg-minicartdropdown">
                                 <a href="javascript:void(0);" onclick="display()" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,14 +72,13 @@
                                 <!--   购物车列表 开始-->
                                 <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
                                     <div id="list" class="tg-minicartbody">
-
                                     </div>
                                     <div  class="tg-minicartfoot">
                                         <a class="tg-btnemptycart" href="/fg/car/clear">
                                             <i class="fa fa-trash-o"></i>
                                             <span >清空购物车</span>
                                         </a>
-                                        <span class="tg-subtotal">Subtotal: <strong >0.0</strong></span>
+                                        <span class="tg-subtotal">商品金额: <strong >0.0</strong></span>
                                         <div class="tg-btns">
                                             <%--<a class="tg-btn tg-active" href="javascript:void(0);">查看购物车</a>--%>
                                             <a class="tg-btn" href="/fg/car/checkOut?isCar=1">结账</a>
@@ -163,39 +164,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <!--                                                    <ul>-->
@@ -206,7 +207,7 @@
                                                     <!--                                                                <div class="tg-description">-->
                                                     <!--                                                                    <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>-->
                                                     <!--                                                                </div>-->
-                                                    <!--                                                                <a class="tg-btn" href="index.jsp">view all</a>-->
+                                                    <!--                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>-->
                                                     <!--                                                            </div>-->
                                                     <!--                                                        </li>-->
                                                     <!--                                                    </ul>-->
@@ -218,39 +219,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -261,7 +262,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -273,39 +274,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -316,7 +317,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -328,39 +329,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -371,7 +372,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -383,39 +384,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -426,7 +427,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -438,39 +439,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -481,7 +482,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -493,39 +494,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -536,7 +537,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -548,39 +549,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -591,7 +592,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -603,39 +604,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -646,7 +647,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -658,39 +659,39 @@
                                                                 <h2>建筑</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">像钉子一样坚硬</a></li>
-                                                                <li><a href="index.jsp">Pro Grease Monkey</a></li>
-                                                                <li><a href="index.jsp">Building Memories</a></li>
-                                                                <li><a href="index.jsp">Bulldozer Boyz</a></li>
-                                                                <li><a href="index.jsp">Build Or Leave On Us</a></li>
+                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
+                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
+                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
+                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
+                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>艺术形式</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Consectetur adipisicing</a></li>
-                                                                <li><a href="index.jsp">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="index.jsp">Tempor incididunt labore</a></li>
-                                                                <li><a href="index.jsp">Dolore magna aliqua</a></li>
-                                                                <li><a href="index.jsp">Ut enim ad minim</a></li>
+                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
+                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
+                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
+                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
+                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                         <li>
                                                             <div class="tg-linkstitle">
                                                                 <h2>历史</h2>
                                                             </div>
                                                             <ul>
-                                                                <li><a href="index.jsp">Veniam quis nostrud</a></li>
-                                                                <li><a href="index.jsp">Exercitation</a></li>
-                                                                <li><a href="index.jsp">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="index.jsp">Commodo conseat</a></li>
-                                                                <li><a href="index.jsp">Duis aute irure</a></li>
+                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
+                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
+                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
+                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
+                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
                                                             </ul>
-                                                            <a class="tg-btnviewall" href="index.jsp">查看全部</a>
+                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
                                                         </li>
                                                     </ul>
                                                     <ul>
@@ -701,7 +702,7 @@
                                                                 <div class="tg-description">
                                                                     <p>Consectetur adipisicing elit sed doe eiusmod tempor incididunt laebore toloregna aliqua enim.</p>
                                                                 </div>
-                                                                <a class="tg-btn" href="index.jsp">view all</a>
+                                                                <a class="tg-btn" href="/fg/book/bookList">view all</a>
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -733,11 +734,11 @@
                 dataType: 'JSON',
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    var tempDate;
+                    var tempDate = '';
                     var money;
                     var carList = data.carList;
                     for(var i=0; i <carList.length; i++) {
-                        if (carList[i] != null) {
+                        if (carList[i] !== undefined) {
                             tempDate +=
                                 '<div class="tg-minicarproduct">\n' +
                                 '<figure>\n' +
@@ -746,21 +747,21 @@
                                 '<div class="tg-minicarproductdata">\n' +
                                 '<h5><a href="javascript:void(0);">'+carList[i].book.name + '</a></h5>\n' +
                                 '<h6>'+carList[i].book.sellingPrice+ '   ' +
-                                '<button id="sub" onclick="updateCar(' + carList[i].book.ID+',-1)">' +
+                                '<button id="sub" onclick="updateCar(' + carList[i].book.iD+',-1)">' +
                                 '<img src="/fg/images/sub.png">' +
                                 '</button>' +
                                 carList[i].orderMount +
-                                '<button id="add" onclick="updateCar(' + carList[i].book.ID+ ',1)">' +
+                                '<button id="add" onclick="updateCar(' + carList[i].book.iD+ ',1)">' +
                                 '<img src="/fg/images/add.png">' +
                                 '</button>' +
                                 '</h6>\n' +
                                 '</div>\n' +
                                 '</div>';
+                            console.log(carList[i]);
                             money += carList[i].totalPrice;
                         }
                     }
                     $("#list").html(tempDate);
-                    $("#money").text(money);
                 },
                 error: function (data) {
                     alert("添加失败");

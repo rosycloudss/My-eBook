@@ -50,5 +50,4 @@ public interface OrderItemService extends BaseService<OrderItem> {
      */
     List<OrderItem> findOrderItems(Integer orderId);
 
-
 }

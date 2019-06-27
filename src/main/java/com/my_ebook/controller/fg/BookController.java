@@ -108,7 +108,12 @@ public class BookController {
         return jsonObject;
     }
 
-
+    /**
+     * 获取图书详细信息
+     * @param model
+     * @param bookId
+     * @return
+     */
     @RequestMapping(value = "/bookDetails", method = RequestMethod.GET)
     public String lookBookDetails(Model model, @RequestParam("bookId") int bookId) {
         Book book = bookService.findById(bookId);

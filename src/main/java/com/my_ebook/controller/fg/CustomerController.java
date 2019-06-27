@@ -1,16 +1,23 @@
 package com.my_ebook.controller.fg;
 
 import com.alibaba.fastjson.JSONObject;
-import com.my_ebook.entity.Customer;
+import com.my_ebook.entity.*;
+import com.my_ebook.service.BookService;
 import com.my_ebook.service.CustomerService;
+import com.my_ebook.service.OrderItemService;
+import com.my_ebook.service.OrderService;
 import com.my_ebook.util.DateUtil;
 import com.my_ebook.util.MD5Utils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequestMapping("/fg/customer")
 @Controller
@@ -18,8 +25,10 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    private OrderService orderService;
+    private OrderItemService orderItemService;
+    private BookService bookService;
+    @RequestMapping(value = "register", method = RequestMethod.POST)
     public String register(Model model, @RequestParam("name") String name, @RequestParam("nickname") String nickname,
                            @RequestParam("phone") String phone, @RequestParam("password") String password) {
         if (phone !=null && password != null) {
@@ -44,7 +53,7 @@ public class CustomerController {
         return "/fg/register";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public String login(Model model, HttpSession session, @RequestParam("phone") String phone,
                         @RequestParam("password") String password) {
         Customer customer = customerService.login(phone, password);
@@ -56,7 +65,7 @@ public class CustomerController {
         return "/fg/login";
     }
 
-    @RequestMapping(value = "/logout")
+    @RequestMapping(value = "logout")
     public String logout(HttpSession session, Model model) {
         session.removeAttribute("customer");
         model.addAttribute("msg", "退出登录成功！");
@@ -70,7 +79,7 @@ public class CustomerController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/changePassword/{oldPassword}/{newPassword}", method = RequestMethod.POST)
+    @RequestMapping(value = "/changePassword/{oldPassword}/{newPassword}", method = RequestMethod.GET)
     public JSONObject changePassword(@PathVariable String oldPassword, String newPassword, HttpSession session) {
         Customer customer= (Customer)session.getAttribute("customer");
         JSONObject jsonObject=new JSONObject();
@@ -90,6 +99,39 @@ public class CustomerController {
         if(customer != null){
             jsonObject.put("customer",customer);
         }
+        return jsonObject;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/getPersonalOrder",method = RequestMethod.GET)
+    public JSONObject getPersonalOrder(HttpSession session){
+
+        JSONObject jsonObject=new JSONObject();
+        Customer customer= (Customer)session.getAttribute("customer");
+        System.out.println("customer"+customer);
+        int customerId=customer.getID();
+        List<Order> orderList=orderService.selectBycustomerid(customerId);
+        System.out.println("size="+orderList.size());
+        jsonObject.put("orderList",orderList);
+        return jsonObject;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/getOrderDetail/{orderId}",method = RequestMethod.GET)
+    public JSONObject getOrderDetail(@PathVariable Integer orderId){
+        JSONObject jsonObject=new JSONObject();
+        List<OrderItem> orderItemList = orderItemService.findOrderItems(orderId);
+        List<Orderdetail> orderdetails=new ArrayList<Orderdetail>();
+        for (int j = 0; j < orderItemList.size(); j++) {
+            Orderdetail orderdetail=new Orderdetail();
+            OrderItem orderItem = orderItemList.get(j);
+            int bookId = orderItem.getBook().getID();
+            Book book = bookService.findById(bookId);
+            orderdetail.setSinglePrice(book.getPrice());
+            orderdetail.setBookname(book.getName());
+            orderdetail.setMount(orderItem.getOrderMount());
+            orderdetail.setTotalPrice(orderItem.getTotalPrice());
+            orderdetails.add(orderdetail);
+        }
+        jsonObject.put("orderdetails",orderdetails);
         return jsonObject;
     }
 }
