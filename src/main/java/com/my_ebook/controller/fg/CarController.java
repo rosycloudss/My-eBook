@@ -98,7 +98,7 @@ public class CarController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/updateCar", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateCar", method = RequestMethod.GET)
     public JSONObject updateCar(Integer bookId, Integer sign, HttpSession session, Model model) {
         JSONObject jsonObject = new JSONObject();
         if(bookId == null || sign == null) {
