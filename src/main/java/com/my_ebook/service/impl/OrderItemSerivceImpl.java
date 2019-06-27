@@ -49,8 +49,8 @@ public class OrderItemSerivceImpl implements OrderItemService {
     public int deleteByOrderId(int orderId) {
         return orderItemMapper.deleteByOrderId(orderId);
     }
-
-    public List<OrderItem> findOrderItems(Integer orderId) {
+    @Override
+    public List<OrderItem> findOrderItems(String orderId) {
         return orderItemMapper.selectByOrderId(orderId);
     }
 

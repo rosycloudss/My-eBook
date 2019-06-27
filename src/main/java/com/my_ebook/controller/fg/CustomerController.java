@@ -1,5 +1,6 @@
 package com.my_ebook.controller.fg;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.my_ebook.entity.*;
 import com.my_ebook.service.BookService;
@@ -25,8 +26,11 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    @Autowired
     private OrderService orderService;
+    @Autowired
     private OrderItemService orderItemService;
+    @Autowired
     private BookService bookService;
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String register(Model model, @RequestParam("name") String name, @RequestParam("nickname") String nickname,
@@ -97,7 +101,8 @@ public class CustomerController {
         JSONObject jsonObject=new JSONObject();
         Customer customer= (Customer)session.getAttribute("customer");
         if(customer != null){
-            jsonObject.put("customer",customer);
+            Customer customer1=customerService.findById(customer.getID());
+            jsonObject.put("customer",customer1);
         }
         return jsonObject;
     }
@@ -107,16 +112,14 @@ public class CustomerController {
 
         JSONObject jsonObject=new JSONObject();
         Customer customer= (Customer)session.getAttribute("customer");
-        System.out.println("customer"+customer);
         int customerId=customer.getID();
         List<Order> orderList=orderService.selectBycustomerid(customerId);
-        System.out.println("size="+orderList.size());
         jsonObject.put("orderList",orderList);
         return jsonObject;
     }
     @ResponseBody
     @RequestMapping(value = "/getOrderDetail/{orderId}",method = RequestMethod.GET)
-    public JSONObject getOrderDetail(@PathVariable Integer orderId){
+    public JSONObject getOrderDetail(@PathVariable String orderId){
         JSONObject jsonObject=new JSONObject();
         List<OrderItem> orderItemList = orderItemService.findOrderItems(orderId);
         List<Orderdetail> orderdetails=new ArrayList<Orderdetail>();
@@ -134,4 +137,27 @@ public class CustomerController {
         jsonObject.put("orderdetails",orderdetails);
         return jsonObject;
     }
+    @ResponseBody
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public JSONObject update(@RequestBody Customer customer,HttpSession session){
+
+        Customer customer1= (Customer)session.getAttribute("customer");
+        customer.setID(customer1.getID());
+        JSONObject jsonObject=new JSONObject();
+        int result=0;
+        result=customerService.update(customer);
+        jsonObject.put("result",result);
+        return jsonObject;
+    }
+    @ResponseBody
+    @RequestMapping(value = "/delOrder/{orderId}",method = RequestMethod.GET)
+    public JSONObject delOrder(@PathVariable String orderId){
+        System.out.println(orderId);
+        JSONObject jsonObject=new JSONObject();
+        int result=0;
+        result=orderService.deleteByorderId(orderId);
+        jsonObject.put("result",result);
+        return jsonObject;
+    }
+
 }

@@ -23,28 +23,32 @@
                             <fieldset>
                                 <%Customer customer = (Customer) session.getAttribute("customer");%>
                                 <div class="form-group tg-hastextarea">
-                                    收货人：<input type="name" id="name" name="name" class="form-control" placeholder="<%=customer.getName()%>">
+                                    收货人：<input type="name" id="name" name="name" class="form-control" value="<%=customer.getName()%>">
                                 </div>
                                 <div class="form-group tg-hastextarea">
-                                    收货人手机号：<input id="phone" type="tel" name="phone" class="form-control" placeholder="<%=customer.getPhone()%>">
+                                    收货人手机号：<input id="phone" type="tel" name="phone" class="form-control" value="<%=customer.getPhone()%>">
                                 </div>
                                 <div class="form-group tg-hastextarea">
-                                    收货地址：<input id="address" type="text" name="address" class="form-control" placeholder="<%=customer.getAddr()==null?"":customer.getAddr()%>">
+                                    收货地址：<input id="address" type="text" name="address" class="form-control" value="<%=customer.getAddr()==null?"":customer.getAddr()%>">
                                 </div>
                                 <div class="form-group tg-hastextarea">
                                     物流：
                                     <select id="logistics" name="logistics" class="form-control combobox">
-                                    <option value="PA">顺丰</option>
-                                    <option value="CT">天天</option>
-                                    <option value="NY">EMS</option>
-                                    <option value="MD">申通</option>
-                                    <option value="VA">百世</option>
+                                    <option value="顺丰">顺丰</option>
+                                    <option value="天天">天天</option>
+                                    <option value="EMS">EMS</option>
+                                    <option value="申通">申通</option>
+                                    <option value="百世">百世</option>
                                     </select>
                                     <%--<input id="logistics " type="text" name="logistics" class="form-control" placeholder="">--%>
+                                </div>
+                                <div class="form-group tg-hastextarea">
+                                    备注：<input id="remark" type="text" name="remark" class="form-control" >
                                 </div>
                                 <div class="tg-contactdetail">
                                     <%
                                         double money = 0.0d;
+                                        int mount = 0;
                                         List<Car> carList = (List<Car>) request.getAttribute("carList");
                                         for (Car car : carList) {
                                             if (car != null) {
@@ -52,21 +56,22 @@
                                     <div class="tg-minicarproduct">
                                         <figure>
                                             <img src="/fg/images/products/img-02.jpg" alt="image description">
-
                                         </figure>
                                         <div class="tg-minicarproductdata">
-                                            <input type="hidden" name="bookId" value="<%=car.getBook().getID()%>" >
+                                            <input type="hidden" name="carId" value="<%=car.getID()%>" >
                                             <h5><a href="javascript:void(0);"><%=car.getBook().getName()%></a></h5>
                                             <h6>售价:<%=car.getBook().getSellingPrice()%>&nbsp;数量：<%=car.getOrderMount()%></h6>
                                         </div>
                                     </div>
                                    <%
+                                                mount += car.getOrderMount();
                                                 money += car.getTotalPrice();
                                             }
                                         }
                                    %>
                                 </div>
                                 <div class="tg-minicartfoot">
+                                   商品总数: <%=mount%>
                                     <span class="tg-subtotal">商品金额: <strong><%=money%></strong></span>
                                 </div>
                                 <br>
@@ -89,7 +94,31 @@
 </main>
 <script type="text/javascript">
     function pay() {
-        
+        var name = $("#name").val();
+        var phone = $("#phone").val();
+        var address = $("#address").val();
+        var logistics = $("#logistics").val();
+        var remark = $("#remark").val();
+        var carIdList = $("input[name='carId']");
+        var carIds = [];
+        for(var i = 0 ; i <carIdList.length; i++) {
+            carIds[i] = carIdList[i].value;
+        }
+        $.ajax({
+            url: "/fg/car/createOrder",
+            type: "post",
+            dataType: "JSON",
+            contentType : "application/json; charset=utf-8",
+            data: JSON.stringify({"name":name,"phone":phone,"address":address,
+                "remark":remark, "logistics":logistics,"carId":carIds}),
+            success : function(data) {
+                alert("success");
+                window.location = "/fg/book/bookList"
+            },
+            error : function() {
+                alert("error");
+            }
+        });
     }
 </script>
 <jsp:include page="base/foot.jsp"/>

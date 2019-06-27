@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface OrderItemMapper {
 
-    int insert(@Param("orderItem") OrderItem orderItem);
+    int insert(OrderItem orderItem);
 
 //    int insertAll()
 
@@ -20,7 +20,7 @@ public interface OrderItemMapper {
 
     int update(@Param("orderItem") OrderItem orderItem);
 
-    List<OrderItem> selectByOrderId(@Param("orderId") int orderId);
+    List<OrderItem> selectByOrderId(@Param("orderId") String orderId);
 
     OrderItem selectById(@Param("orderItemId") int orderItemId);
 

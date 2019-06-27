@@ -55,7 +55,7 @@
         where item_id=#{ID,jdbcType=INTEGER};
     </update>
 
-    <select id="selectByOrderId" parameterType="integer" resultMap="orderItemMap">
+    <select id="selectByOrderId" parameterType="String" resultMap="orderItemMap">
         select
         <include refid="base_column_list"/>
         from tb_order_item

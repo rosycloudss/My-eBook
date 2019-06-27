@@ -58,4 +58,10 @@
         where customer_id = #{customerId,jdbcType=INTEGER} and
               book_id = #{bookId,jdbcType=INTEGER}
     </select>
+
+    <select id="selectById" parameterType="int" resultMap="carMap">
+        select <include refid="base_car_list"/>
+        from tb_car
+        where car_id = #{carId,jdbcType=INTEGER}
+    </select>
 </mapper>
