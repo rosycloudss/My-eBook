@@ -92,9 +92,9 @@
                        href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
                     </a>
-                        <%--                    <a onclick="reset_password(this,'要重置密码的id')" title="重置密码" href="javascript:;">--%>
-                        <%--                        <i class="layui-icon">&#xe631;</i>--%>
-                        <%--                    </a>--%>
+                    <a onclick="reset_password(this,${employee.getID()})" title="重置密码" href="javascript:;">
+                        <i class="layui-icon">&#xe631;</i>
+                    </a>
                     <c:if test="${sessionScope.employee.getPosition() == 1 && sessionScope.employee.getID() != employee.getID()}">
                         <a title="删除" onclick="employee_del(this,${employee.getID()})" href="javascript:;">
                             <i class="layui-icon">&#xe640;</i>
@@ -125,10 +125,24 @@
 
     /*重置密码*/
     function reset_password(obj, id) {
-        layer.confirm('确认重置员工密码吗？', function (index) {
-            //发异步重置密码
-            // $(obj).parents("tr").remove();
-            layer.msg('已重置!', {icon: 1, time: 1000});
+        layer.confirm('确认重置员工密码吗？重置密码为123456', function (index) {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                url: '/bg/employee/reset',
+                dataType: "json",
+                data: '{"employeeId":' + id + '}',
+                success: function (data) {
+                    if (data.result > 0) {
+                        layer.msg('重置!', {icon: 1, time: 1000});
+                    } else {
+                        layer.msg('删除失败!' + data.result, {icon: 2, time: 1000});
+                    }
+                },
+                error: function (data) {
+                    layer.msg('删除失败! error' + data, {icon: 2, time: 1000});
+                }
+            });
         });
     }
 

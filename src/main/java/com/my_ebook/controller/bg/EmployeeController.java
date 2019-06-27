@@ -178,4 +178,32 @@ public class EmployeeController {
         jsonObject.put("result", result);
         return jsonObject;
     }
+
+    /**
+     * 重置员工密码
+     *
+     * @param map
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/reset")
+    public JSONObject resetPassword(@RequestBody Map<String, String> map) {
+        JSONObject jsonObject = new JSONObject();
+        int result = 0;
+        String employeeIdStr = map.get("employeeId");
+        System.out.println(employeeIdStr);
+        if (employeeIdStr != null && StringUtil.isNumber(employeeIdStr)) {
+            Employee employee = employeeService.findById(Integer.parseInt(employeeIdStr));
+            if (employee != null) {
+                employee.setPassword(MD5Utils.getSaltMD5("123456"));
+                if (employeeService.update(employee) > 0) {
+                    result = 1;
+                }
+            }
+        }
+
+        jsonObject.put("result", result);
+        return jsonObject;
+
+    }
 }
