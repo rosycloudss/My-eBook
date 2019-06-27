@@ -42,6 +42,9 @@
                                     </select>
                                     <%--<input id="logistics " type="text" name="logistics" class="form-control" placeholder="">--%>
                                 </div>
+                                <div class="form-group tg-hastextarea">
+                                    备注：<input id="remark" type="text" name="remark" class="form-control" >
+                                </div>
                                 <div class="tg-contactdetail">
                                     <%
                                         double money = 0.0d;
@@ -94,8 +97,8 @@
         var name = $("#name").val();
         var phone = $("#phone").val();
         var address = $("#address").val();
-        alert(address);
         var logistics = $("#logistics").val();
+        var remark = $("#remark").val();
         var carIdList = $("input[name='carId']");
         var carIds = [];
         for(var i = 0 ; i <carIdList.length; i++) {
@@ -107,9 +110,10 @@
             dataType: "JSON",
             contentType : "application/json; charset=utf-8",
             data: JSON.stringify({"name":name,"phone":phone,"address":address,
-                "logistics":logistics,"carId":carIds}),
+                "remark":remark, "logistics":logistics,"carId":carIds}),
             success : function(data) {
                 alert("success");
+                window.location = "/fg/book/bookList"
             },
             error : function() {
                 alert("error");

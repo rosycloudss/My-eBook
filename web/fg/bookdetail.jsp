@@ -48,7 +48,7 @@ Main Start
                                                     <li><i class="icon-store"></i><span>库存: <em><%=book.getReserve()%></em></span></li>
                                                 </ul>
                                                 <a class="tg-btn tg-active tg-btn-lg" onclick="addCar(<%=book.getID()%>)" href="javascript:void(0);">添加购物车</a>
-                                                <a class="tg-btnaddtowishlist" href="javascript:void(0);">
+                                                <a class="tg-btnaddtowishlist" href="/fg/car/checkOut?isCar=0&bookId=<%=book.getID()%>">
                                                     <span>立即购买</span>
                                                 </a>
                                             </div>

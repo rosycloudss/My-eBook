@@ -53,7 +53,7 @@ Main Start
                                         <%
                                             for (Category category: categoryList) {
                                         %>
-                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category.getId()%>&currentPage=0%>"><span><%= category.getName()%></span><em>28245</em></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category.getId()%>&currentPage=0"><span><%= category.getName()%></span></a></li>
                                         <%}%>
                                     </ul>
                                 </div>

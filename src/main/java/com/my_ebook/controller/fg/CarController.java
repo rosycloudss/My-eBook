@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.my_ebook.entity.*;
 import com.my_ebook.service.BookService;
 import com.my_ebook.service.CarService;
+import com.my_ebook.service.OrderItemService;
 import com.my_ebook.service.OrderService;
 import com.mysql.cj.Session;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +36,9 @@ public class CarController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private OrderItemService orderItemService;
     /**
      * 加入购物车
      */
@@ -139,25 +144,34 @@ public class CarController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/createOrder", method = RequestMethod.GET)
-    public JSONObject createOrder(Map map, HttpSession session) {
+    @RequestMapping(value = "/createOrder", method = RequestMethod.POST)
+    public JSONObject createOrder(@RequestBody Map map, HttpSession session) {
         JSONObject jsonObject = new JSONObject();
         String name = (String) map.get("name");
         String phone = (String) map.get("phone");
         String address = (String) map.get("address");
-        List<Integer> carIdList = (List<Integer>) map.get("carId");
+        String remark =(String) map.get("remark");
+
+        List<String> carlist = (List<String>) map.get("carId");
+
         Customer customer = (Customer) session.getAttribute("customer");
         List<OrderItem> orderItems = new ArrayList<OrderItem>();
-        for(Integer carId : carIdList) {
+        for(String carId : carlist) {
             OrderItem orderItem = new OrderItem();
-            Car car = carService.findByCarId(carId);
+            System.out.println(Integer.valueOf(carId));
+            Car car = carService.findByCarId(Integer.valueOf(carId));
+            System.out.println(car.getBook());
             orderItem.setBook(car.getBook());
             orderItem.setTotalPrice(car.getTotalPrice());
             orderItem.setOrderMount(car.getOrderMount());
             orderItems.add(orderItem);
-            carService.deleteByCarId(carId);
+            carService.deleteByCarId(Integer.valueOf(carId));
         }
-        Order order =orderService.createOrder(customer.getID(), name, address, phone, "", orderItems );
+        Order order =orderService.createOrder(customer.getID(), name, address, phone, remark, orderItems );
+        for(OrderItem orderItem: orderItems) {
+            orderItem.setOrder(order);
+        }
+        orderItemService.add(orderItems);
         if(order != null) {
             jsonObject.put("order", order);
             jsonObject.put("result", 1);
