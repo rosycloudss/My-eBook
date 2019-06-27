@@ -88,7 +88,7 @@ public interface OrderService extends BaseService<Order>, PageService<Order> {
      * @param page
      * @return
      */
-    Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, Date startDate, Date endDate,Integer currentPage, Page page);
+    Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery, Integer postStatus, Integer payStatus, String startDate, String endDate,Integer currentPage, Page page);
 
     /**
      * 通过订单编号查找订单信息

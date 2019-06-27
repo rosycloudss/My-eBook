@@ -181,11 +181,11 @@ public class Order {
         this.orderMount = orderMount;
     }
 
-    public float getTotalPrice() {
+    public Float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(float totalPrice) {
+    public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -201,6 +201,27 @@ public class Order {
                 totalPrice += orderItem.getTotalPrice();
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "customer=" + customer +
+                ", ID=" + ID +
+                ", orderID='" + orderID + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", receiver='" + receiver + '\'' +
+                ", recevingAddr='" + recevingAddr + '\'' +
+                ", phone='" + phone + '\'' +
+                ", delivery=" + delivery +
+                ", postStatus=" + postStatus +
+                ", payStatus=" + payStatus +
+                ", orderDate=" + orderDate +
+                ", remark='" + remark + '\'' +
+                ", orderMount=" + orderMount +
+                ", totalPrice=" + totalPrice +
+                ", orderItemList=" + orderItemList +
+                '}';
     }
 
     public class STATUS {

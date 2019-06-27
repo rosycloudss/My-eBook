@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.my_ebook.mapper.OrderMapper">
-
     <resultMap id="orderMap" type="Order">
         <id column="id" property="ID"/>
         <result column="order_id" property="orderID"/>
@@ -19,7 +18,7 @@
         <result column="order_mount" property="orderMount"/>
         <result column="total_price" property="totalPrice"/>
         <association property="customer" javaType="Customer" column="customer_id"
-                     select=""/>
+                     select="com.my_ebook.mapper.CustomerMapper.getById"/>
         <collection property="orderItemList" ofType="OrderItem" column="id"
                     select="com.my_ebook.mapper.OrderItemMapper.selectByOrderId"/>
     </resultMap>
@@ -199,46 +198,46 @@
                 <if test="order.customer != null and order.customer.ID != null">
                     and customer_id=#{order.customer.ID,jdbcType=INTEGER}
                 </if>
-                <if test="orderID != null">
+                <if test="order.orderID != null">
                     and order_id=#{order.orderID,jdbcType=VARCHAR}
                 </if>
-                <if test="orderStatus != null">
+                <if test="order.orderStatus != null">
                     and order_status=#{order.orderStatus,jdbcType=INTEGER}
                 </if>
-                <if test="receiver != null">
+                <if test="order.receiver != null">
                     and receiver=#{order.receiver,jdbcType=VARCHAR}
                 </if>
-                <if test="recevingAddr != null">
-                    and receiving_addr=#{order.recevingAddr,jdbcType=VARCHAR}
+                <if test="order.recevingAddr != null">
+                    and receiving_addr like #{order.recevingAddr,jdbcType=VARCHAR}"%"
                 </if>
-                <if test="phone != null">
+                <if test="order.phone != null">
                     and phone like #{order.phone,jdbcType=VARCHAR}"%"
                 </if>
-                <if test="delivery != null">
+                <if test="order.delivery != null">
                     and delivery=#{order.delivery,jdbcType=INTEGER}
                 </if>
-                <if test="postStatus != null">
+                <if test="order.postStatus != null">
                     and post_status=#{order.postStatus,jdbcType=INTEGER}
                 </if>
-                <if test="payStatus != null">
+                <if test="order.payStatus != null">
                     and pay_status=#{order.payStatus,jdbcType=INTEGER}
                 </if>
-                <if test="orderDate != null">
+                <if test="order.orderDate != null">
                     and order_Date=#{order.orderDate,jdbcType=TIMESTAMP}
                 </if>
                 <!--                <if test="remark != null">-->
                 <!--                    and rem#{remark,jdbcType=VARCHAR}-->
                 <!--                </if>-->
-                <if test="orderMount != null">
+                <if test="order.orderMount != null">
                     and order_mount=#{order.orderMount,jdbcType=INTEGER}
                 </if>
-                <if test="totalPrice != null">
+                <if test="order.totalPrice != null">
                     and total_price=#{order.totalPrice,jdbcType=DOUBLE}
                 </if>
             </if>
-            <if test="start ！= null and end != null">
-                <![CDATA[ and order_Date >= to_date(#{start,jdbcType=DATE},'yyyy-MM-dd hh24:mi:ss')]]>
-                <![CDATA[ and order_Date <= to_date(#{end,jdbcType=DATE},'yyyy-MM-dd hh24:mi:ss')]]>
+            <if test="start != null and end != null">
+                <![CDATA[ and order_Date >= str_to_date(#{start},'%Y-%m-%d %r')]]>
+                <![CDATA[ and order_Date <= str_to_date(#{end},'%Y-%m-%d %r')]]>
             </if>
         </where>
         <if test="page != null">
@@ -254,46 +253,46 @@
                 <if test="order.customer != null and order.customer.ID != null">
                     and customer_id=#{order.customer.ID,jdbcType=INTEGER}
                 </if>
-                <if test="orderID != null">
+                <if test="order.orderID != null">
                     and order_id=#{order.orderID,jdbcType=VARCHAR}
                 </if>
-                <if test="orderStatus != null">
+                <if test="order.orderStatus != null">
                     and order_status=#{order.orderStatus,jdbcType=INTEGER}
                 </if>
-                <if test="receiver != null">
+                <if test="order.receiver != null">
                     and receiver=#{order.receiver,jdbcType=VARCHAR}
                 </if>
-                <if test="recevingAddr != null">
-                    and receiving_addr=#{order.recevingAddr,jdbcType=VARCHAR}
+                <if test="order.recevingAddr != null">
+                    and receiving_addr like #{order.recevingAddr,jdbcType=VARCHAR}"%"
                 </if>
-                <if test="phone != null">
+                <if test="order.phone != null">
                     and phone like #{order.phone,jdbcType=VARCHAR}"%"
                 </if>
-                <if test="delivery != null">
+                <if test="order.delivery != null">
                     and delivery=#{order.delivery,jdbcType=INTEGER}
                 </if>
-                <if test="postStatus != null">
+                <if test="order.postStatus != null">
                     and post_status=#{order.postStatus,jdbcType=INTEGER}
                 </if>
-                <if test="payStatus != null">
+                <if test="order.payStatus != null">
                     and pay_status=#{order.payStatus,jdbcType=INTEGER}
                 </if>
-                <if test="orderDate != null">
+                <if test="order.orderDate != null">
                     and order_Date=#{order.orderDate,jdbcType=TIMESTAMP}
                 </if>
                 <!--                <if test="remark != null">-->
                 <!--                    and rem#{remark,jdbcType=VARCHAR}-->
                 <!--                </if>-->
-                <if test="orderMount != null">
+                <if test="order.orderMount != null">
                     and order_mount=#{order.orderMount,jdbcType=INTEGER}
                 </if>
-                <if test="totalPrice != null">
+                <if test="order.totalPrice != null">
                     and total_price=#{order.totalPrice,jdbcType=DOUBLE}
                 </if>
             </if>
-            <if test="start ！= null and end != null">
-                <![CDATA[ and order_Date >= to_date(#{start,jdbcType=DATE},'yyyy-MM-dd hh24:mi:ss')]]>
-                <![CDATA[ and order_Date <= to_date(#{end,jdbcType=DATE},'yyyy-MM-dd hh24:mi:ss')]]>
+            <if test="start != null and end != null">
+                <![CDATA[ and order_Date >= str_to_date(#{start},'%Y-%m-%d %r')]]>
+                <![CDATA[ and order_Date <= str_to_date(#{end},'%Y-%m-%d %r')]]>
             </if>
         </where>
     </select>

@@ -87,7 +87,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Page<Order> findOrders(Integer customerId, String orderNo, Integer orderStatus, Integer delivery,
-                                  Integer postStatus, Integer payStatus, Date startDate, Date endDate, Integer currentPage, Page page) {
+                                  Integer postStatus, Integer payStatus, String startDate, String endDate, Integer currentPage, Page page) {
         Order order = new Order();
         if (customerId != null) {
             Customer customer = new Customer();

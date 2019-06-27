@@ -21,7 +21,8 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping("/list")
-    public String list(Date startDate, Date endDate, Integer payStatus, Integer orderStauts, String orderNo, Integer currentPage, Model model, HttpServletRequest request) {
+    public String list(String startDate, String endDate, Integer payStatus, Integer orderStauts, String orderNo, Integer currentPage, Model model, HttpServletRequest request) {
+        System.out.println(startDate + "==" + endDate + "==" + payStatus + "==" + orderStauts + "==" + orderNo + "=="+ currentPage);
         currentPage = (currentPage == null ? 0 : currentPage);
         System.out.println("startDAte=" + startDate);
         System.out.println("endDate=" + endDate);
@@ -31,4 +32,12 @@ public class OrderController {
         model.addAttribute("orderPage", orderPage);
         return "/bg/order-list";
     }
+
+
+    public String getOne(Integer op,Integer orderId,Model model){
+
+        orderService.findByOrderId(orderId);
+        return "/bg/order-view";
+    }
+
 }

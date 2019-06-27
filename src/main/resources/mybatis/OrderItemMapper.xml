@@ -59,7 +59,7 @@
         select
         <include refid="base_column_list"/>
         from tb_order_item
-        where id=#{orderId,jdbcType=INTEGER};
+        where order_id=#{orderId,jdbcType=VARCHAR};
     </select>
 
     <select id="selectById" parameterType="integer" resultMap="orderItemMap">

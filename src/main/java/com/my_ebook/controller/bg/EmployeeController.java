@@ -38,6 +38,20 @@ public class EmployeeController {
     }
 
     /**
+     * 退出登录
+     *
+     * @param session
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        Employee employee = (Employee) session.getAttribute("employee");
+        session.removeAttribute("employee");
+        System.out.println(employee.getName() + "退出登录");
+        return "redirect:/bg/login.jsp";
+    }
+
+    /**
      * 添加员工
      *
      * @param employee
@@ -93,7 +107,7 @@ public class EmployeeController {
         employee.setPhone(phone);
         employee.setName(name);
         System.out.println(employeeService);
-        currentPage = (currentPage == null ? 1:currentPage);
+        currentPage = (currentPage == null ? 1 : currentPage);
         Page<Employee> page = new Page<Employee>(employeeService.count(employee), currentPage, 20);
         page.setPath(WebUtil.getPath(request));
         System.out.println(page);
@@ -111,26 +125,27 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping("/get_edit_employee")
-    public String getEmployee(Integer employeeId,Model model) {
+    public String getEmployee(Integer employeeId, Model model) {
         Employee employee = employeeService.findById(employeeId);
-        model.addAttribute("employee",employee);
+        model.addAttribute("employee", employee);
         System.out.println(employee);
         return "/bg/employee-edit";
-}
+    }
 
     /**
      * 修改员工信息
+     *
      * @param employee
      * @return
      */
     @ResponseBody
     @RequestMapping("/edit")
-    public JSONObject editEmployee(@RequestBody Employee employee){
+    public JSONObject editEmployee(@RequestBody Employee employee) {
         JSONObject jsonObject = new JSONObject();
-        if(employeeService.update(employee) > 0){
-            jsonObject.put("result",1 );
-        }else {
-            jsonObject.put("result",0 );
+        if (employeeService.update(employee) > 0) {
+            jsonObject.put("result", 1);
+        } else {
+            jsonObject.put("result", 0);
         }
 
         return jsonObject;
