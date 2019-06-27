@@ -160,10 +160,13 @@ public class OrderServiceImpl implements OrderService {
         }
         return page;
     }
-
     @Override
     public List<Order> selectBycustomerid(Integer customerId) {
         return orderMapper.selectBycustomerid(customerId);
+    }
+    @Override
+    public int deleteByorderId(String id){
+        return orderMapper.deleteByorderId(id);
     }
 
     @Override
