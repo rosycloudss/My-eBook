@@ -119,10 +119,10 @@ public class CustomerController {
     }
     @ResponseBody
     @RequestMapping(value = "/getOrderDetail/{orderId}",method = RequestMethod.GET)
-    public JSONObject getOrderDetail(@PathVariable String orderId){
-
+    public JSONObject getOrderDetail(@PathVariable int orderId){
+        String orderID=String.valueOf(orderId);
         JSONObject jsonObject=new JSONObject();
-        List<OrderItem> orderItemList = orderItemService.findOrderItems(orderId);
+        List<OrderItem> orderItemList = orderItemService.findOrderItems(orderID);
         List<Orderdetail> orderdetails=new ArrayList<Orderdetail>();
         for (int j = 0; j < orderItemList.size(); j++) {
             Orderdetail orderdetail=new Orderdetail();
@@ -137,7 +137,6 @@ public class CustomerController {
 
             orderdetails.add(orderdetail);
         }
-
         jsonObject.put("orderdetails",orderdetails);
         return jsonObject;
     }
@@ -163,6 +162,13 @@ public class CustomerController {
         jsonObject.put("result",result);
         return jsonObject;
     }
-
-
+    @ResponseBody
+    @RequestMapping(value="/updatePayStatus", method = RequestMethod.POST)
+    public JSONObject updatePayStatus(@RequestBody Order order){
+        JSONObject jsonObject=new JSONObject();
+        order.setPayStatus(1);
+        int result=orderService.update(order);
+        jsonObject.put("result",result);
+        return jsonObject;
+    }
 }

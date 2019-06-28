@@ -40,33 +40,7 @@
 </main>
 <script>
     function modify() {
-        var oldpwd = $("#oldpwd").val();
-        var newpwd = $("#newpwd").val();
-        var renewpwd = $("#renewpwd").val();
-        if(oldpwd==="" || newpwd==="" || renewpwd===""){
-            alert("所输项目不可为空");
-            return false;
-        }
-        if (newpwd === renewpwd) {
-            $.ajax({
-                url: "http://localhost:8080/fg/customer/changePassword/oldpwd/newpwd",
-                type: "get",
-                dataType: 'JSON',
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if(data.result === 1){
-                        alert("修改成功");
-                    }else{
-                        alert("修改失败");
-                    }
-                },
-                error: function (data) {
-                    alert("修改失败");
-                }
-            })
-        }else{
-            alert("新密码与旧密码不一致，请重新输入");
-        }
+
     }
 </script>
 <jsp:include page="base/foot.jsp"/>

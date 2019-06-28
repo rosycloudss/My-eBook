@@ -45,6 +45,7 @@ Main Start
                                     <ul>
                                         <li><a href="javascript:void(0);" onclick="showPerson()"><span>个人信息</span></a></li>
                                         <li><a href="javascript:void(0);" onclick="showOrder()"><span>我的订单</span></a></li>
+                                        <li><a href="javascript:void(0);" onclick="modifypwd()">修改密码</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,6 +63,55 @@ Main Start
     *************************************-->
 </main>
 <script>
+    function modifypwd(){
+        $("#information").html("<div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">" +
+            "                        <form class=\"tg-formtheme tg-formcontactus\">" +
+            "                                <div class=\"form-group\">" +
+            "                                    <input style=\"width: 250px\" type=\"password\" id=\"oldpwd\" name=\"oldpwd\" class=\"form-control\"  placeholder=\"旧密码\">" +
+            "                                </div>" +
+            "                                <div class=\"form-group\">" +
+            "                                    <input style=\"width: 250px\" id=\"newpwd\" type=\"password\" name=\"newpwd\" class=\"form-control\" placeholder=\"新密码\">" +
+            "                                </div>" +
+            "                                <div class=\"form-group\">" +
+            "                                    <input style=\"width: 250px\" id=\"renewpwd\" type=\"password\" name=\"renewpwd\" class=\"form-control\" placeholder=\"确认密码\">" +
+            "                                </div>" +
+            "                                <div class=\"form-group\">" +
+            "                                    <button id=\"btn\" onclick=\"modify1()\" type=\"button\" class=\"tg-btn tg-active\">确认修改</button>" +
+            "                                </div>" +
+            "                        </form>" +
+            "                    </div>");
+    }
+    function modify1() {
+        var oldpwd = $("#oldpwd").val();
+        var newpwd = $("#newpwd").val();
+        var renewpwd = $("#renewpwd").val();
+        if(oldpwd==="" || newpwd==="" || renewpwd===""){
+            alert("所输项目不可为空");
+            return false;
+        }
+        if (newpwd === renewpwd) {
+            $.ajax({
+                url: "http://localhost:8080/fg/customer/changePassword/oldpwd/newpwd",
+                type: "get",
+                dataType: 'JSON',
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if(data.result === 1){
+                        alert("修改成功");
+                        modifypwd();
+                    }else{
+                        alert("修改失败");
+                        modifypwd();
+                    }
+                },
+                error: function (data) {
+                    alert("修改失败");
+                }
+            })
+        }else{
+            alert("新密码与旧密码不一致，请重新输入");
+        }
+    }
     function showPerson() {
         $("#information").html("<form class=\"layui-form\">" +
             "                        <div class=\"form-group\">" +
@@ -136,23 +186,35 @@ Main Start
         var phone=$("#phone").val();
         var email=$("#email").val();
         var addr=$("#addr").val();
-        $.ajax({
-           url:"http://localhost:8080/fg/customer/update" ,
-            type: "post",
-            dataType: 'JSON',
-            contentType: "application/json; charset=utf-8",
-            data:JSON.stringify({"name":name,"nickname":nickname,"phone":phone,"email":email,"addr":addr}),
-            success:function (data) {
-                if(data.result === 1){
-                    alert("修改成功");
-                }else{
-                    alert("修改失败");
+        if(name === ""||nickname===""||phone===""||email===""||addr==="") {
+            alert("输入项不可为空，请重新输入");
+            showPerson();
+        }else{
+            $.ajax({
+                url: "http://localhost:8080/fg/customer/update",
+                type: "post",
+                dataType: 'JSON',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "name": name,
+                    "nickname": nickname,
+                    "phone": phone,
+                    "email": email,
+                    "addr": addr
+                }),
+                success: function (data) {
+                    if (data.result === 1) {
+                        alert("修改成功");
+                        showPerson();
+                    } else {
+                        alert("修改失败");
+                    }
+                },
+                error: function () {
+                    alert("error");
                 }
-            },
-            error:function () {
-                alert("error");
-            }
-        });
+            });
+        }
     }
     function poststatus(status){
         if(status === 2){
@@ -169,24 +231,49 @@ Main Start
         }
     }
     function del(orderId) {
-
-        $.ajax({
-            url: "http://localhost:8080/fg/customer/delOrder/"+orderId,
-            type: "get",
-            dataType: 'JSON',
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if(data.result === 1){
-                    alert("删除成功");
-                    location.reload();
-                }else{
-                    alert("删除失败");
+        var r=confirm("确认删除?");
+        if(r === true) {
+            $.ajax({
+                url: "http://localhost:8080/fg/customer/delOrder/" + orderId,
+                type: "get",
+                dataType: 'JSON',
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.result === 1) {
+                        alert("删除成功");
+                        showOrder();
+                    } else {
+                        alert("删除失败");
+                    }
+                },
+                error: function () {
+                    alert("error");
                 }
-            },
-            error:function () {
-                alert("error");
+            });
+        }
+    }
+    function pay(iD){
+        if(iD === -1){
+            alert("已支付");
+        }else {
+            var r=confirm("确认付款？");
+            if(r === true) {
+                $.ajax({
+                    url: "http://localhost:8080/fg/customer/updatePayStatus",
+                    type: "post",
+                    dataType: 'JSON',
+                    data: JSON.stringify({}),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                            alert("支付成功");
+                            showOrder();
+                    },
+                    error: function (data) {
+                        alert("error");
+                    }
+                });
             }
-        });
+        }
     }
     function showOrder() {
         $("#information").html(" <thread>" +
@@ -202,7 +289,9 @@ Main Start
             "<th>电话号码</th>" +
             "<th>下单时间</th>" +
             "<th>收货地址</th>" +
+            "<th>总价</th>" +
             "<th>详情</th>" +
+            "<th>付款</th>" +
             "<th>删除</th>" +
             "</tr>" +
             "</thread>" +
@@ -215,20 +304,33 @@ Main Start
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
+                // alert(orderList[0].ID);
                 var orderList = data.orderList;
                 if(orderList != null){
                     var tabledata;
                     for(var i=0;i<orderList.length;i++){
+                        var markdata;
+                        if(orderList[i].payStatus === 2){
+                            markdata=orderList[i].iD;
+                        }else{
+                            markdata=-1;
+                        }
                         tabledata+="<tr>"+
-                            "<td>"+orderList[i].orderID +"</td>"+
+                            "<td>"+orderList[i].iD +"</td>"+
                             "<td>"+orderList[i].receiver +"</td>"+
                             "<td>"+poststatus(orderList[i].postStatus) +"</td>"+
                             "<td>"+paystatus(orderList[i].payStatus) +"</td>"+
                             "<td>"+orderList[i].phone +"</td>"+
                             "<td>"+orderList[i].orderDate +"</td>"+
                             "<td>"+orderList[i].recevingAddr +"</td>"+
+                            "<td>"+orderList[i].totalPrice +"</td>"+
                             "<td>"+
-                            '<a title="订单详情"  href="javascript:;"  onclick="window.open( \'orderdetail.jsp? Data=' + orderList[i].orderID+ '\',\'订单详情\',\'width=400,height=300,top=150,left=450\')">' +
+                            '<a title="订单详情"  href="javascript:;"  onclick="window.open( \'orderdetail.jsp? Data=' + orderList[i].iD+ '\',\'订单详情\',\'width=400,height=300,top=150,left=450\')">' +
+                            "<i class=\"layui-icon\">&#xe642;</i>" +
+                            "</a>" +
+                            "</td>"+
+                            "<td>"+
+                            '<a href="javascript:;"  onclick="pay('+markdata+')"> '+
                             "<i class=\"layui-icon\">&#xe642;</i>" +
                             "</a>" +
                             "</td>"+
