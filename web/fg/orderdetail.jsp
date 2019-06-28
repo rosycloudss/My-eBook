@@ -38,7 +38,7 @@
     var url = location.search;
     var orderId=url.split("=")[1];
     $.ajax({
-        url: "http://localhost:8080/fg/customer/getOrderDetail/"+orderId,
+        url: "/fg/customer/getOrderDetail/"+orderId,
         type: "get",
         dataType: 'JSON',
         contentType: "application/json; charset=utf-8",

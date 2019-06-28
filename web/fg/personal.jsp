@@ -91,7 +91,7 @@ Main Start
         }
         if (newpwd === renewpwd) {
             $.ajax({
-                url: "http://localhost:8080/fg/customer/changePassword/oldpwd/newpwd",
+                url: "/fg/customer/changePassword/oldpwd/newpwd",
                 type: "get",
                 dataType: 'JSON',
                 contentType: "application/json; charset=utf-8",
@@ -162,7 +162,7 @@ Main Start
             "                        <button style=\"height: 30px;width: 100px;background-color: #0C0C0C;color: white\" type=\"button\" onclick=\"modify()\">确认修改</button>" +
             "                        </form>");
         $.ajax({
-            url: "http://localhost:8080/fg/customer/findCustomerById",
+            url: "/fg/customer/findCustomerById",
             type: "get",
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
@@ -191,7 +191,7 @@ Main Start
             showPerson();
         }else{
             $.ajax({
-                url: "http://localhost:8080/fg/customer/update",
+                url: "/fg/customer/update",
                 type: "post",
                 dataType: 'JSON',
                 contentType: "application/json; charset=utf-8",
@@ -234,7 +234,7 @@ Main Start
         var r=confirm("确认删除?");
         if(r === true) {
             $.ajax({
-                url: "http://localhost:8080/fg/customer/delOrder/" + orderId,
+                url: "/fg/customer/delOrder/" + orderId,
                 type: "get",
                 dataType: 'JSON',
                 contentType: "application/json; charset=utf-8",
@@ -259,7 +259,7 @@ Main Start
             var r=confirm("确认付款？");
             if(r === true) {
                 $.ajax({
-                    url: "http://localhost:8080/fg/customer/updatePayStatus",
+                    url: "/fg/customer/updatePayStatus",
                     type: "post",
                     dataType: 'JSON',
                     data: JSON.stringify({}),
@@ -299,7 +299,7 @@ Main Start
             "</tbody>"+
             "</table>");
         $.ajax({
-            url: "http://localhost:8080/fg/customer/getPersonalOrder",
+            url: "/fg/customer/getPersonalOrder",
             type: "get",
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
