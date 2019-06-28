@@ -26,14 +26,14 @@ public class ContactController {
     @ResponseBody
     @RequestMapping(value = "/addReply",method = RequestMethod.POST )
     public JSONObject add(@RequestBody Reply reply, HttpServletRequest request) {
-        System.out.println(reply);
+
         JSONObject jsonObject = new JSONObject();
         int result = 0;
         String ip=request.getRemoteAddr();
         Date date=new Date();
         reply.setIp(ip);
         reply.setReplyDate(date);
-        System.out.println(reply);
+
         if (reply != null && replyService.add(reply) > 0) {
             result = 1;
         }

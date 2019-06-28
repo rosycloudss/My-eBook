@@ -3,6 +3,7 @@
 <%@ page import="com.my_ebook.entity.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.my_ebook.vo.Page" %>
+<%@ page import="com.my_ebook.entity.Comment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:include page="base/head.jsp"/>
@@ -121,12 +122,21 @@ Main Start
                                         </div>
                                     </div>
                                     <!--评论 开始-->
+                                    <%
+                                        Page<Comment> commentPage = (Page<Comment>) request.getAttribute("comments");
+                                        List<Comment> commentList = commentPage.getPageInfos();
+                                        if (commentList != null) {
+                                    %>
                                     <div class="tg-commentsarea">
                                         <div class="tg-sectionhead">
-                                            <h2><br><br>3个评论</h2>
+                                            <h2><br><br>评论数量：<%=commentList.size()%></h2>
                                         </div>
                                         <ul id="tg-comments" class="tg-comments">
+                                            <%
+                                                for(Comment comment:commentList) {
+                                                    if (comment != null) {
 
+                                            %>
                                             <li>
                                                 <div class="tg-authorbox">
                                                     <figure class="tg-authorimg">
@@ -136,18 +146,19 @@ Main Start
                                                         <div class="tg-authorhead">
                                                             <div class="tg-leftarea">
                                                                 <div class="tg-authorname">
-                                                                    <h2>李伟</h2>
-                                                                    <span>日期: 2019-6-27</span>
+                                                                    <h2><br><%=comment.getCustomer().getName()%></h2>
+                                                                    <span>日期: <%=DateUtil.formatDate(comment.getCommentDate())%></span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="tg-description">
-                                                            <p>这本书很棒，非常适合我</p>
+                                                            <p><%=comment.getContent()%></p>
                                                         </div>
                                                     </div>
                                                     <div class="tg-bottomarrow"></div>
                                                 </div>
                                             </li>
+                                            <%}}}%>
                                             <li class="tg-loadmore"><a class="tg-btn tg-active" href="javascript:void(0);">查看全部评论</a></li>
                                         </ul>
                                     </div>
@@ -243,10 +254,10 @@ Main Start
                                 <div class="tg-widgetcontent">
                                     <ul>
                                         <%
-                                            List<Category> categoryList = (List<Category>) session.getAttribute("categoryList");
-                                            for (Category category: categoryList) {
+                                            List<Category> categoryList2 = (List<Category>) session.getAttribute("categoryList");
+                                            for (Category category2: categoryList2) {
                                         %>
-                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category.getId()%>&currentPage=0"><span><%= category.getName()%></span></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList?categoryId=<%=category2.getId()%>&currentPage=0"><span><%= category2.getName()%></span></a></li>
                                         <%}%>
                                     </ul>
                                 </div>

@@ -135,6 +135,7 @@
                                 <ul>
                                     <%
                                         List<Category> categoryList = (List<Category>) session.getAttribute("categoryList");
+                                        if (categoryList != null) {
                                     %>
                                     <li class="menu-item-has-children menu-item-has-mega-menu">
                                         <a href="javascript:void(0);">所有分类</a>
@@ -148,7 +149,7 @@
                                                 <li role="presentation" class="active">
                                                     <a href="#artandphotography" aria-controls="artandphotography" role="tab" data-toggle="tab"><%=category.getName()%></a>
                                                 </li>
-                                                <%}}%>
+                                                <%}}}%>
 
                                             </ul>
                                             <div class="tab-content tg-themetabcontent">

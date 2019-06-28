@@ -132,7 +132,7 @@ public class BookController {
         page.setTotalRecord(commentService.count(comment));
         page.setPageCurrent(1);
         Page<Comment> comments = commentService.findBookComments(bookId, page);
-        model.addAttribute("comments", comment);
+        model.addAttribute("comments", comments);
 
         Page<Book> pageBook = new Page<Book>();
         page.setPageSize(4);
