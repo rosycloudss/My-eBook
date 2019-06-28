@@ -79,7 +79,7 @@
                 total_price=#{order.totalPrice,jdbcType=DOUBLE},
             </if>
         </set>
-
+        where id = #{order.ID}
     </update>
 
     <delete id="deleteById" parameterType="integer">

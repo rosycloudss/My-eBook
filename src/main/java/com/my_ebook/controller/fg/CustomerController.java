@@ -163,9 +163,11 @@ public class CustomerController {
         return jsonObject;
     }
     @ResponseBody
-    @RequestMapping(value="/updatePayStatus", method = RequestMethod.POST)
-    public JSONObject updatePayStatus(@RequestBody Order order){
+    @RequestMapping(value="/updatePayStatus", method = RequestMethod.GET)
+    public JSONObject updatePayStatus(@RequestParam("orderId") int ID){
         JSONObject jsonObject=new JSONObject();
+        Order order = new Order();
+        order.setID(ID);
         order.setPayStatus(1);
         int result=orderService.update(order);
         jsonObject.put("result",result);

@@ -51,8 +51,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public int add(Car car) {
-        System.out.println(car.getCustomer().getID());
-        System.out.println(car.getBook().getID());
+
         Car car1 = carMapper.selectByCustomerAndBook(car.getCustomer().getID(), car.getBook().getID());
         if (car1 != null) {
             car1.setOrderMount(car1.getOrderMount() + 1);

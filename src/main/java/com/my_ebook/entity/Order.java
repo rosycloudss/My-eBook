@@ -195,6 +195,7 @@ public class Order {
 
     public void setOrderItemList(List<OrderItem> orderItemList) {
         this.orderItemList = orderItemList;
+        this.orderItemList = orderItemList;
         if (orderItemList != null) {
             totalPrice = 0.0f;
             orderMount = 0;

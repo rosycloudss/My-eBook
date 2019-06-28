@@ -259,10 +259,9 @@ Main Start
             var r=confirm("确认付款？");
             if(r === true) {
                 $.ajax({
-                    url: "/fg/customer/updatePayStatus",
-                    type: "post",
+                    url: "/fg/customer/updatePayStatus?orderId=" + iD,
+                    type: "get",
                     dataType: 'JSON',
-                    data: JSON.stringify({}),
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                             alert("支付成功");
