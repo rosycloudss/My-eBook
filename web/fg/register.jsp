@@ -36,12 +36,12 @@
 <body>
 
 <%
-    String msg= request.getParameter("msg");
-    if (msg !=null) {
+    String msg = (String) request.getAttribute("msg");
+    if (msg != null) {
 %>
-    <script type="text/javascript">
-        alert('<%=msg%>');
-    </script>
+<script type="text/javascript">
+    alert('<%=msg%>');
+</script>
 <%}%>
 
 <section class="signin signup popup-in pop-up">
@@ -52,24 +52,33 @@
                 <div class="signin-form">
                     <div class=" ">
                         <div class=" ">
-                            <form action="/fg/customer/register" method="post">
+                            <form id="regist_form" action="/fg/customer/register"
+                                  method="post">
                                 <div class="form-group">
-                                    <label for="signin_form">姓名</label>
-                                    <input type="text" class="form-control" name="name" id="signin_form" placeholder="姓名">
+                                    <label for="name">姓名</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                           placeholder="姓名">
                                 </div><!--/.form-group -->
                                 <div class="form-group">
-                                    <label for="signin_form">昵称</label>
-                                    <input type="text" class="form-control" name="nickname" id="signin_form" placeholder="昵称">
+                                    <label for="nickname">昵称</label>
+                                    <input type="text" class="form-control" name="nickname" id="nickname"
+                                           placeholder="昵称">
                                 </div><!--/.form-group -->
                                 <div class="form-group">
-                                    <label for="signin_form">电话号码</label>
-                                    <input type="tel" class="form-control" name="phone" id="signin_form"
+                                    <label for="phone">电话号码</label>
+                                    <input type="tel" class="form-control" name="phone" id="phone"
                                            placeholder="输入你的电话号码">
                                 </div><!--/.form-group -->
                                 <div class="form-group">
-                                    <label for="signin_form">密码</label>
-                                    <input type="password" class="form-control" name="password" id="signin_form"
+                                    <label for="password">密码</label>
+                                    <input type="password" class="form-control" name="password" id="password"
                                            placeholder="输入你的密码">
+                                </div><!--/.form-group -->
+                                <div class="form-group">
+                                    <label for="repassword">密码</label>
+                                    <input type="password" class="form-control" name="repassword" id="repassword"
+                                           placeholder="输入你的密码">
+                                    <label id="msg"></label>
                                 </div><!--/.form-group -->
                             </form><!--/form -->
                         </div><!--/.col -->
@@ -92,7 +101,7 @@
                 </div><!--/.signin-password -->
                 <div class="signin-footer">
                     <button type="button" onclick="send()" class="btn signin_btn signin_btn_two">
-                       注册
+                        注册
                     </button>
                     <p>
                         已经注册 ?
@@ -113,8 +122,46 @@
 </footer><!--/.hm-footer-copyright-->
 <script type="text/javascript">
     function send() {
-        document.getElementsByTagName("form")[0].submit();
+        if (checkInput()) {
+            document.getElementsByTagName("form")[0].submit();
+        }
+
     }
+    var phone_regex = /^1(3|4|5|7|8)\d{9}$/;
+    /*检查表单输入是否已经注册*/
+    function checkInput() {
+        var name = $("#name").val();
+        if (name == "") {
+            alert("姓名不能为空")
+            return false;
+        }
+        var nickname = $("#nickname").val();
+        if (nickname == "" ) {
+            alert("昵称不能为空" );
+            return false;
+        }
+        var phone = $("#phone").val();
+        if (phone == "") {
+            alert("手机号能为空" );
+            return false;
+        }else if (!(phone_regex.test(phone))) {
+            alert("手机号格式错误");
+            return false;
+        }
+
+        var password = $("#password").val();
+        var repassword = $("#repassword").val();
+        if (password == "") {
+            alert("密码不能为空");
+            return false;
+        }else if (password != repassword) {
+            alert("两次密码输入不一致");
+            return false;
+        }
+
+        return true;
+    }
+
 </script>
 <!-- Include all js compiled plugins (below), or include individual files as needed -->
 <script src="/fg/assets/js/jquery.js"></script>

@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.my_ebook.entity.Reply;
 import com.my_ebook.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +40,4 @@ public class ContactController {
         jsonObject.put("result", result);
         return jsonObject;
     }
-
-
 }

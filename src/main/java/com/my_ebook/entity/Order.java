@@ -197,8 +197,10 @@ public class Order {
         this.orderItemList = orderItemList;
         if (orderItemList != null) {
             totalPrice = 0.0f;
+            orderMount = 0;
             for (OrderItem orderItem : orderItemList) {
                 totalPrice += orderItem.getTotalPrice();
+
                 orderMount += orderItem.getOrderMount();
             }
         }

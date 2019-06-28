@@ -32,17 +32,6 @@
                                     收货地址：<input id="address" type="text" name="address" class="form-control" value="<%=customer.getAddr()==null?"":customer.getAddr()%>">
                                 </div>
                                 <div class="form-group tg-hastextarea">
-                                    物流：
-                                    <select id="logistics" name="logistics" class="form-control combobox">
-                                    <option value="顺丰">顺丰</option>
-                                    <option value="天天">天天</option>
-                                    <option value="EMS">EMS</option>
-                                    <option value="申通">申通</option>
-                                    <option value="百世">百世</option>
-                                    </select>
-                                    <%--<input id="logistics " type="text" name="logistics" class="form-control" placeholder="">--%>
-                                </div>
-                                <div class="form-group tg-hastextarea">
                                     备注：<input id="remark" type="text" name="remark" class="form-control" >
                                 </div>
                                 <div class="tg-contactdetail">
@@ -110,7 +99,7 @@
             dataType: "JSON",
             contentType : "application/json; charset=utf-8",
             data: JSON.stringify({"name":name,"phone":phone,"address":address,
-                "remark":remark, "logistics":logistics,"carId":carIds}),
+                "remark":remark, "carId":carIds}),
             success : function(data) {
                 alert("success");
                 window.location = "/fg/book/bookList"

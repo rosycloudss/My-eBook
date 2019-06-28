@@ -228,7 +228,7 @@ Main Start
                             "<td>"+orderList[i].orderDate +"</td>"+
                             "<td>"+orderList[i].recevingAddr +"</td>"+
                             "<td>"+
-                            '<a title="订单详情"  href="javascript:;"  onclick="window.open( \'orderdetail.jsp? Data=' + orderList[i].orderID+ '\',\'订单详情\',\'width=400,height=400,top=150,left=450\')">' +
+                            '<a title="订单详情"  href="javascript:;"  onclick="window.open( \'orderdetail.jsp? Data=' + orderList[i].orderID+ '\',\'订单详情\',\'width=400,height=300,top=150,left=450\')">' +
                             "<i class=\"layui-icon\">&#xe642;</i>" +
                             "</a>" +
                             "</td>"+
