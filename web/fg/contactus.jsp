@@ -102,7 +102,7 @@ Main Start
             var email = $("#email").val();
             var comment = $("#comment").val();
             $.ajax({
-                url: "http://localhost:8080/fg/contact/addReply",
+                url: "/fg/contact/addReply",
                 type: "post",
                 dataType: 'JSON',
                 data: JSON.stringify({"cName":name, "email":email, "content":comment}),
