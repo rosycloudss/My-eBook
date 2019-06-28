@@ -133,6 +133,7 @@ public class CarController {
                 car.setOrderMount(1);
                 Book book = bookService.findById(bookId);
                 car.setBook(book);
+                carService.add(car);
                 carList.add(car);
             }
             model.addAttribute("carList", carList);
