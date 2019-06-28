@@ -62,10 +62,14 @@ public class BookController {
             //获取图书分类信息
             Page<Category> categoryPage = categoryService.findAllParentCategory();
             List<Category> categoryList = new ArrayList<Category>();
+            List<Category> parentCategoryList = new ArrayList<Category>();
             for (Category category : categoryPage.getPageInfos()) {
+                if (category.getParentId()!=null && category.getParentId() == 0) {
+                    parentCategoryList.add(category);
+                }
                 categoryList.addAll(category.getSubCategory());
             }
-
+            session.setAttribute("parentCategoryList", parentCategoryList);
             session.setAttribute("categoryList", categoryList);
         }
         model.addAttribute("strategy", 0);
@@ -107,7 +111,7 @@ public class BookController {
      */
     @ResponseBody
     @RequestMapping("/getCategoryList")
-    public JSONObject findCategoryByParentId(int parentId) {
+    public JSONObject findCategoryByParentId(@RequestParam("parentId") int parentId) {
         JSONObject jsonObject = new JSONObject();
         Page<Category> categoryPage = categoryService.findByParentId(parentId);
         jsonObject.put("categoryPage", categoryPage);

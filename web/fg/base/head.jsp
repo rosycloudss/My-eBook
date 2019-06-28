@@ -134,66 +134,28 @@
                             <div id="tg-navigation" class="collapse navbar-collapse tg-navigation">
                                 <ul>
                                     <%
-                                        List<Category> categoryList = (List<Category>) session.getAttribute("categoryList");
-                                        if (categoryList != null) {
+                                        List<Category> parentCategoryList = (List<Category>) session.getAttribute("parentCategoryList");
+                                        if (parentCategoryList != null) {
                                     %>
                                     <li class="menu-item-has-children menu-item-has-mega-menu">
                                         <a href="javascript:void(0);">所有分类</a>
                                         <div class="mega-menu">
                                             <ul class="tg-themetabnav" role="tablist">
                                                 <%
-                                                    for (Category category: categoryList) {
+                                                    for (Category category: parentCategoryList) {
                                                         if (category != null) {
 
                                                 %>
                                                 <li role="presentation" class="active">
-                                                    <a href="#artandphotography" aria-controls="artandphotography" role="tab" data-toggle="tab"><%=category.getName()%></a>
+                                                    <a href="#artandphotography" onclick="displaySubcategory(<%=category.getId()%>)" aria-controls="artandphotography" role="tab" data-toggle="tab"><%=category.getName()%></a>
                                                 </li>
                                                 <%}}}%>
 
                                             </ul>
                                             <div class="tab-content tg-themetabcontent">
                                                 <div role="tabpanel" class="tab-pane active" id="artandphotography">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>建筑</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="/fg/book/bookList">像钉子一样坚硬</a></li>
-                                                                <li><a href="/fg/book/bookList">Pro Grease Monkey</a></li>
-                                                                <li><a href="/fg/book/bookList">Building Memories</a></li>
-                                                                <li><a href="/fg/book/bookList">Bulldozer Boyz</a></li>
-                                                                <li><a href="/fg/book/bookList">Build Or Leave On Us</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>艺术形式</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="/fg/book/bookList">Consectetur adipisicing</a></li>
-                                                                <li><a href="/fg/book/bookList">Aelit sed do eiusmod</a></li>
-                                                                <li><a href="/fg/book/bookList">Tempor incididunt labore</a></li>
-                                                                <li><a href="/fg/book/bookList">Dolore magna aliqua</a></li>
-                                                                <li><a href="/fg/book/bookList">Ut enim ad minim</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="tg-linkstitle">
-                                                                <h2>历史</h2>
-                                                            </div>
-                                                            <ul>
-                                                                <li><a href="/fg/book/bookList">Veniam quis nostrud</a></li>
-                                                                <li><a href="/fg/book/bookList">Exercitation</a></li>
-                                                                <li><a href="/fg/book/bookList">Laboris nisi ut aliuip</a></li>
-                                                                <li><a href="/fg/book/bookList">Commodo conseat</a></li>
-                                                                <li><a href="/fg/book/bookList">Duis aute irure</a></li>
-                                                            </ul>
-                                                            <a class="tg-btnviewall" href="/fg/book/bookList">查看全部</a>
-                                                        </li>
+                                                    <ul id="subcategory">
+
                                                     </ul>
                                                 </div>
                                             </div>
@@ -243,6 +205,45 @@
                 }
             });
         }
+
+        function displaySubcategory(categoryId)
+        {
+            $.ajax({
+                url: "/fg/book/getCategoryList?parentId=" + categoryId,
+                type: "get",
+                dataType: 'JSON',
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    var pageInfos = data.categoryPage.pageInfos;
+                    var tempDate = '';
+                    for(var i=0; i <pageInfos.length; i++) {
+                        if (pageInfos[i] != null) {
+                            tempDate +=
+                                '<li>' +
+                                '<div class="tg-linkstitle">\n' +
+                                '<h2>' +pageInfos[i].name +'</h2>\n' +
+                                '</div>\n' +
+                                '<ul>\n' +
+                                '<li><a href="/fg/book/bookList?categoryId='+ pageInfos[i].id + '">像钉子一样坚硬</a></li>\n' +
+                                '<li><a href="/fg/book/bookList?categoryId='+ pageInfos[i].id + '">Pro Grease Monkey</a></li>\n' +
+                                '<li><a href="/fg/book/bookList?categoryId='+ pageInfos[i].id + '">Building Memories</a></li>\n' +
+                                '<li><a href="/fg/book/bookList?categoryId='+ pageInfos[i].id + '">Bulldozer Boyz</a></li>\n' +
+                                '<li><a href="/fg/book/bookList?categoryId='+ pageInfos[i].id + '">Build Or Leave On Us</a></li>\n' +
+                                '</ul>\n' +
+                                '<a class="tg-btnviewall" href="/fg/book/bookList?categoryId='+ pageInfos[i].id + '">查看全部</a>\n' +
+                                '</li>'
+                        }
+
+
+                    }
+                    $("#subcategory").html(tempDate);
+                },
+                error: function (data) {
+                    alert("更改失败");
+                }
+            })
+        }
+
         function display() {
             $.ajax({
                 url: "/fg/car/displayCar",
@@ -303,7 +304,7 @@
                 error: function (data) {
                     alert("更改失败");
                 }
-            })
+            });
         }
     </script>
     <!--************************************

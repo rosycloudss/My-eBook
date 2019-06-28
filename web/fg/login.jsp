@@ -44,7 +44,7 @@
     <div class="container">
         <div class="sign-content popup-in-content">
             <div class="popup-in-txt">
-                <h2>sign in</h2>
+                <h2>登录</h2>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="signin-form">
