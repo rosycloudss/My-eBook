@@ -33,14 +33,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<%
-    String msg= request.getParameter("msg");
-    if (msg !=null) {
-%>
-    <script type="text/javascript">
-        alert('<%=msg%>');
-    </script>
-<%}%>
+
 <body>
 <!--[if lte IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
@@ -107,6 +100,14 @@
     </div><!--/.container -->
 </section><!--/.signin -->
 <!-- signin end -->
+<%
+    String msg= (String) request.getAttribute("msg");
+    if (msg !=null) {
+%>
+<script type="text/javascript">
+    alert('<%=msg%>');
+</script>
+<%}%>
 <script type="text/javascript">
     function send() {
         document.getElementsByTagName("form")[0].submit();

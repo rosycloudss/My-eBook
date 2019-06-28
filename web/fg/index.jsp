@@ -191,13 +191,14 @@ Main Start
                                         <%
                                             int strategy = (int) request.getAttribute("strategy");
                                             if (strategy == 0) {
+
                                         %>
-                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList/?currentPage=<%=bookPage.getPageCurrent()-1%>&categoryId=<%=session.getAttribute("categoryId")%>">&laquo;上一页</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/bookList/?currentPage=<%=bookPage.getPageCurrent()==1?1:bookPage.getPageCurrent()-1%>&categoryId=<%=session.getAttribute("categoryId")%>">&laquo;上一页</a></li>
                                         <li><a href="${pageContext.request.contextPath}/fg/book/bookList/?currentPage=<%=bookPage.getPageCurrent()+1%>&categoryId=<%=session.getAttribute("categoryId")%>">下一页&raquo;</a></li>
                                         <%
                                             }else {
                                         %>
-                                        <li><a href="${pageContext.request.contextPath}/fg/book/findBook/?currentPage=<%=bookPage.getPageCurrent()-1%>&bookName=<%=session.getAttribute("bookName")%>">&laquo;上一页</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/fg/book/findBook/?currentPage=<%=bookPage.getPageCurrent()==1?1:bookPage.getPageCurrent()-1%>&bookName=<%=session.getAttribute("bookName")%>">&laquo;上一页</a></li>
                                         <li><a href="${pageContext.request.contextPath}/fg/book/findBook/?currentPage=<%=bookPage.getPageCurrent()+1%>&bookName<%=session.getAttribute("bookName")%>">下一页&raquo;</a></li>
                                         <%
                                             }
@@ -220,7 +221,11 @@ Main Start
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                alert("添加成功");
+                if (data.result === 2) {
+                    alert("你还没有登录，请登录");
+                } else {
+                    alert("添加成功");
+                }
             },
             error: function (data) {
                 alert("添加失败");

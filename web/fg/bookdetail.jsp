@@ -80,8 +80,9 @@ Main Start
                                                 <li><span>尺寸:</span><span>153 x 234 x 43mm | 758g</span></li>
                                                 <li><span>出版日期:</span><span><%=DateUtil.formatDate(book.getPublishDate())%></span></li>
                                                 <li><span>出版商:</span><span><%=book.getPublisher()%></span></li>
-                                                <li><span>语言:</span><span>English</span></li>
                                                 <li><span>ISBN:</span><span><%=book.getISBN()%></span></li>
+                                                <li><span> </span></li>
+                                                <li><span> </span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -102,7 +103,7 @@ Main Start
                                                                 <span><%=book.getPublishDate()%></span>
                                                             </div>
                                                         </div>
-                                                        <%--<div class="tg-rightarea">
+                                                        <div class="tg-rightarea">
                                                             <ul class="tg-socialicons">
                                                                 <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
                                                                 <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
@@ -110,7 +111,7 @@ Main Start
                                                                 <li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
                                                                 <li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
                                                             </ul>
-                                                        </div>--%>
+                                                        </div>
                                                     </div>
                                                     <div class="tg-description">
                                                         <p>该作者出版过很多书籍，是一位优秀的人.</p>
@@ -122,7 +123,7 @@ Main Start
                                     <!--评论 开始-->
                                     <div class="tg-commentsarea">
                                         <div class="tg-sectionhead">
-                                            <h2>3个评论</h2>
+                                            <h2><br><br>3个评论</h2>
                                         </div>
                                         <ul id="tg-comments" class="tg-comments">
 
@@ -316,7 +317,11 @@ Main Start
             dataType: 'JSON',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                alert("添加成功");
+                if (data.result === 2) {
+                    alert("你还没有登录，请登录");
+                } else {
+                    alert("添加成功");
+                }
             },
             error: function (data) {
                 alert("添加失败");

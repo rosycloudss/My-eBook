@@ -50,8 +50,15 @@
                             </li>
                         </ul>
                         <div class="tg-userlogin">
-                            <figure><a href="/fg/personal.jsp"><img src="/fg/images/users/img-01.jpg" alt="image description"></a></figure>
+                            <figure><a href="/fg/login.jsp"><img src="/fg/images/users/img-01.jpg" alt="image description"></a></figure>
+                            <%
+                                Customer customer = (Customer) session.getAttribute("customer");
+                                if (customer != null) {
+                            %>
                             <span>Hi, <%=((Customer)session.getAttribute("customer")).getName()%></span>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                 </div>
@@ -62,6 +69,9 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <strong class="tg-logo"><a href="/fg/book/bookList"><img src="/fg/images/logo.png" alt="company name here"></a></strong>
+                        <%
+                            if (customer != null) {
+                        %>
                         <div class="tg-wishlistandcart">
                             <div id="car" class="dropdown tg-themedropdown tg-minicartdropdown">
                                 <a href="javascript:void(0);" onclick="display()" id="tg-minicart" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,6 +81,7 @@
                                 </a>
 
                                 <!--   购物车列表 开始-->
+
                                 <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-minicart">
                                     <div id="list" class="tg-minicartbody">
                                     </div>
@@ -89,6 +100,7 @@
                                 <!--   购物车列表 结束-->
                             </div>
                         </div>
+                        <%}%>
                         <!--搜索框 开始-->
                         <div class="tg-searchbox">
                             <form  action="${pageContext.request.contextPath}/fg/book/findBook?currentPage=1" method="post" class="tg-formtheme tg-formsearch">
@@ -187,11 +199,23 @@
                                         </div>
                                     </li>
                                     <!--所有分类  结束-->
+                                    <%
+                                        if(customer != null) {
+                                    %>
                                     <li><a href="/fg/personal.jsp">个人中心</a></li>
+                                    <%
+                                        }
+                                    %>
                                     <li><a href="/fg/contactus.jsp">联系我们</a></li>
                                     <li><a href="/fg/aboutus.jsp">关于我们</a></li>
+                                    <%
+                                        if(customer != null) {
+                                    %>
                                     <li><a href="/fg/modifypwd.jsp">修改密码</a></li>
                                     <li><a href="javascript:;" onclick="logOut()">退出登录</a></li>
+                                    <%
+                                        }
+                                    %>
                                 </ul>
                             </div>
                         </nav>

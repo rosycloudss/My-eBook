@@ -8,19 +8,13 @@ import com.my_ebook.service.BookService;
 import com.my_ebook.service.CarService;
 import com.my_ebook.service.OrderItemService;
 import com.my_ebook.service.OrderService;
-import com.mysql.cj.Session;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import javafx.beans.property.IntegerProperty;
-import jdk.nashorn.internal.scripts.JS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -39,24 +33,29 @@ public class CarController {
 
     @Autowired
     private OrderItemService orderItemService;
+
     /**
      * 加入购物车
      */
     @ResponseBody
     @RequestMapping(value = "/addBook", method = RequestMethod.GET)
-    public JSONObject addBook(Model model, @RequestParam("bookId") int bookId, HttpSession session) {
+    public JSONObject addBook( @RequestParam("bookId") int bookId, HttpSession session) {
         JSONObject jsonObject = new JSONObject();
         Customer customer = (Customer) session.getAttribute("customer");
-        Car car = new Car();
-        car.setCustomer(customer);
-        car.setOrderMount(1);
-        Book book = new Book();
-        book.setID(bookId);
-        car.setBook(book);
-        if (carService.add(car) == 1) {
-            jsonObject.put("result", 1);
+        if (customer != null) {
+            Car car = new Car();
+            car.setCustomer(customer);
+            car.setOrderMount(1);
+            Book book = new Book();
+            book.setID(bookId);
+            car.setBook(book);
+            if (carService.add(car) == 1) {
+                jsonObject.put("result", 1);
+            } else {
+                jsonObject.put("result", 0);
+            }
         } else {
-            jsonObject.put("result", 0);
+            jsonObject.put("result", 2);
         }
         return jsonObject;
     }
@@ -124,19 +123,24 @@ public class CarController {
                            @RequestParam(value = "bookId", required = false) Integer bookId,
                            HttpSession session, Model model) {
         Customer customer = (Customer) session.getAttribute("customer");
-        List<Car> carList = new ArrayList<Car>();
-        if (isCar == 1) {
-            carList = carService.findCustomerCars(customer.getID());
+        if (customer != null) {
+            List<Car> carList = new ArrayList<Car>();
+            if (isCar == 1) {
+                carList = carService.findCustomerCars(customer.getID());
+            } else {
+                Car car = new Car();
+                car.setCustomer(customer);
+                car.setOrderMount(1);
+                Book book = bookService.findById(bookId);
+                car.setBook(book);
+                carList.add(car);
+            }
+            model.addAttribute("carList", carList);
+            return "/fg/generateOrder";
         } else {
-            Car car = new Car();
-            car.setCustomer(customer);
-            car.setOrderMount(1);
-            Book book = bookService.findById(bookId);
-            car.setBook(book);
-            carList.add(car);
+            return "redirect:/fg/book/bookList";
         }
-        model.addAttribute("carList", carList);
-        return "/fg/generateOrder";
+
     }
 
     /**
