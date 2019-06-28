@@ -120,7 +120,7 @@ public class CustomerController {
     @ResponseBody
     @RequestMapping(value = "/getOrderDetail/{orderId}",method = RequestMethod.GET)
     public JSONObject getOrderDetail(@PathVariable String orderId){
-        System.out.println(orderId);
+
         JSONObject jsonObject=new JSONObject();
         List<OrderItem> orderItemList = orderItemService.findOrderItems(orderId);
         List<Orderdetail> orderdetails=new ArrayList<Orderdetail>();
@@ -137,7 +137,7 @@ public class CustomerController {
 
             orderdetails.add(orderdetail);
         }
-        System.out.println(orderdetails);
+
         jsonObject.put("orderdetails",orderdetails);
         return jsonObject;
     }

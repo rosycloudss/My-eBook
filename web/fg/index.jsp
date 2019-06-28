@@ -57,7 +57,7 @@ Main Start
                                     </ul>
                                 </div>
                             </div>
-                            <!--热门作者 开始-->
+                           <%-- <!--热门作者 开始-->
                             <div class="tg-widget tg-widgetblogers">
                                 <div class="tg-widgettitle">
                                     <h3>热门作者</h3>
@@ -110,7 +110,7 @@ Main Start
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>--%>
                             <!--热门作者 结束-->
                         </aside>
                     </div>
