@@ -174,7 +174,6 @@
                                     <%
                                         if(customer != null) {
                                     %>
-                                    <li><a href="/fg/modifypwd.jsp">修改密码</a></li>
                                     <li><a href="javascript:;" onclick="logOut()">退出登录</a></li>
                                     <%
                                         }
